@@ -1,3 +1,7 @@
-npm run contract:bind -- --contract 0x316Fc622220F4352794D6D2fD4582fa076E8B2dA \
-                        --abi ./build/contract/Storage.abi \
-                        --aspectId 0x4089Ad7a47025F73f3132652dBFAD10318F900f9
+npm run contract:bind -- --contract $CONTRACT_ADDRESS \
+                        --abi ./build/contract/contracts_LinkLearner_sol_LinkLearner.abi \
+                        --aspectId $ASPECT_ID
+
+# npm run contract:unbind -- --contract $CONTRACT_ADDRESS \
+#                         --abi ./build/contract/contracts_LinkLearner_sol_LinkLearner.abi \
+#                         --aspectId $ASPECT_ID

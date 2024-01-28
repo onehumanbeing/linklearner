@@ -2,9 +2,10 @@ import React, { useRef, useEffect } from 'react';
 
 interface CanvasBoardProps {
   onClean: (clean: () => void) => void;
+  onImageDataChange: (imageData: ImageData) => void; 
 }
 
-const CanvasBoard: React.FC<CanvasBoardProps> = ({ onClean }) => {
+const CanvasBoard: React.FC<CanvasBoardProps> = ({ onClean, onImageDataChange }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -23,6 +24,8 @@ const CanvasBoard: React.FC<CanvasBoardProps> = ({ onClean }) => {
     const endPosition = () => {
       painting = false;
       context.beginPath();
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      onImageDataChange(imageData);
     };
 
     const draw = (e: MouseEvent) => {

@@ -8,33 +8,49 @@ import * as tf from '@tensorflow/tfjs';
 function App() {
   const { address } = useAccount();
   const [selectedNumber, setSelectedNumber] = useState('');
+  const [imageData, setImageData] = useState<any>(null);
   const [model, setModel] = useState<tf.Sequential | null>(null);
-  const canvasRef = useRef(null);
   const cleanCanvasRef = useRef<() => void>(() => {});
+
+  const handleOnImageDataChange = (imageData: ImageData) => {
+    setImageData(imageData);
+  }
 
   useEffect(() => {
     setModel(createModel());
   }, []);
 
+  const handleExportWeights = async () => {
+    if (!model) return;
+    const weights = model.getWeights();
+    const weightsAsArray = weights.map(tensor => tensor.arraySync());
+    const weightsStr = JSON.stringify(weightsAsArray);
+    console.log(weightsStr);
+  };
+
+  const handleImportWeights = async (weightsStr: string) => {
+    if (!model) return;
+    const weightsAsArray = JSON.parse(weightsStr);
+    const weights = weightsAsArray.map((array: any[]) => tf.tensor(array));
+    model.setWeights(weights);
+  };
+
   const handleTrain = async () => {
-    if (!model || !canvasRef.current) return;
-    const imageData = getCanvasImageData(canvasRef.current);
+    if (!model) return;
     const label = parseInt(selectedNumber);
     if (isNaN(label)) return;
-    const xs = tf.browser.fromPixels(imageData, 1).reshape([1, 28, 28, 1]);
-    const ys = tf.oneHot(tf.tensor1d([label]), 10);
+    const imageTensor = tf.browser.fromPixels(imageData, 1);
+    const resizedImageTensor = tf.image.resizeBilinear(imageTensor, [28, 28]).reshape([1, 28, 28, 1]);
+    const xs = resizedImageTensor;
+    const ys = tf.oneHot(tf.tensor1d([label], 'int32'), 10); 
     await model.fit(xs, ys, {
       epochs: 1,
       batchSize: 1,
     });
     console.log("Model trained!");
+    handleExportWeights();
   };
-
-  function getCanvasImageData(canvas: any) {
-    const ctx = canvas.getContext('2d');
-    const imageData = ctx.getImageData(0, 0, 28, 28);
-    return imageData;
-  }
+  
 
   const handleSelectChange = (event: any) => {
     setSelectedNumber(event.target.value);
@@ -44,7 +60,6 @@ function App() {
     cleanCanvasRef.current();
   };
   const numbers = ['0','1','2','3','4','5','6','7','8','9'];
-
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-r from-darkStart to-darkEnd text-white">
       <nav className="bg-primary p-4">
@@ -56,7 +71,7 @@ function App() {
       {address ? (
         <div className="flex-grow p-4 flex">
           <div className="flex-1 p-4">
-          <CanvasBoard onClean={(clean) => cleanCanvasRef.current = clean} />
+          <CanvasBoard onClean={(clean) => cleanCanvasRef.current = clean} onImageDataChange={(imageData) => handleOnImageDataChange(imageData)}/>
             <label className='text-black'>1. Write a number between 0-9.</label>
             <div className="mb-4">
               <label htmlFor="number-select" className='text-black'>2. Tell us what you write:</label>
@@ -78,7 +93,6 @@ function App() {
               <button className="bg-primary text-white p-2" onClick={handleTrain}>Submit</button>
             </div>
           </div>
-          {/* 右侧区域 */}
         </div>
       ) : (
         <div className="text-center">

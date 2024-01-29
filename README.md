@@ -89,3 +89,7 @@ At the same time, the combination of Apest Runtime and EVM deeply combines stora
 The Artela Ecosystem ensures secure and efficient management of AI model weights on-chain, 
 
 vital for the integrity and reliability of LinkLearner’s operations.
+
+### What we bring to Artela Ecosystem
+
+active users/wallet accounts, TVL from $LL, and more.

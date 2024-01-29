@@ -6,7 +6,7 @@ Empowering AI from every corner of the world.
 
 ## Summary 
 
-LinkLearner is an experimental version of a decentralized AI model training platform based on Artela, which utilizes off-chain model training and on-chain parameter aggregation. 
+LinkLearner is an experimental version of a decentralized AI model training platform based on Artela, which utilizes off-chain model training and on-chain weight aggregation. 
 
 It enables the reuse of idle computational power while ensuring sensitive data utilizes remains secure and undisclosed. 
 
@@ -56,7 +56,7 @@ Henry
 
 > MS CyberSecurity NYU, Co-contibutor & Tech Guild Head of BuidlerDAO, Founder of mountex.net. Full stack dev who do sales. Pre tencent dev.  Pre Co-founder of NEAR Tinker Union. 
 
-10 years coding experence and 6 years entrepreneurship experence.
+> 10 years coding experence and 6 years entrepreneurship experence.
 
 > ETHGlobal Finalist Solo (AdFuel). Winner of NEAR MetaBUIDL III Hackathon (WaverFinance).
 

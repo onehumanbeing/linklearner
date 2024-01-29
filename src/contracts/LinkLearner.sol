@@ -10,27 +10,19 @@ contract LinkLearner is ERC20, Ownable {
         _mint(msg.sender, initialSupply);
     }
 
-    function setWeights(string calldata value, string calldata value2) public returns (bool) {
-        bytes memory contextKey = abi.encode("UploadWeights", value);
+    function setWeights(string calldata key, string calldata value) public returns (bool) {
+        bytes memory contextKey = abi.encode(key, value);
         (bool success,) = address(0x66).call(contextKey);
-        bytes memory contextKey2 = abi.encode("UploadWeights2", value2);
-        (bool success2,) = address(0x66).call(contextKey2);
-        bytes memory balanceContextKey = abi.encode("balance", 10);//int64(int256(balanceOf(msg.sender) / 1000000000000000)));
-        (bool successBalance,) = address(0x66).call(balanceContextKey);
-        bool isSuccessful = success && success2 && successBalance;
-        if (isSuccessful) {
-            _mint(msg.sender, 1000000000000000000);
-        }
-        return isSuccessful;
+        return success;
     }
 
-    function mint() public {
-        _mint(msg.sender, 1000000000000000000);
-    }
+    // function mint() public {
+    //     _mint(msg.sender, 1000000);
+    // }
 
     function getWeights(address aspectId) public returns (string memory validationData) {
         bytes memory contextKey = abi.encodePacked(aspectId, "weight");
         (bool success, bytes memory returnData) = address(0x64).call(contextKey);
-        validationData = success ? string(returnData) : '';
+        validationData = success ? string(returnData) : 'None';
     }
 }

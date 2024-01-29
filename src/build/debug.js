@@ -32,10 +32,6 @@ async function instantiate(module, imports = {}) {
         // ~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/__AspectTransientStorageApi__.set(i32, i32) => void
         __module1.__AspectTransientStorageApi__.set(key, value);
       },
-      "__AspectTransientStorageApi__.get"(aspectId, key) {
-        // ~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/__AspectTransientStorageApi__.get(i32, i32) => i32
-        return __module1.__AspectTransientStorageApi__.get(aspectId, key);
-      },
     }),
   };
   const { exports } = await WebAssembly.instantiate(module, adaptedImports);

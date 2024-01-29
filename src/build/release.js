@@ -1,8 +1,10 @@
 import * as __import0 from "aspect-state-api";
 import * as __import1 from "aspect-transient-storage-api";
+import * as __import2 from "crypto-api";
 async function instantiate(module, imports = {}) {
   const __module0 = imports["aspect-state-api"];
   const __module1 = imports["aspect-transient-storage-api"];
+  const __module2 = imports["crypto-api"];
   const adaptedImports = {
     env: Object.assign(Object.create(globalThis), imports.env || {}, {
       abort(message, fileName, lineNumber, columnNumber) {
@@ -32,6 +34,16 @@ async function instantiate(module, imports = {}) {
         // ~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/__AspectTransientStorageApi__.set(i32, i32) => void
         __module1.__AspectTransientStorageApi__.set(key, value);
       },
+      "__AspectTransientStorageApi__.get"(aspectId, key) {
+        // ~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/__AspectTransientStorageApi__.get(i32, i32) => i32
+        return __module1.__AspectTransientStorageApi__.get(aspectId, key);
+      },
+    }),
+    "crypto-api": Object.assign(Object.create(__module2), {
+      "__CryptoApi__.keccak"(dataPtr) {
+        // ~lib/@artela/aspect-libs/hostapi/crypto-api/__CryptoApi__.keccak(i32) => i32
+        return __module2.__CryptoApi__.keccak(dataPtr);
+      },
     }),
   };
   const { exports } = await WebAssembly.instantiate(module, adaptedImports);
@@ -60,6 +72,7 @@ export const {
   })(), {
     "aspect-state-api": __maybeDefault(__import0),
     "aspect-transient-storage-api": __maybeDefault(__import1),
+    "crypto-api": __maybeDefault(__import2),
   }
 ))(new URL("release.wasm", import.meta.url));
 function __maybeDefault(module) {

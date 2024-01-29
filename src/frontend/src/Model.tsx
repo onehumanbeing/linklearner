@@ -3,7 +3,7 @@ import * as tf from '@tensorflow/tfjs';
 export function createModel() {
   const model = tf.sequential();
   model.add(tf.layers.flatten({ inputShape: [28, 28, 1] }));
-  model.add(tf.layers.dense({ units: 32, activation: 'relu' })); // 128
+  model.add(tf.layers.dense({ units: 8, activation: 'relu' })); // 128
   model.add(tf.layers.dense({ units: 10, activation: 'softmax' }));
 
   model.compile({

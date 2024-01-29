@@ -16,6 +16,7 @@ import {
 } from '@artela/aspect-libs';
 import { JSON } from "assemblyscript-json/assembly";
 import {Protobuf} from "as-proto/assembly";
+import { ERC20State } from './erc20';
 
 class StoreAspect
     implements IPostContractCallJP, IPreContractCallJP {
@@ -27,42 +28,40 @@ class StoreAspect
         // Get the method of currently called contract.
         const modelValue = sys.aspect.readonlyState.get<string>("weight").unwrap();
         sys.aspect.transientStorage.get<string>('weight').set<string>(modelValue);
-        // const currentCallMethod = ethereum.parseMethodSig(input.call!.data);
-        // if(currentCallMethod  == ethereum.computeMethodSig('getWeights()')) {
-        //     const modelValue = sys.aspect.readonlyState.get<string>("weight").unwrap();
-        //     sys.aspect.transientStorage.get<string>('weight').set<string>(modelValue);
-        // } else {
-        //     sys.aspect.transientStorage.get<string>('weight').set<string>("[]");
-        // }
+        const currentCallMethod = ethereum.parseMethodSig(input.call!.data);
+        if(currentCallMethod  == ethereum.computeMethodSig('getWeights(address)')) {
+            const modelValue = sys.aspect.readonlyState.get<string>("weight").unwrap();
+            sys.aspect.transientStorage.get<string>('weight').set<string>(modelValue);
+        } else {
+            sys.aspect.transientStorage.get<string>('weight').set<string>("[]");
+        }
     }
 
     postContractCall(input: PostContractCallInput): void {
         // Get the method of currently called contract.
         const currentCallMethod = ethereum.parseMethodSig(input.call!.data);
         const to = uint8ArrayToHex(input.call!.to);
-        let model = sys.aspect.mutableState.get<string>("weight")
-        model.set<string>("test");
-        // if(currentCallMethod  == ethereum.computeMethodSig('setWeights')) {
-        //     let balance: u64 = 100;
-        //     const uploadValue = sys.aspect.transientStorage.get<string>('upload', to).unwrap();
-        //     let model = sys.aspect.mutableState.get<string>("weight")
-        //     let modelValue = model.unwrap();
-        //     if (!modelValue || modelValue == "") {
-        //         model.set<string>("test");
-        //         sys.aspect.mutableState.get<u64>("points").set<u64>(balance);
-        //     } else {
-        //         let points = sys.aspect.readonlyState.get<u64>("points").unwrap();
-        //         if (!points) {
-        //             points = 100;
-        //         }
-        //         const uploadWeights = this.jsonStringToObject(uploadValue);
-        //         const modelWeights = this.jsonStringToObject(modelValue);
-        //         const newWeights = this.mergeWeights(modelWeights, uploadWeights, points as f64, balance as f64);
-        //         const newWeightsString: string = this.objectToJsonString(newWeights);
-        //         sys.aspect.mutableState.get<string>("weight").set<string>(newWeightsString);
-        //         sys.aspect.mutableState.get<u64>("points").set<u64>(points + balance);
-        //     }
-        // }
+        if(currentCallMethod  == ethereum.computeMethodSig('setWeights(string,string)')) {
+            let balance: u64 = 100;
+            const uploadValue = sys.aspect.transientStorage.get<string>('upload', to).unwrap();
+            let model = sys.aspect.mutableState.get<string>("weight")
+            let modelValue = model.unwrap();
+            if (!modelValue || modelValue == "" || true) {
+                model.set<string>(uploadValue);
+                sys.aspect.mutableState.get<u64>("points").set<u64>(balance);
+            } else {
+                let points = sys.aspect.readonlyState.get<u64>("points").unwrap();
+                if (!points) {
+                    points = 100;
+                }
+                const uploadWeights = this.jsonStringToObject(uploadValue);
+                const modelWeights = this.jsonStringToObject(modelValue);
+                const newWeights = this.mergeWeights(modelWeights, uploadWeights, points as f64, balance as f64);
+                const newWeightsString: string = this.objectToJsonString(newWeights);
+                sys.aspect.mutableState.get<string>("weight").set<string>(newWeightsString);
+                sys.aspect.mutableState.get<u64>("points").set<u64>(points + balance);
+            }
+        }
     }
 
     jsonStringToObject(jsonString: string): Array<Float64Array> {

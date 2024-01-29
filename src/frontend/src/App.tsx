@@ -4,6 +4,7 @@ import { useSigner, useAccount } from 'wagmi';
 import CanvasBoard from './CanvasBoard';
 import { createModel } from './Model';
 import * as tf from '@tensorflow/tfjs';
+import { getBalance, getCounter, getWeights, setWeights } from './artela';
 
 function App() {
   const { address } = useAccount();
@@ -14,13 +15,53 @@ function App() {
   const cleanCanvasRef = useRef<() => void>(() => {});
   const cleanPredictCanvasRef = useRef<() => void>(() => {});
   const [prediction, setPrediction] = useState<number | null>(null);
+  const [balance, setBalance] = useState(0);
+  const [counter, setCounter] = useState(0);
+  const [lastUpdateTime, setLastUpdateTime] = useState('');
+  const { data: signer } = useSigner();
 
   const handleOnImageDataChange = (imageData: ImageData) => {
     setImageData(imageData);
   }
 
   useEffect(() => {
-    setModel(createModel());
+    const fetchCounter = async () => {
+      await getCounter().then(count => {
+        setCounter(count || 0);
+        setLastUpdateTime(new Date().toLocaleString());
+      });
+    };
+
+    fetchCounter();
+    const intervalId = setInterval(fetchCounter, 10000); // 10000 milliseconds = 10 seconds
+    // Clean up the interval on unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    if (address) {
+      getBalance(address).then(balance => {
+        if (balance !== undefined) {
+          setBalance(balance);
+        }
+      });
+    }
+  }, [address]);
+
+  useEffect(() => {
+    const loadModelAndWeights = async () => {
+      const model = createModel();
+      const response = await fetch('weight.json');
+      let weightsAsArray = await response.json();
+      const newWeights = await getWeights();
+      const data = JSON.parse(newWeights);      
+      // console.log(weightsAsArray[0], data.length, data[0].length, newWeights);
+      weightsAsArray[0] = data;
+      const weights = weightsAsArray.map((arr: number[]) => tf.tensor(arr));
+      model.setWeights(weights);
+      setModel(model);
+    };
+    loadModelAndWeights();
   }, []);
 
   const handlePredict = () => {
@@ -39,6 +80,7 @@ function App() {
     const weightsAsArray = weights.map(tensor => tensor.arraySync());
     const weightsStr = JSON.stringify(weightsAsArray);
     console.log(weightsAsArray, weightsStr);
+    return JSON.stringify(weightsAsArray[0]);
   };
 
   const handleImportWeights = async (weightsStr: string) => {
@@ -46,6 +88,17 @@ function App() {
     const weightsAsArray = JSON.parse(weightsStr);
     const weights = weightsAsArray.map((array: any[]) => tf.tensor(array));
     model.setWeights(weights);
+  };
+
+  const handleSubmit = async () => {
+    const weights = await handleExportWeights();
+    setWeights(signer, weights ?? '')
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((error: any) => {
+          console.error("Error occurred:", error);
+        });  
   };
 
   const handleTrain = async () => {
@@ -86,15 +139,18 @@ function App() {
   const numbers = ['0','1','2','3','4','5','6','7','8','9'];
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-r from-darkStart to-darkEnd text-white">
-      <nav className="bg-primary p-4">
-        <div className="flex justify-between items-center">
-          <span className="text-xl font-bold">LinkLearner</span>
+    <nav className="bg-primary p-4">
+      <div className="flex justify-between items-center">
+        <span className="text-xl font-bold">LinkLearner</span>
+        <div className="flex items-center">
+          {balance && <span className="mr-4">{balance} $LL</span>}
           <ConnectKitButton />
         </div>
-      </nav>
+      </div>
+    </nav>
       {address ? (
-        <div className="flex-grow p-4 flex">
-          <div className="flex-1 p-4">
+        <div className="flex-grow p-4 flex justify-center">
+          <div className="flex-1 p-4  max-w-md mx-auto">
           <CanvasBoard onClean={(clean) => cleanCanvasRef.current = clean} onImageDataChange={(imageData) => handleOnImageDataChange(imageData)}/>
             <label className='text-black'>1. Write a number between 0-9.</label>
             <div className="mb-4">
@@ -112,18 +168,24 @@ function App() {
               </select>
             </div>
             <div>
-              <button onClick={handleCleanCanvas} className="bg-gray-500 text-white p-2 mr-2">Clean</button>
-              <button className="bg-primary text-white p-2" onClick={handleTrain}>Submit</button>
+              <button onClick={handleCleanCanvas} className="rounded bg-gray-500 text-white p-2 mr-2">Clean</button>
+              <button className="bg-primary text-white p-2 mr-2 rounded" onClick={handleTrain}>Train</button>
+              <button className="bg-primary text-white p-2 mr-2 rounded" onClick={handleSubmit}>Submit</button>
             </div>
           </div>
-          <div className="flex-1 p-4">
+          <div className="flex-1 p-4  max-w-md mx-auto">
             <CanvasBoard onClean={(clean) => cleanPredictCanvasRef.current = clean} onImageDataChange={(imageData) => setPredictImageData(imageData)}/>
             <div className="flex items-center mt-4">
               <label className='text-black mr-2'>3. Try it now!</label>
-              <button className="bg-primary text-white p-2 mr-2" onClick={handlePredict}>Predict</button>
-              <button onClick={handleCleanPredictCanvas} className="bg-gray-500 text-white p-2">Clean</button>
+              <button className="bg-primary text-white p-2 mr-2 rounded" onClick={handlePredict}>Predict</button>
+              <button onClick={handleCleanPredictCanvas} className="bg-gray-500 text-white p-2 rounded">Clean</button>
             </div>
             {prediction !== null && <p className='text-black'>Prediction: {prediction}</p>}
+
+            <div className="bg-primary text-white rounded p-4 mt-4">
+            <label className='mr-2'>Weight Upgrade Version: {counter}</label>
+            <p className='text-sm'>Last Updated: {lastUpdateTime}</p>
+          </div>
           </div>
         </div>
       ) : (
@@ -133,6 +195,9 @@ function App() {
           <p className="text-black mt-4">OnChain Federated Learning, Powered by Artela</p>
         </div>
       )}
+      <footer className="text-center text-gray-500 mt-4">
+        Powered by @Artela 2024
+      </footer>
     </div>
   );
 }

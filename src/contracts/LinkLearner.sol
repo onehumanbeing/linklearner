@@ -18,7 +18,7 @@ contract LinkLearner is ERC20, Ownable {
         }
         return success;
     }
-a
+
     function mint() public {
         // faucet only!!!
         _mint(msg.sender, 1e18);
@@ -27,6 +27,12 @@ a
     function getWeights(address aspectId) public returns (string memory validationData) {
         // TODO: support slice upload weights in the future
         bytes memory contextKey = abi.encodePacked(aspectId, "weight");
+        (bool success, bytes memory returnData) = address(0x64).call(contextKey);
+        validationData = success ? string(returnData) : 'None';
+    }
+
+    function getCounter(address aspectId) public returns (string memory validationData ) {
+        bytes memory contextKey = abi.encodePacked(aspectId, "counter");
         (bool success, bytes memory returnData) = address(0x64).call(contextKey);
         validationData = success ? string(returnData) : 'None';
     }

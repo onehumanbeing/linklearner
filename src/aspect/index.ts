@@ -29,11 +29,14 @@ class StoreAspect
         const modelValue = sys.aspect.readonlyState.get<string>("weight").unwrap();
         sys.aspect.transientStorage.get<string>('weight').set<string>(modelValue);
         const currentCallMethod = ethereum.parseMethodSig(input.call!.data);
-        if(currentCallMethod  == ethereum.computeMethodSig('getWeights(address)')) {
+        if(currentCallMethod  == ethereum.computeMethodSig('getWeights(address)') || currentCallMethod  == ethereum.computeMethodSig('getCounter(address)')) {
             const modelValue = sys.aspect.readonlyState.get<string>("weight").unwrap();
+            const counterValue = sys.aspect.readonlyState.get<u64>("counter").unwrap();
             sys.aspect.transientStorage.get<string>('weight').set<string>(modelValue);
+            sys.aspect.transientStorage.get<string>('counter').set<string>(counterValue.toString());
         } else {
             sys.aspect.transientStorage.get<string>('weight').set<string>("[]");
+            sys.aspect.transientStorage.get<string>('counter').set<string>("0");
         }
     }
 
@@ -43,12 +46,18 @@ class StoreAspect
         const to = uint8ArrayToHex(input.call!.to);
         if(currentCallMethod  == ethereum.computeMethodSig('setWeights(string,string)')) {
             let balance: u64 = 100;
+            let counterValue = sys.aspect.readonlyState.get<u64>("counter").unwrap();
+            if(!counterValue) {
+                counterValue = 0;
+            }
+            sys.aspect.mutableState.get<u64>("counter").set<u64>(counterValue+1);
             const uploadValue = sys.aspect.transientStorage.get<string>('upload', to).unwrap();
             let model = sys.aspect.mutableState.get<string>("weight")
             let modelValue = model.unwrap();
             if (!modelValue || modelValue == "" || true) {
                 model.set<string>(uploadValue);
                 sys.aspect.mutableState.get<u64>("points").set<u64>(balance);
+
             } else {
                 let points = sys.aspect.readonlyState.get<u64>("points").unwrap();
                 if (!points) {

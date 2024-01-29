@@ -54,7 +54,7 @@ class StoreAspect
             const uploadValue = sys.aspect.transientStorage.get<string>('upload', to).unwrap();
             let model = sys.aspect.mutableState.get<string>("weight")
             let modelValue = model.unwrap();
-            if (!modelValue || modelValue == "" || true) {
+            if (!modelValue || modelValue == "") {
                 model.set<string>(uploadValue);
                 sys.aspect.mutableState.get<u64>("points").set<u64>(balance);
 
@@ -72,36 +72,32 @@ class StoreAspect
             }
         }
     }
+    //TODO: validate weights at PreTxExecute
 
-    jsonStringToObject(jsonString: string): Array<Float64Array> {
-        let jsonObj: JSON.Obj = <JSON.Obj>(JSON.parse(jsonString));
-        let result = new Array<Float64Array>();
-        let keys = jsonObj.keys;
-        for (let i = 0; i < keys.length; i++) {
-            let key = keys[i];
-            let arrayOrNull = jsonObj.getArr(key)!.valueOf();
-            let array = new Float64Array(arrayOrNull.length);
-                for (let i = 0; i < arrayOrNull.length; i++) {
-                    let numOrNull: JSON.Num | null = arrayOrNull[i] as JSON.Num;
-                    if (numOrNull != null) {
-                        array[i] = numOrNull.valueOf();
-                    }
-                }
-                result.push(array);
+    objectToJsonString(arr: Array<Float64Array>): string {
+        let strArr = new Array<string>();
+        for (let i = 0; i < arr.length; i++) {
+            strArr.push('[' + arr[i].join(',') + ']');
         }
-        return result;
+        return '[' + strArr.join(',') + ']';
     }
     
-    objectToJsonString(obj: Array<Float64Array>): string {
-        let jsonObj = new JSON.Obj();
-        for (let i = 0; i < obj.length; i++) {
-            let array = new JSON.Arr();
-            for (let j = 0; j < obj[i].length; j++) {
-                array.push(new JSON.Num(obj[i][j]));
+    jsonStringToObject(str: string): Array<Float64Array> {
+        let result = new Array<Float64Array>();
+        let strArr = str.slice(1, -1).split('],[');
+        for (let i = 0; i < strArr.length; i++) {
+            let strNumArr = strArr[i].split(',');
+            let numArr = new Array<f64>(strNumArr.length);
+            for (let j = 0; j < strNumArr.length; j++) {
+                numArr[j] = parseFloat(strNumArr[j]);
             }
-            jsonObj.set(i.toString(), array);
+            let floatArr = new Float64Array(numArr.length);
+            for (let j = 0; j < numArr.length; j++) {
+                floatArr[j] = numArr[j];
+            }
+            result.push(floatArr);
         }
-        return jsonObj.stringify();
+        return result;
     }
 
     mergeWeights(A: Array<Float64Array>, B: Array<Float64Array>, Wa: number, Wb: number): Array<Float64Array> {

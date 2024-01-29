@@ -2,7 +2,7 @@
 
 Empowering AI from every corner of the world.
 
-![Logo](docs/Logo.png)
+![Logo](docs/logo.png)
 
 ## Summary 
 

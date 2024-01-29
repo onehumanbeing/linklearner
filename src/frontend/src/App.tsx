@@ -143,7 +143,7 @@ function App() {
       <div className="flex justify-between items-center">
         <span className="text-xl font-bold">LinkLearner</span>
         <div className="flex items-center">
-          {balance && <span className="mr-4">{balance} $LL</span>}
+          {balance && address && <span className="mr-4">{balance} $LL</span>}
           <ConnectKitButton />
         </div>
       </div>

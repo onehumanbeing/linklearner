@@ -192,7 +192,7 @@ function App() {
         <div className="text-center">
           <img src="logo.png" alt="Logo" className="mx-auto w-72" />
           <h2 className="text-black text-xl">LinkLearner</h2>
-          <p className="text-black mt-4">OnChain Federated Learning, Powered by Artela</p>
+          <p className="text-black mt-4">Empowering AI from every corner of the world</p>
         </div>
       )}
       <footer className="text-center text-gray-500 mt-4">

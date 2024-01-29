@@ -40,7 +40,7 @@ Model training is conducted on the frontend using TensorFlow.js.
 
 ### How it works?
 
-![How it works](docs/HowItWorks.png)
+![How it works](docs/LL.png)
 
 codes: 
 

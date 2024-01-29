@@ -190,7 +190,7 @@ function App() {
         </div>
       ) : (
         <div className="text-center">
-          <img src="logo.png" alt="Logo" className="mx-auto w-72" />
+          <img src="https://i.ibb.co/M5NP0v8/logo.png" alt="Logo" className="mx-auto w-72" />
           <h2 className="text-black text-xl">LinkLearner</h2>
           <p className="text-black mt-4">Empowering AI from every corner of the world</p>
         </div>

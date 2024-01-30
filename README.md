@@ -6,7 +6,7 @@ Empowering AI from every corner of the world.
 
 ## Summary 
 
-LinkLearner is an experimental version of a decentralized AI model training platform based on Artela, which utilizes off-chain model training and on-chain weight aggregation. 
+LinkLearner is an experimental version of a decentralized AI model training platform based on Artela, which utilizes off-chain model training and on-chain weight aggregation. , eventually moving forward to [DAOs to democratically govern AI](https://vitalik.eth.limo/general/2024/01/30/cryptoai.html)
 
 It enables the reuse of idle computational power while ensuring sensitive data utilizes remains secure and undisclosed. 
 

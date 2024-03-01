@@ -1,24 +1,29 @@
 # test get weights
 npm run contract:call -- --contract $CONTRACT_ADDRESS \
-                          --abi ./build/contract/contracts_LinkLearner_sol_LinkLearner.abi  \
+                          --abi ./build/contract/LinkLearner.abi  \
                           --method getWeights \
                           --args $ASPECT_ID
 
-npm run contract:call -- --contract $CONTRACT_ADDRESS \
-                          --abi ./build/contract/contracts_LinkLearner_sol_LinkLearner.abi  \
+npm run contract:send -- --contract $CONTRACT_ADDRESS \
+                          --abi ./build/contract/LinkLearner.abi  \
                           --method setWeights \
-                          --args "\"$(cat w1.json)\""
+                          --args "upload" "\"$(cat w1.json)\""
                           
 npm run contract:call -- --contract $CONTRACT_ADDRESS \
-                          --abi ./build/contract/contracts_LinkLearner_sol_LinkLearner.abi  \
+                          --abi ./build/contract/LinkLearner.abi  \
                           --method balanceOf \
-                          --args 0x376b40c51E96AbCE9F00a2d7aAf6b6e5519a7898
+                          --args $ASPECT_ID
 
-npm run contract:call -- --contract $CONTRACT_ADDRESS \
-                          --abi ./build/contract/contracts_LinkLearner_sol_LinkLearner.abi  \
+npm run contract:send -- --contract $CONTRACT_ADDRESS \
+                          --abi ./build/contract/LinkLearner.abi  \
                           --method mint \
 
 npm run contract:call -- --contract $CONTRACT_ADDRESS \
-                          --abi ./build/contract/contracts_LinkLearner_sol_LinkLearner.abi  \
+                          --abi ./build/contract/LinkLearner.abi  \
                           --method setWeights \
                           --args "123"
+
+npm run contract:call -- --contract $CONTRACT_ADDRESS \
+                          --abi ./build/contract/LinkLearner.abi  \
+                          --method getCounter \
+                          --args $ASPECT_ID

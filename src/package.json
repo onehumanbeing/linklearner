@@ -17,7 +17,7 @@
     "contract:bind": "node scripts/bind.cjs",
     "contract:unbind": "node scripts/unbind.cjs",
     "contract:deploy": "node scripts/contract-deploy.cjs",
-    "contract:build": "solc -o ./build/contract/ --via-ir --abi --storage-layout --bin ./contracts/*.sol --overwrite",
+    "contract:build": "asolc -o ./build/contract/ --via-ir --abi --storage-layout --bin ./contracts/*.sol  --overwrite",
     "contract:buildjs": "solcjs --abi --bin --include-path ./node_modules/ --base-path . -o ./build/contract/  ./contracts/*.sol",
     "build": "npm run contract:build && npm run aspect:gen && npm run aspect:build"
   },
@@ -32,6 +32,7 @@
     "as-proto": "^1.3.0",
     "as-wasi-nn": "^0.3.0",
     "assemblyscript-json": "^1.1.0",
+    "json-as": "^0.7.2",
     "patch-package": "^8.0.0"
   },
   "devDependencies": {

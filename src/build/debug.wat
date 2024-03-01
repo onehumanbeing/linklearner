@@ -8,21 +8,33 @@
  (type $6 (func (param i32)))
  (type $7 (func (param i32 i32 i32)))
  (type $8 (func (param i32 i64)))
- (type $9 (func (param i32 i32 i32 i32) (result i32)))
- (type $10 (func (param i32 i32 i32 i32 i32) (result i32)))
- (type $11 (func (param i32) (result i64)))
- (type $12 (func (param i32 i64) (result i32)))
- (type $13 (func (param i32 i32 i32 i64 i32 i32 i64) (result i32)))
- (type $14 (func (param i32 i32 i32 i64 i32 i32 i64 i32 i32) (result i32)))
- (type $15 (func (param i32 i32 i32 i32)))
- (type $16 (func (param i32 i32 i64) (result i32)))
- (type $17 (func (param i32 i64 i32)))
- (type $18 (func (param i64 i32) (result i32)))
- (type $19 (func (param i32 i64 i32 i32)))
+ (type $9 (func (param i32) (result i64)))
+ (type $10 (func (param i32 i32 i32 i32) (result i32)))
+ (type $11 (func (param i32 i32 i32 i32 i32) (result i32)))
+ (type $12 (func (param i64 i32) (result i32)))
+ (type $13 (func (param i64) (result i32)))
+ (type $14 (func (param i32 i32 i32 i32)))
+ (type $15 (func (param i32 i64 i32)))
+ (type $16 (func (param i32 f64) (result i32)))
+ (type $17 (func (param i32 i64) (result i32)))
+ (type $18 (func (param i32 i32 i32 i64 i32 i32 i64) (result i32)))
+ (type $19 (func (param i32 i32 i32 i64 i32 i32 i64 i32 i32) (result i32)))
+ (type $20 (func (param i32 i32) (result i64)))
+ (type $21 (func (param i32) (result f64)))
+ (type $22 (func (param i32 i32 f64)))
+ (type $23 (func (param i32 i32) (result f64)))
+ (type $24 (func (param i32 i32 i64) (result i32)))
+ (type $25 (func (param i32 i64 i32 i32)))
+ (type $26 (func (param f64 i32) (result f64)))
+ (type $27 (func (param i32 i64 i32 i64 i32 i64 i32) (result i32)))
+ (type $28 (func (param i32 i32 i32 f64 f64) (result i32)))
+ (type $29 (func (param f64) (result i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (import "aspect-state-api" "__AspectStateApi__.get" (func $~lib/@artela/aspect-libs/hostapi/aspect-state-api/__AspectStateApi__.get (param i32) (result i32)))
  (import "aspect-transient-storage-api" "__AspectTransientStorageApi__.set" (func $~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/__AspectTransientStorageApi__.set (param i32 i32)))
+ (import "crypto-api" "__CryptoApi__.keccak" (func $~lib/@artela/aspect-libs/hostapi/crypto-api/__CryptoApi__.keccak (param i32) (result i32)))
  (import "aspect-state-api" "__AspectStateApi__.set" (func $~lib/@artela/aspect-libs/hostapi/aspect-state-api/__AspectStateApi__.set (param i32 i32)))
+ (import "aspect-transient-storage-api" "__AspectTransientStorageApi__.get" (func $~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/__AspectTransientStorageApi__.get (param i32 i32) (result i32)))
  (global $~lib/as-proto/assembly/WireType/WireType.VARINT i32 (i32.const 0))
  (global $~lib/as-proto/assembly/WireType/WireType.FIXED_64 i32 (i32.const 1))
  (global $~lib/as-proto/assembly/WireType/WireType.LENGTH_DELIMITED i32 (i32.const 2))
@@ -130,10 +142,18 @@
  (global $~lib/native/ASC_SHRINK_LEVEL i32 (i32.const 0))
  (global $~argumentsLength (mut i32) (i32.const 0))
  (global $~lib/builtins/i32.MAX_VALUE i32 (i32.const 2147483647))
- (global $~lib/rt/__rtti_base i32 (i32.const 7344))
- (global $~lib/memory/__data_end i32 (i32.const 7612))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 40380))
- (global $~lib/memory/__heap_base i32 (i32.const 40380))
+ (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
+ (global $~lib/util/string/__fixmulShift (mut i64) (i64.const 0))
+ (global $~lib/util/number/_frc_plus (mut i64) (i64.const 0))
+ (global $~lib/util/number/_frc_minus (mut i64) (i64.const 0))
+ (global $~lib/util/number/_exp (mut i32) (i32.const 0))
+ (global $~lib/util/number/_K (mut i32) (i32.const 0))
+ (global $~lib/util/number/_frc_pow (mut i64) (i64.const 0))
+ (global $~lib/util/number/_exp_pow (mut i32) (i32.const 0))
+ (global $~lib/rt/__rtti_base i32 (i32.const 10176))
+ (global $~lib/memory/__data_end i32 (i32.const 10480))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 43248))
+ (global $~lib/memory/__heap_base i32 (i32.const 43248))
  (memory $0 1)
  (data $0 (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
  (data $1 (i32.const 76) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -216,8 +236,40 @@
  (data $78 (i32.const 7148) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\04\00\00\000\00x\00\00\00\00\00\00\00\00\00")
  (data $79 (i32.const 7180) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1e\00\00\00a\00s\00p\00e\00c\00t\00/\00i\00n\00d\00e\00x\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $80 (i32.const 7244) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00 \00\00\000\001\002\003\004\005\006\007\008\009\00a\00b\00c\00d\00e\00f\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $81 (i32.const 7308) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\08\00\00\00t\00e\00s\00t\00\00\00\00\00")
- (data $82 (i32.const 7344) "B\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02\01\00\00\02\t\00\00A\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\01\01\00\00\00\00\00\00 \00\00\00\00\00\00\00")
+ (data $81 (i32.const 7308) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00&\00\00\00g\00e\00t\00W\00e\00i\00g\00h\00t\00s\00(\00a\00d\00d\00r\00e\00s\00s\00)\00\00\00\00\00\00\00")
+ (data $82 (i32.const 7372) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00&\00\00\00g\00e\00t\00C\00o\00u\00n\00t\00e\00r\00(\00a\00d\00d\00r\00e\00s\00s\00)\00\00\00\00\00\00\00")
+ (data $83 (i32.const 7436) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0e\00\00\00c\00o\00u\00n\00t\00e\00r\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $84 (i32.const 7484) "\\\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00F\00\00\00C\00a\00n\00n\00o\00t\00 \00c\00a\00s\00t\00 \00n\00e\00g\00a\00t\00i\00v\00e\00 \00i\00n\00t\00e\00g\00e\00r\00 \00t\00o\00 \00u\006\004\00\00\00\00\00\00\00")
+ (data $85 (i32.const 7580) "|\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00f\00\00\00~\00l\00i\00b\00/\00@\00a\00r\00t\00e\00l\00a\00/\00a\00s\00p\00e\00c\00t\00-\00l\00i\00b\00s\00/\00c\00o\00m\00m\00o\00n\00/\00w\00r\00a\00p\00t\00y\00p\00e\00s\00/\00b\00i\00g\00i\00n\00t\00.\00t\00s\00\00\00\00\00\00\00")
+ (data $86 (i32.const 7708) "\8c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00|\00\00\00I\00n\00t\00e\00g\00e\00r\00 \00o\00v\00e\00r\00f\00l\00o\00w\00:\00 \00c\00a\00n\00n\00o\00t\00 \00o\00u\00t\00p\00u\00t\00 \00u\006\004\00 \00f\00r\00o\00m\00 \00a\00n\00 \00i\00n\00t\00e\00g\00e\00r\00 \00t\00h\00a\00t\00 \00u\00s\00e\00s\00 \00")
+ (data $87 (i32.const 7852) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\n\00\00\00 \00b\00i\00t\00s\00\00\00")
+ (data $88 (i32.const 7884) "\1c\00\00\00\03\00\00\00\00\00\00\00C\00\00\00\0c\00\00\000\1e\00\00\00\00\00\00\c0\1e\00\00")
+ (data $89 (i32.const 7916) "|\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00`\00\00\00B\00i\00g\00I\00n\00t\00 \00o\00n\00l\00y\00 \00p\00r\00i\00n\00t\00s\00 \00s\00t\00r\00i\00n\00g\00s\00 \00i\00n\00 \00r\00a\00d\00i\00x\00 \002\00 \00t\00h\00r\00o\00u\00g\00h\00 \001\006\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $90 (i32.const 8044) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\00-\00\00\00\00\00\00\00\00\00\00\00")
+ (data $91 (i32.const 8076) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $92 (i32.const 8108) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1c\00\00\00D\00i\00v\00i\00d\00e\00 \00b\00y\00 \00z\00e\00r\00o\00")
+ (data $93 (i32.const 8156) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00")
+ (data $94 (i32.const 8204) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\04\00\00\00[\00]\00\00\00\00\00\00\00\00\00")
+ (data $95 (i32.const 8236) "L\00\00\00\00\00\00\00\00\00\00\00\02\00\00\002\00\00\00s\00e\00t\00W\00e\00i\00g\00h\00t\00s\00(\00s\00t\00r\00i\00n\00g\00,\00s\00t\00r\00i\00n\00g\00)\00\00\00\00\00\00\00\00\00\00\00")
+ (data $96 (i32.const 8316) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0c\00\00\00u\00p\00l\00o\00a\00d\00")
+ (data $97 (i32.const 8348) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0c\00\00\00p\00o\00i\00n\00t\00s\00")
+ (data $98 (i32.const 8380) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\06\00\00\00]\00,\00[\00\00\00\00\00\00\00")
+ (data $99 (i32.const 8412) "|\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00^\00\00\00E\00l\00e\00m\00e\00n\00t\00 \00t\00y\00p\00e\00 \00m\00u\00s\00t\00 \00b\00e\00 \00n\00u\00l\00l\00a\00b\00l\00e\00 \00i\00f\00 \00a\00r\00r\00a\00y\00 \00i\00s\00 \00h\00o\00l\00e\00y\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $100 (i32.const 8540) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\00,\00\00\00\00\00\00\00\00\00\00\00")
+ (data $101 (i32.const 8576) "\00\00\00\00\00\00\f0?\00\00\00\00\00\00$@\00\00\00\00\00\00Y@\00\00\00\00\00@\8f@\00\00\00\00\00\88\c3@\00\00\00\00\00j\f8@\00\00\00\00\80\84.A\00\00\00\00\d0\12cA\00\00\00\00\84\d7\97A\00\00\00\00e\cd\cdA\00\00\00 _\a0\02B\00\00\00\e8vH7B\00\00\00\a2\94\1amB\00\00@\e5\9c0\a2B\00\00\90\1e\c4\bc\d6B\00\004&\f5k\0cC\00\80\e07y\c3AC\00\a0\d8\85W4vC\00\c8Ngm\c1\abC\00=\91`\e4X\e1C@\8c\b5x\1d\af\15DP\ef\e2\d6\e4\1aKD\92\d5M\06\cf\f0\80D")
+ (data $102 (i32.const 8764) "\\\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00J\00\00\00T\00h\00e\00 \00a\00r\00r\00a\00y\00s\00 \00m\00u\00s\00t\00 \00h\00a\00v\00e\00 \00t\00h\00e\00 \00s\00a\00m\00e\00 \00l\00e\00n\00g\00t\00h\00.\00\00\00")
+ (data $103 (i32.const 8860) "l\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00V\00\00\00T\00h\00e\00 \00i\00n\00n\00e\00r\00 \00a\00r\00r\00a\00y\00s\00 \00m\00u\00s\00t\00 \00h\00a\00v\00e\00 \00t\00h\00e\00 \00s\00a\00m\00e\00 \00l\00e\00n\00g\00t\00h\00.\00\00\00\00\00\00\00")
+ (data $104 (i32.const 8972) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\00[\00\00\00\00\00\00\00\00\00\00\00")
+ (data $105 (i32.const 9004) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\06\00\00\000\00.\000\00\00\00\00\00\00\00")
+ (data $106 (i32.const 9036) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\06\00\00\00N\00a\00N\00\00\00\00\00\00\00")
+ (data $107 (i32.const 9068) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\12\00\00\00-\00I\00n\00f\00i\00n\00i\00t\00y\00\00\00\00\00\00\00\00\00\00\00")
+ (data $108 (i32.const 9116) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\10\00\00\00I\00n\00f\00i\00n\00i\00t\00y\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $109 (i32.const 9168) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $110 (i32.const 9224) "\88\02\1c\08\a0\d5\8f\fav\bf>\a2\7f\e1\ae\bav\acU0 \fb\16\8b\ea5\ce]J\89B\cf-;eU\aa\b0k\9a\dfE\1a=\03\cf\1a\e6\ca\c6\9a\c7\17\fep\abO\dc\bc\be\fc\b1w\ff\0c\d6kA\ef\91V\be<\fc\7f\90\ad\1f\d0\8d\83\9aU1(\\Q\d3\b5\c9\a6\ad\8f\acq\9d\cb\8b\ee#w\"\9c\eamSx@\91I\cc\aeW\ce\b6]y\12<\827V\fbM6\94\10\c2O\98H8o\ea\96\90\c7:\82%\cb\85t\d7\f4\97\bf\97\cd\cf\86\a0\e5\ac*\17\98\n4\ef\8e\b25*\fbg8\b2;?\c6\d2\df\d4\c8\84\ba\cd\d3\1a\'D\dd\c5\96\c9%\bb\ce\9fk\93\84\a5b}$l\ac\db\f6\da_\rXf\ab\a3&\f1\c3\de\93\f8\e2\f3\b8\80\ff\aa\a8\ad\b5\b5\8bJ|l\05_b\87S0\c14`\ff\bc\c9U&\ba\91\8c\85N\96\bd~)p$w\f9\df\8f\b8\e5\b8\9f\bd\df\a6\94}t\88\cf_\a9\f8\cf\9b\a8\8f\93pD\b9k\15\0f\bf\f8\f0\08\8a\b611eU%\b0\cd\ac\7f{\d0\c6\e2?\99\06;+*\c4\10\\\e4\d3\92si\99$$\aa\0e\ca\00\83\f2\b5\87\fd\eb\1a\11\92d\08\e5\bc\cc\88Po\t\cc\bc\8c,e\19\e2X\17\b7\d1\00\00\00\00\00\00@\9c\00\00\00\00\10\a5\d4\e8\00\00b\ac\c5\ebx\ad\84\t\94\f8x9?\81\b3\15\07\c9{\ce\97\c0p\\\ea{\ce2~\8fh\80\e9\ab\a48\d2\d5E\"\9a\17&\'O\9f\'\fb\c4\d41\a2c\ed\a8\ad\c8\8c8e\de\b0\dbe\ab\1a\8e\08\c7\83\9a\1dqB\f9\1d]\c4X\e7\1b\a6,iM\92\ea\8dp\1ad\ee\01\daJw\ef\9a\99\a3m\a2\85k}\b4{x\t\f2w\18\ddy\a1\e4T\b4\c2\c5\9b[\92\86[\86=]\96\c8\c5S5\c8\b3\a0\97\fa\\\b4*\95\e3_\a0\99\bd\9fF\de%\8c9\db4\c2\9b\a5\\\9f\98\a3r\9a\c6\f6\ce\be\e9TS\bf\dc\b7\e2A\"\f2\17\f3\fc\88\a5x\\\d3\9b\ce \cc\dfS!{\f3Z\16\98:0\1f\97\dc\b5\a0\e2\96\b3\e3\\S\d1\d9\a8<D\a7\a4\d9|\9b\fb\10D\a4\a7LLv\bb\1a\9c@\b6\ef\8e\ab\8b,\84W\a6\10\ef\1f\d0)1\91\e9\e5\a4\10\9b\9d\0c\9c\a1\fb\9b\10\e7)\f4;b\d9 (\ac\85\cf\a7z^KD\80-\dd\ac\03@\e4!\bf\8f\ffD^/\9cg\8eA\b8\8c\9c\9d\173\d4\a9\1b\e3\b4\92\db\19\9e\d9w\df\ban\bf\96\ebk\ee\f0\9b;\02\87\af")
+ (data $111 (i32.const 9920) "<\fbW\fbr\fb\8c\fb\a7\fb\c1\fb\dc\fb\f6\fb\11\fc,\fcF\fca\fc{\fc\96\fc\b1\fc\cb\fc\e6\fc\00\fd\1b\fd5\fdP\fdk\fd\85\fd\a0\fd\ba\fd\d5\fd\ef\fd\n\fe%\fe?\feZ\fet\fe\8f\fe\a9\fe\c4\fe\df\fe\f9\fe\14\ff.\ffI\ffc\ff~\ff\99\ff\b3\ff\ce\ff\e8\ff\03\00\1e\008\00S\00m\00\88\00\a2\00\bd\00\d8\00\f2\00\r\01\'\01B\01\\\01w\01\92\01\ac\01\c7\01\e1\01\fc\01\16\021\02L\02f\02\81\02\9b\02\b6\02\d0\02\eb\02\06\03 \03;\03U\03p\03\8b\03\a5\03\c0\03\da\03\f5\03\0f\04*\04")
+ (data $112 (i32.const 10096) "\01\00\00\00\n\00\00\00d\00\00\00\e8\03\00\00\10\'\00\00\a0\86\01\00@B\0f\00\80\96\98\00\00\e1\f5\05\00\ca\9a;")
+ (data $113 (i32.const 10140) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\00]\00\00\00\00\00\00\00\00\00\00\00")
+ (data $114 (i32.const 10176) "K\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02\01\00\00\02\t\00\00A\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\01\01\00\00\00\00\00\00 \00\00\00\00\00\00\00 \00\00\00\04A\00\00\00\00\00\00 \00\00\00\00\00\00\00\01\1a\00\00\02A\00\00\02A\00\00\02\1a\00\00")
  (table $0 7 7 funcref)
  (elem $0 (i32.const 1) $~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput.decode $~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput.decode $~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput.decode $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput.decode $~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput.decode $~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput.decode)
  (export "execute" (func $~lib/@artela/aspect-libs/types/entrance/execute))
@@ -4388,6 +4440,408 @@
   local.get $this
   i32.load offset=8
  )
+ (func $~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput#get:call (param $this i32) (result i32)
+  local.get $this
+  i32.load
+ )
+ (func $~lib/@artela/aspect-libs/proto/aspect/v2/pre-exec-message-input/PreExecMessageInput#get:data (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=16
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:d (param $this i32) (param $d i32)
+  local.get $this
+  local.get $d
+  i32.store
+  local.get $this
+  local.get $d
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:isNeg (param $this i32) (param $isNeg i32)
+  local.get $this
+  local.get $isNeg
+  i32.store8 offset=8
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n (param $this i32) (param $n i32)
+  local.get $this
+  local.get $n
+  i32.store offset=4
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d (param $this i32) (result i32)
+  local.get $this
+  i32.load
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.get:ZERO (result i32)
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromUInt16
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=4
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg (param $this i32) (result i32)
+  local.get $this
+  i32.load8_u offset=8
+ )
+ (func $~lib/staticarray/StaticArray<~lib/string/String>#__uset (param $this i32) (param $index i32) (param $value i32)
+  local.get $this
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $value
+  i32.store
+  i32.const 1
+  drop
+  local.get $this
+  local.get $value
+  i32.const 1
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/staticarray/StaticArray<~lib/string/String>#get:length (param $this i32) (result i32)
+  local.get $this
+  i32.const 20
+  i32.sub
+  call $~lib/rt/common/OBJECT#get:rtSize
+  i32.const 2
+  i32.shr_u
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.from<~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt> (param $val i32) (result i32)
+  i32.const 1
+  drop
+  local.get $val
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.isPow2 (param $b i32) (result i32)
+  (local $i i32)
+  i32.const 1
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.p
+   i32.lt_s
+   if
+    local.get $b
+    i32.const 1
+    local.get $i
+    i32.shl
+    i32.eq
+    if
+     local.get $i
+     return
+    end
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  i32.const 0
+  return
+ )
+ (func $~lib/array/Array<i32>#get:length_ (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=12
+ )
+ (func $~lib/array/Array<i32>#get:dataStart (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=4
+ )
+ (func $~lib/array/Array<i32>#set:length_ (param $this i32) (param $length_ i32)
+  local.get $this
+  local.get $length_
+  i32.store offset=12
+ )
+ (func $~lib/util/bytes/REVERSE<i32> (param $ptr i32) (param $len i32)
+  (local $i i32)
+  (local $tail i32)
+  (local $hlen i32)
+  (local $front i32)
+  (local $back i32)
+  (local $temp i32)
+  local.get $len
+  i32.const 1
+  i32.gt_u
+  if
+   i32.const 0
+   local.set $i
+   local.get $len
+   i32.const 1
+   i32.shr_u
+   local.set $hlen
+   i32.const 0
+   i32.const 1
+   i32.lt_s
+   drop
+   i32.const 4
+   i32.const 1
+   i32.eq
+   drop
+   i32.const 4
+   i32.const 2
+   i32.eq
+   drop
+   local.get $len
+   i32.const 1
+   i32.sub
+   local.set $tail
+   loop $while-continue|0
+    local.get $i
+    local.get $hlen
+    i32.lt_u
+    if
+     local.get $ptr
+     local.get $i
+     i32.const 2
+     i32.shl
+     i32.add
+     local.set $front
+     local.get $ptr
+     local.get $tail
+     local.get $i
+     i32.sub
+     i32.const 2
+     i32.shl
+     i32.add
+     local.set $back
+     local.get $front
+     i32.load
+     local.set $temp
+     local.get $front
+     local.get $back
+     i32.load
+     i32.store
+     local.get $back
+     local.get $temp
+     i32.store
+     local.get $i
+     i32.const 1
+     i32.add
+     local.set $i
+     br $while-continue|0
+    end
+   end
+  end
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:val (param $this i32) (param $val i64)
+  local.get $this
+  local.get $val
+  i64.store
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:key (param $this i32) (param $key i32)
+  local.get $this
+  local.get $key
+  i32.store offset=12
+  local.get $this
+  local.get $key
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:loaded (param $this i32) (param $loaded i32)
+  local.get $this
+  local.get $loaded
+  i32.store8 offset=8
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#get:loaded (param $this i32) (result i32)
+  local.get $this
+  i32.load8_u offset=8
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#get:key (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=12
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#get:val (param $this i32) (result i64)
+  local.get $this
+  i64.load
+ )
+ (func $~lib/util/number/decimalCount64High (param $value i64) (result i32)
+  local.get $value
+  i64.const 1000000000000000
+  i64.lt_u
+  if
+   local.get $value
+   i64.const 1000000000000
+   i64.lt_u
+   if
+    i32.const 10
+    local.get $value
+    i64.const 100000000000
+    i64.ge_u
+    i32.add
+    local.get $value
+    i64.const 10000000000
+    i64.ge_u
+    i32.add
+    return
+   else
+    i32.const 13
+    local.get $value
+    i64.const 100000000000000
+    i64.ge_u
+    i32.add
+    local.get $value
+    i64.const 10000000000000
+    i64.ge_u
+    i32.add
+    return
+   end
+   unreachable
+  else
+   local.get $value
+   i64.const 100000000000000000
+   i64.lt_u
+   if
+    i32.const 16
+    local.get $value
+    i64.const 10000000000000000
+    i64.ge_u
+    i32.add
+    return
+   else
+    i32.const 18
+    local.get $value
+    i64.const -8446744073709551616
+    i64.ge_u
+    i32.add
+    local.get $value
+    i64.const 1000000000000000000
+    i64.ge_u
+    i32.add
+    return
+   end
+   unreachable
+  end
+  unreachable
+ )
+ (func $~lib/util/number/utoa64_dec_lut (param $buffer i32) (param $num i64) (param $offset i32)
+  (local $t i64)
+  (local $r i32)
+  (local $b i32)
+  (local $c i32)
+  (local $b1 i32)
+  (local $b2 i32)
+  (local $c1 i32)
+  (local $c2 i32)
+  (local $digits1 i64)
+  (local $digits2 i64)
+  loop $while-continue|0
+   local.get $num
+   i64.const 100000000
+   i64.ge_u
+   if
+    local.get $num
+    i64.const 100000000
+    i64.div_u
+    local.set $t
+    local.get $num
+    local.get $t
+    i64.const 100000000
+    i64.mul
+    i64.sub
+    i32.wrap_i64
+    local.set $r
+    local.get $t
+    local.set $num
+    local.get $r
+    i32.const 10000
+    i32.div_u
+    local.set $b
+    local.get $r
+    i32.const 10000
+    i32.rem_u
+    local.set $c
+    local.get $b
+    i32.const 100
+    i32.div_u
+    local.set $b1
+    local.get $b
+    i32.const 100
+    i32.rem_u
+    local.set $b2
+    local.get $c
+    i32.const 100
+    i32.div_u
+    local.set $c1
+    local.get $c
+    i32.const 100
+    i32.rem_u
+    local.set $c2
+    i32.const 5500
+    local.get $c1
+    i32.const 2
+    i32.shl
+    i32.add
+    i64.load32_u
+    local.set $digits1
+    i32.const 5500
+    local.get $c2
+    i32.const 2
+    i32.shl
+    i32.add
+    i64.load32_u
+    local.set $digits2
+    local.get $offset
+    i32.const 4
+    i32.sub
+    local.set $offset
+    local.get $buffer
+    local.get $offset
+    i32.const 1
+    i32.shl
+    i32.add
+    local.get $digits1
+    local.get $digits2
+    i64.const 32
+    i64.shl
+    i64.or
+    i64.store
+    i32.const 5500
+    local.get $b1
+    i32.const 2
+    i32.shl
+    i32.add
+    i64.load32_u
+    local.set $digits1
+    i32.const 5500
+    local.get $b2
+    i32.const 2
+    i32.shl
+    i32.add
+    i64.load32_u
+    local.set $digits2
+    local.get $offset
+    i32.const 4
+    i32.sub
+    local.set $offset
+    local.get $buffer
+    local.get $offset
+    i32.const 1
+    i32.shl
+    i32.add
+    local.get $digits1
+    local.get $digits2
+    i64.const 32
+    i64.shl
+    i64.or
+    i64.store
+    br $while-continue|0
+   end
+  end
+  local.get $buffer
+  local.get $num
+  i32.wrap_i64
+  local.get $offset
+  call $~lib/util/number/utoa32_dec_lut
+ )
+ (func $~lib/number/U64#toString (param $this i64) (param $radix i32) (result i32)
+  local.get $this
+  local.get $radix
+  call $~lib/util/number/utoa64
+  return
+ )
  (func $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput#get:call (param $this i32) (result i32)
   local.get $this
   i32.load
@@ -4399,6 +4853,1815 @@
  (func $~lib/@artela/aspect-libs/proto/aspect/v2/post-exec-message-input/PostExecMessageInput#get:to (param $this i32) (result i32)
   local.get $this
   i32.load offset=4
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#get:loaded (param $this i32) (result i32)
+  local.get $this
+  i32.load8_u offset=4
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#get:aspectId (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=12
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#get:val (param $this i32) (result i32)
+  local.get $this
+  i32.load
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#set:buffer (param $this i32) (param $buffer i32)
+  local.get $this
+  local.get $buffer
+  i32.store
+  local.get $this
+  local.get $buffer
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#set:dataStart (param $this i32) (param $dataStart i32)
+  local.get $this
+  local.get $dataStart
+  i32.store offset=4
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#set:byteLength (param $this i32) (param $byteLength i32)
+  local.get $this
+  local.get $byteLength
+  i32.store offset=8
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#set:length_ (param $this i32) (param $length_ i32)
+  local.get $this
+  local.get $length_
+  i32.store offset=12
+ )
+ (func $~lib/array/Array<~lib/string/String>#get:length_ (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=12
+ )
+ (func $~lib/array/Array<~lib/string/String>#set:length_ (param $this i32) (param $length_ i32)
+  local.get $this
+  local.get $length_
+  i32.store offset=12
+ )
+ (func $~lib/array/Array<~lib/string/String>#get:dataStart (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=4
+ )
+ (func $~lib/array/Array<f64>#set:buffer (param $this i32) (param $buffer i32)
+  local.get $this
+  local.get $buffer
+  i32.store
+  local.get $this
+  local.get $buffer
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/array/Array<f64>#set:dataStart (param $this i32) (param $dataStart i32)
+  local.get $this
+  local.get $dataStart
+  i32.store offset=4
+ )
+ (func $~lib/array/Array<f64>#set:byteLength (param $this i32) (param $byteLength i32)
+  local.get $this
+  local.get $byteLength
+  i32.store offset=8
+ )
+ (func $~lib/array/Array<f64>#set:length_ (param $this i32) (param $length_ i32)
+  local.get $this
+  local.get $length_
+  i32.store offset=12
+ )
+ (func $~lib/math/ipow32 (param $x i32) (param $e i32) (result i32)
+  (local $out i32)
+  (local $log i32)
+  (local $4 i32)
+  i32.const 1
+  local.set $out
+  i32.const 0
+  i32.const 1
+  i32.lt_s
+  drop
+  local.get $x
+  i32.const 2
+  i32.eq
+  if
+   i32.const 1
+   local.get $e
+   i32.shl
+   i32.const 0
+   local.get $e
+   i32.const 32
+   i32.lt_u
+   select
+   return
+  end
+  local.get $e
+  i32.const 0
+  i32.le_s
+  if
+   local.get $x
+   i32.const -1
+   i32.eq
+   if
+    i32.const -1
+    i32.const 1
+    local.get $e
+    i32.const 1
+    i32.and
+    select
+    return
+   end
+   local.get $e
+   i32.const 0
+   i32.eq
+   local.get $x
+   i32.const 1
+   i32.eq
+   i32.or
+   return
+  else
+   local.get $e
+   i32.const 1
+   i32.eq
+   if
+    local.get $x
+    return
+   else
+    local.get $e
+    i32.const 2
+    i32.eq
+    if
+     local.get $x
+     local.get $x
+     i32.mul
+     return
+    else
+     local.get $e
+     i32.const 32
+     i32.lt_s
+     if
+      i32.const 32
+      local.get $e
+      i32.clz
+      i32.sub
+      local.set $log
+      block $break|0
+       block $case4|0
+        block $case3|0
+         block $case2|0
+          block $case1|0
+           block $case0|0
+            local.get $log
+            local.set $4
+            local.get $4
+            i32.const 5
+            i32.eq
+            br_if $case0|0
+            local.get $4
+            i32.const 4
+            i32.eq
+            br_if $case1|0
+            local.get $4
+            i32.const 3
+            i32.eq
+            br_if $case2|0
+            local.get $4
+            i32.const 2
+            i32.eq
+            br_if $case3|0
+            local.get $4
+            i32.const 1
+            i32.eq
+            br_if $case4|0
+            br $break|0
+           end
+           local.get $e
+           i32.const 1
+           i32.and
+           if
+            local.get $out
+            local.get $x
+            i32.mul
+            local.set $out
+           end
+           local.get $e
+           i32.const 1
+           i32.shr_u
+           local.set $e
+           local.get $x
+           local.get $x
+           i32.mul
+           local.set $x
+          end
+          local.get $e
+          i32.const 1
+          i32.and
+          if
+           local.get $out
+           local.get $x
+           i32.mul
+           local.set $out
+          end
+          local.get $e
+          i32.const 1
+          i32.shr_u
+          local.set $e
+          local.get $x
+          local.get $x
+          i32.mul
+          local.set $x
+         end
+         local.get $e
+         i32.const 1
+         i32.and
+         if
+          local.get $out
+          local.get $x
+          i32.mul
+          local.set $out
+         end
+         local.get $e
+         i32.const 1
+         i32.shr_u
+         local.set $e
+         local.get $x
+         local.get $x
+         i32.mul
+         local.set $x
+        end
+        local.get $e
+        i32.const 1
+        i32.and
+        if
+         local.get $out
+         local.get $x
+         i32.mul
+         local.set $out
+        end
+        local.get $e
+        i32.const 1
+        i32.shr_u
+        local.set $e
+        local.get $x
+        local.get $x
+        i32.mul
+        local.set $x
+       end
+       local.get $e
+       i32.const 1
+       i32.and
+       if
+        local.get $out
+        local.get $x
+        i32.mul
+        local.set $out
+       end
+      end
+      local.get $out
+      return
+     end
+    end
+   end
+  end
+  loop $while-continue|1
+   local.get $e
+   if
+    local.get $e
+    i32.const 1
+    i32.and
+    if
+     local.get $out
+     local.get $x
+     i32.mul
+     local.set $out
+    end
+    local.get $e
+    i32.const 1
+    i32.shr_u
+    local.set $e
+    local.get $x
+    local.get $x
+    i32.mul
+    local.set $x
+    br $while-continue|1
+   end
+  end
+  local.get $out
+  return
+ )
+ (func $~lib/math/NativeMath.scalbn (param $x f64) (param $n i32) (result f64)
+  (local $y f64)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  local.get $x
+  local.set $y
+  local.get $n
+  i32.const 1023
+  i32.gt_s
+  if
+   local.get $y
+   f64.const 8988465674311579538646525e283
+   f64.mul
+   local.set $y
+   local.get $n
+   i32.const 1023
+   i32.sub
+   local.set $n
+   local.get $n
+   i32.const 1023
+   i32.gt_s
+   if
+    local.get $y
+    f64.const 8988465674311579538646525e283
+    f64.mul
+    local.set $y
+    local.get $n
+    i32.const 1023
+    i32.sub
+    local.tee $3
+    i32.const 1023
+    local.tee $4
+    local.get $3
+    local.get $4
+    i32.lt_s
+    select
+    local.set $n
+   end
+  else
+   local.get $n
+   i32.const -1022
+   i32.lt_s
+   if
+    local.get $y
+    f64.const 2.2250738585072014e-308
+    f64.const 9007199254740992
+    f64.mul
+    f64.mul
+    local.set $y
+    local.get $n
+    i32.const 1022
+    i32.const 53
+    i32.sub
+    i32.add
+    local.set $n
+    local.get $n
+    i32.const -1022
+    i32.lt_s
+    if
+     local.get $y
+     f64.const 2.2250738585072014e-308
+     f64.const 9007199254740992
+     f64.mul
+     f64.mul
+     local.set $y
+     local.get $n
+     i32.const 1022
+     i32.add
+     i32.const 53
+     i32.sub
+     local.tee $5
+     i32.const -1022
+     local.tee $6
+     local.get $5
+     local.get $6
+     i32.gt_s
+     select
+     local.set $n
+    end
+   end
+  end
+  local.get $y
+  i64.const 1023
+  local.get $n
+  i64.extend_i32_s
+  i64.add
+  i64.const 52
+  i64.shl
+  f64.reinterpret_i64
+  f64.mul
+  return
+ )
+ (func $~lib/array/Array<f64>#get:length_ (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=12
+ )
+ (func $~lib/array/Array<f64>#get:dataStart (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=4
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#get:length_ (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=12
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#get:dataStart (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=4
+ )
+ (func $~lib/array/Array<~lib/string/String>#set:buffer (param $this i32) (param $buffer i32)
+  local.get $this
+  local.get $buffer
+  i32.store
+  local.get $this
+  local.get $buffer
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/array/Array<~lib/string/String>#set:dataStart (param $this i32) (param $dataStart i32)
+  local.get $this
+  local.get $dataStart
+  i32.store offset=4
+ )
+ (func $~lib/array/Array<~lib/string/String>#set:byteLength (param $this i32) (param $byteLength i32)
+  local.get $this
+  local.get $byteLength
+  i32.store offset=8
+ )
+ (func $~lib/util/number/genDigits (param $buffer i32) (param $w_frc i64) (param $w_exp i32) (param $mp_frc i64) (param $mp_exp i32) (param $delta i64) (param $sign i32) (result i32)
+  (local $one_exp i32)
+  (local $one_frc i64)
+  (local $mask i64)
+  (local $wp_w_frc i64)
+  (local $p1 i32)
+  (local $p2 i64)
+  (local $kappa i32)
+  (local $len i32)
+  (local $d i32)
+  (local $16 i32)
+  (local $17 i32)
+  (local $tmp i64)
+  (local $buffer|19 i32)
+  (local $len|20 i32)
+  (local $delta|21 i64)
+  (local $rest i64)
+  (local $ten_kappa i64)
+  (local $wp_w i64)
+  (local $lastp i32)
+  (local $digit i32)
+  (local $d|27 i64)
+  (local $28 i32)
+  (local $buffer|29 i32)
+  (local $len|30 i32)
+  (local $delta|31 i64)
+  (local $rest|32 i64)
+  (local $ten_kappa|33 i64)
+  (local $wp_w|34 i64)
+  (local $lastp|35 i32)
+  (local $digit|36 i32)
+  i32.const 0
+  local.get $mp_exp
+  i32.sub
+  local.set $one_exp
+  i64.const 1
+  local.get $one_exp
+  i64.extend_i32_s
+  i64.shl
+  local.set $one_frc
+  local.get $one_frc
+  i64.const 1
+  i64.sub
+  local.set $mask
+  local.get $mp_frc
+  local.get $w_frc
+  i64.sub
+  local.set $wp_w_frc
+  local.get $mp_frc
+  local.get $one_exp
+  i64.extend_i32_s
+  i64.shr_u
+  i32.wrap_i64
+  local.set $p1
+  local.get $mp_frc
+  local.get $mask
+  i64.and
+  local.set $p2
+  local.get $p1
+  call $~lib/util/number/decimalCount32
+  local.set $kappa
+  local.get $sign
+  local.set $len
+  loop $while-continue|0
+   local.get $kappa
+   i32.const 0
+   i32.gt_s
+   if
+    block $break|1
+     block $case10|1
+      block $case9|1
+       block $case8|1
+        block $case7|1
+         block $case6|1
+          block $case5|1
+           block $case4|1
+            block $case3|1
+             block $case2|1
+              block $case1|1
+               block $case0|1
+                local.get $kappa
+                local.set $16
+                local.get $16
+                i32.const 10
+                i32.eq
+                br_if $case0|1
+                local.get $16
+                i32.const 9
+                i32.eq
+                br_if $case1|1
+                local.get $16
+                i32.const 8
+                i32.eq
+                br_if $case2|1
+                local.get $16
+                i32.const 7
+                i32.eq
+                br_if $case3|1
+                local.get $16
+                i32.const 6
+                i32.eq
+                br_if $case4|1
+                local.get $16
+                i32.const 5
+                i32.eq
+                br_if $case5|1
+                local.get $16
+                i32.const 4
+                i32.eq
+                br_if $case6|1
+                local.get $16
+                i32.const 3
+                i32.eq
+                br_if $case7|1
+                local.get $16
+                i32.const 2
+                i32.eq
+                br_if $case8|1
+                local.get $16
+                i32.const 1
+                i32.eq
+                br_if $case9|1
+                br $case10|1
+               end
+               local.get $p1
+               i32.const 1000000000
+               i32.div_u
+               local.set $d
+               local.get $p1
+               i32.const 1000000000
+               i32.rem_u
+               local.set $p1
+               br $break|1
+              end
+              local.get $p1
+              i32.const 100000000
+              i32.div_u
+              local.set $d
+              local.get $p1
+              i32.const 100000000
+              i32.rem_u
+              local.set $p1
+              br $break|1
+             end
+             local.get $p1
+             i32.const 10000000
+             i32.div_u
+             local.set $d
+             local.get $p1
+             i32.const 10000000
+             i32.rem_u
+             local.set $p1
+             br $break|1
+            end
+            local.get $p1
+            i32.const 1000000
+            i32.div_u
+            local.set $d
+            local.get $p1
+            i32.const 1000000
+            i32.rem_u
+            local.set $p1
+            br $break|1
+           end
+           local.get $p1
+           i32.const 100000
+           i32.div_u
+           local.set $d
+           local.get $p1
+           i32.const 100000
+           i32.rem_u
+           local.set $p1
+           br $break|1
+          end
+          local.get $p1
+          i32.const 10000
+          i32.div_u
+          local.set $d
+          local.get $p1
+          i32.const 10000
+          i32.rem_u
+          local.set $p1
+          br $break|1
+         end
+         local.get $p1
+         i32.const 1000
+         i32.div_u
+         local.set $d
+         local.get $p1
+         i32.const 1000
+         i32.rem_u
+         local.set $p1
+         br $break|1
+        end
+        local.get $p1
+        i32.const 100
+        i32.div_u
+        local.set $d
+        local.get $p1
+        i32.const 100
+        i32.rem_u
+        local.set $p1
+        br $break|1
+       end
+       local.get $p1
+       i32.const 10
+       i32.div_u
+       local.set $d
+       local.get $p1
+       i32.const 10
+       i32.rem_u
+       local.set $p1
+       br $break|1
+      end
+      local.get $p1
+      local.set $d
+      i32.const 0
+      local.set $p1
+      br $break|1
+     end
+     i32.const 0
+     local.set $d
+     br $break|1
+    end
+    local.get $d
+    local.get $len
+    i32.or
+    if
+     local.get $buffer
+     local.get $len
+     local.tee $17
+     i32.const 1
+     i32.add
+     local.set $len
+     local.get $17
+     i32.const 1
+     i32.shl
+     i32.add
+     i32.const 48
+     local.get $d
+     i32.const 65535
+     i32.and
+     i32.add
+     i32.store16
+    end
+    local.get $kappa
+    i32.const 1
+    i32.sub
+    local.set $kappa
+    local.get $p1
+    i64.extend_i32_u
+    local.get $one_exp
+    i64.extend_i32_s
+    i64.shl
+    local.get $p2
+    i64.add
+    local.set $tmp
+    local.get $tmp
+    local.get $delta
+    i64.le_u
+    if
+     global.get $~lib/util/number/_K
+     local.get $kappa
+     i32.add
+     global.set $~lib/util/number/_K
+     local.get $buffer
+     local.set $buffer|19
+     local.get $len
+     local.set $len|20
+     local.get $delta
+     local.set $delta|21
+     local.get $tmp
+     local.set $rest
+     i32.const 10096
+     local.get $kappa
+     i32.const 2
+     i32.shl
+     i32.add
+     i64.load32_u
+     local.get $one_exp
+     i64.extend_i32_s
+     i64.shl
+     local.set $ten_kappa
+     local.get $wp_w_frc
+     local.set $wp_w
+     local.get $buffer|19
+     local.get $len|20
+     i32.const 1
+     i32.sub
+     i32.const 1
+     i32.shl
+     i32.add
+     local.set $lastp
+     local.get $lastp
+     i32.load16_u
+     local.set $digit
+     loop $while-continue|3
+      local.get $rest
+      local.get $wp_w
+      i64.lt_u
+      if (result i32)
+       local.get $delta|21
+       local.get $rest
+       i64.sub
+       local.get $ten_kappa
+       i64.ge_u
+      else
+       i32.const 0
+      end
+      if (result i32)
+       local.get $rest
+       local.get $ten_kappa
+       i64.add
+       local.get $wp_w
+       i64.lt_u
+       if (result i32)
+        i32.const 1
+       else
+        local.get $wp_w
+        local.get $rest
+        i64.sub
+        local.get $rest
+        local.get $ten_kappa
+        i64.add
+        local.get $wp_w
+        i64.sub
+        i64.gt_u
+       end
+      else
+       i32.const 0
+      end
+      if
+       local.get $digit
+       i32.const 1
+       i32.sub
+       local.set $digit
+       local.get $rest
+       local.get $ten_kappa
+       i64.add
+       local.set $rest
+       br $while-continue|3
+      end
+     end
+     local.get $lastp
+     local.get $digit
+     i32.store16
+     local.get $len
+     return
+    end
+    br $while-continue|0
+   end
+  end
+  loop $while-continue|4
+   i32.const 1
+   if
+    local.get $p2
+    i64.const 10
+    i64.mul
+    local.set $p2
+    local.get $delta
+    i64.const 10
+    i64.mul
+    local.set $delta
+    local.get $p2
+    local.get $one_exp
+    i64.extend_i32_s
+    i64.shr_u
+    local.set $d|27
+    local.get $d|27
+    local.get $len
+    i64.extend_i32_s
+    i64.or
+    i64.const 0
+    i64.ne
+    if
+     local.get $buffer
+     local.get $len
+     local.tee $28
+     i32.const 1
+     i32.add
+     local.set $len
+     local.get $28
+     i32.const 1
+     i32.shl
+     i32.add
+     i32.const 48
+     local.get $d|27
+     i32.wrap_i64
+     i32.const 65535
+     i32.and
+     i32.add
+     i32.store16
+    end
+    local.get $p2
+    local.get $mask
+    i64.and
+    local.set $p2
+    local.get $kappa
+    i32.const 1
+    i32.sub
+    local.set $kappa
+    local.get $p2
+    local.get $delta
+    i64.lt_u
+    if
+     global.get $~lib/util/number/_K
+     local.get $kappa
+     i32.add
+     global.set $~lib/util/number/_K
+     local.get $wp_w_frc
+     i32.const 10096
+     i32.const 0
+     local.get $kappa
+     i32.sub
+     i32.const 2
+     i32.shl
+     i32.add
+     i64.load32_u
+     i64.mul
+     local.set $wp_w_frc
+     local.get $buffer
+     local.set $buffer|29
+     local.get $len
+     local.set $len|30
+     local.get $delta
+     local.set $delta|31
+     local.get $p2
+     local.set $rest|32
+     local.get $one_frc
+     local.set $ten_kappa|33
+     local.get $wp_w_frc
+     local.set $wp_w|34
+     local.get $buffer|29
+     local.get $len|30
+     i32.const 1
+     i32.sub
+     i32.const 1
+     i32.shl
+     i32.add
+     local.set $lastp|35
+     local.get $lastp|35
+     i32.load16_u
+     local.set $digit|36
+     loop $while-continue|6
+      local.get $rest|32
+      local.get $wp_w|34
+      i64.lt_u
+      if (result i32)
+       local.get $delta|31
+       local.get $rest|32
+       i64.sub
+       local.get $ten_kappa|33
+       i64.ge_u
+      else
+       i32.const 0
+      end
+      if (result i32)
+       local.get $rest|32
+       local.get $ten_kappa|33
+       i64.add
+       local.get $wp_w|34
+       i64.lt_u
+       if (result i32)
+        i32.const 1
+       else
+        local.get $wp_w|34
+        local.get $rest|32
+        i64.sub
+        local.get $rest|32
+        local.get $ten_kappa|33
+        i64.add
+        local.get $wp_w|34
+        i64.sub
+        i64.gt_u
+       end
+      else
+       i32.const 0
+      end
+      if
+       local.get $digit|36
+       i32.const 1
+       i32.sub
+       local.set $digit|36
+       local.get $rest|32
+       local.get $ten_kappa|33
+       i64.add
+       local.set $rest|32
+       br $while-continue|6
+      end
+     end
+     local.get $lastp|35
+     local.get $digit|36
+     i32.store16
+     local.get $len
+     return
+    end
+    br $while-continue|4
+   end
+  end
+  unreachable
+ )
+ (func $~lib/util/number/prettify (param $buffer i32) (param $length i32) (param $k i32) (result i32)
+  (local $kk i32)
+  (local $i i32)
+  (local $ptr i32)
+  (local $offset i32)
+  (local $i|7 i32)
+  (local $buffer|8 i32)
+  (local $k|9 i32)
+  (local $sign i32)
+  (local $decimals i32)
+  (local $buffer|12 i32)
+  (local $num i32)
+  (local $offset|14 i32)
+  (local $len i32)
+  (local $buffer|16 i32)
+  (local $k|17 i32)
+  (local $sign|18 i32)
+  (local $decimals|19 i32)
+  (local $buffer|20 i32)
+  (local $num|21 i32)
+  (local $offset|22 i32)
+  local.get $k
+  i32.eqz
+  if
+   local.get $buffer
+   local.get $length
+   i32.const 1
+   i32.shl
+   i32.add
+   i32.const 46
+   i32.const 48
+   i32.const 16
+   i32.shl
+   i32.or
+   i32.store
+   local.get $length
+   i32.const 2
+   i32.add
+   return
+  end
+  local.get $length
+  local.get $k
+  i32.add
+  local.set $kk
+  local.get $length
+  local.get $kk
+  i32.le_s
+  if (result i32)
+   local.get $kk
+   i32.const 21
+   i32.le_s
+  else
+   i32.const 0
+  end
+  if
+   local.get $length
+   local.set $i
+   loop $for-loop|0
+    local.get $i
+    local.get $kk
+    i32.lt_s
+    if
+     local.get $buffer
+     local.get $i
+     i32.const 1
+     i32.shl
+     i32.add
+     i32.const 48
+     i32.store16
+     local.get $i
+     i32.const 1
+     i32.add
+     local.set $i
+     br $for-loop|0
+    end
+   end
+   local.get $buffer
+   local.get $kk
+   i32.const 1
+   i32.shl
+   i32.add
+   i32.const 46
+   i32.const 48
+   i32.const 16
+   i32.shl
+   i32.or
+   i32.store
+   local.get $kk
+   i32.const 2
+   i32.add
+   return
+  else
+   local.get $kk
+   i32.const 0
+   i32.gt_s
+   if (result i32)
+    local.get $kk
+    i32.const 21
+    i32.le_s
+   else
+    i32.const 0
+   end
+   if
+    local.get $buffer
+    local.get $kk
+    i32.const 1
+    i32.shl
+    i32.add
+    local.set $ptr
+    local.get $ptr
+    i32.const 2
+    i32.add
+    local.get $ptr
+    i32.const 0
+    local.get $k
+    i32.sub
+    i32.const 1
+    i32.shl
+    memory.copy
+    local.get $buffer
+    local.get $kk
+    i32.const 1
+    i32.shl
+    i32.add
+    i32.const 46
+    i32.store16
+    local.get $length
+    i32.const 1
+    i32.add
+    return
+   else
+    i32.const -6
+    local.get $kk
+    i32.lt_s
+    if (result i32)
+     local.get $kk
+     i32.const 0
+     i32.le_s
+    else
+     i32.const 0
+    end
+    if
+     i32.const 2
+     local.get $kk
+     i32.sub
+     local.set $offset
+     local.get $buffer
+     local.get $offset
+     i32.const 1
+     i32.shl
+     i32.add
+     local.get $buffer
+     local.get $length
+     i32.const 1
+     i32.shl
+     memory.copy
+     local.get $buffer
+     i32.const 48
+     i32.const 46
+     i32.const 16
+     i32.shl
+     i32.or
+     i32.store
+     i32.const 2
+     local.set $i|7
+     loop $for-loop|1
+      local.get $i|7
+      local.get $offset
+      i32.lt_s
+      if
+       local.get $buffer
+       local.get $i|7
+       i32.const 1
+       i32.shl
+       i32.add
+       i32.const 48
+       i32.store16
+       local.get $i|7
+       i32.const 1
+       i32.add
+       local.set $i|7
+       br $for-loop|1
+      end
+     end
+     local.get $length
+     local.get $offset
+     i32.add
+     return
+    else
+     local.get $length
+     i32.const 1
+     i32.eq
+     if
+      local.get $buffer
+      i32.const 101
+      i32.store16 offset=2
+      block $~lib/util/number/genExponent|inlined.0 (result i32)
+       local.get $buffer
+       i32.const 4
+       i32.add
+       local.set $buffer|8
+       local.get $kk
+       i32.const 1
+       i32.sub
+       local.set $k|9
+       local.get $k|9
+       i32.const 0
+       i32.lt_s
+       local.set $sign
+       local.get $sign
+       if
+        i32.const 0
+        local.get $k|9
+        i32.sub
+        local.set $k|9
+       end
+       local.get $k|9
+       call $~lib/util/number/decimalCount32
+       i32.const 1
+       i32.add
+       local.set $decimals
+       local.get $buffer|8
+       local.set $buffer|12
+       local.get $k|9
+       local.set $num
+       local.get $decimals
+       local.set $offset|14
+       i32.const 0
+       i32.const 1
+       i32.ge_s
+       drop
+       local.get $buffer|12
+       local.get $num
+       local.get $offset|14
+       call $~lib/util/number/utoa32_dec_lut
+       local.get $buffer|8
+       i32.const 45
+       i32.const 43
+       local.get $sign
+       select
+       i32.store16
+       local.get $decimals
+       br $~lib/util/number/genExponent|inlined.0
+      end
+      local.set $length
+      local.get $length
+      i32.const 2
+      i32.add
+      return
+     else
+      local.get $length
+      i32.const 1
+      i32.shl
+      local.set $len
+      local.get $buffer
+      i32.const 4
+      i32.add
+      local.get $buffer
+      i32.const 2
+      i32.add
+      local.get $len
+      i32.const 2
+      i32.sub
+      memory.copy
+      local.get $buffer
+      i32.const 46
+      i32.store16 offset=2
+      local.get $buffer
+      local.get $len
+      i32.add
+      i32.const 101
+      i32.store16 offset=2
+      local.get $length
+      block $~lib/util/number/genExponent|inlined.1 (result i32)
+       local.get $buffer
+       local.get $len
+       i32.add
+       i32.const 4
+       i32.add
+       local.set $buffer|16
+       local.get $kk
+       i32.const 1
+       i32.sub
+       local.set $k|17
+       local.get $k|17
+       i32.const 0
+       i32.lt_s
+       local.set $sign|18
+       local.get $sign|18
+       if
+        i32.const 0
+        local.get $k|17
+        i32.sub
+        local.set $k|17
+       end
+       local.get $k|17
+       call $~lib/util/number/decimalCount32
+       i32.const 1
+       i32.add
+       local.set $decimals|19
+       local.get $buffer|16
+       local.set $buffer|20
+       local.get $k|17
+       local.set $num|21
+       local.get $decimals|19
+       local.set $offset|22
+       i32.const 0
+       i32.const 1
+       i32.ge_s
+       drop
+       local.get $buffer|20
+       local.get $num|21
+       local.get $offset|22
+       call $~lib/util/number/utoa32_dec_lut
+       local.get $buffer|16
+       i32.const 45
+       i32.const 43
+       local.get $sign|18
+       select
+       i32.store16
+       local.get $decimals|19
+       br $~lib/util/number/genExponent|inlined.1
+      end
+      i32.add
+      local.set $length
+      local.get $length
+      i32.const 2
+      i32.add
+      return
+     end
+     unreachable
+    end
+    unreachable
+   end
+   unreachable
+  end
+  unreachable
+ )
+ (func $~lib/util/number/dtoa_core (param $buffer i32) (param $value f64) (result i32)
+  (local $sign i32)
+  (local $value|3 f64)
+  (local $buffer|4 i32)
+  (local $sign|5 i32)
+  (local $uv i64)
+  (local $exp i32)
+  (local $sid i64)
+  (local $frc i64)
+  (local $f i64)
+  (local $e i32)
+  (local $frc|12 i64)
+  (local $exp|13 i32)
+  (local $off i32)
+  (local $m i32)
+  (local $minExp i32)
+  (local $dk f64)
+  (local $k i32)
+  (local $index i32)
+  (local $off|20 i32)
+  (local $frc_pow i64)
+  (local $exp_pow i32)
+  (local $u i64)
+  (local $v i64)
+  (local $u0 i64)
+  (local $v0 i64)
+  (local $u1 i64)
+  (local $v1 i64)
+  (local $l i64)
+  (local $t i64)
+  (local $w i64)
+  (local $w_frc i64)
+  (local $e1 i32)
+  (local $e2 i32)
+  (local $w_exp i32)
+  (local $u|36 i64)
+  (local $v|37 i64)
+  (local $u0|38 i64)
+  (local $v0|39 i64)
+  (local $u1|40 i64)
+  (local $v1|41 i64)
+  (local $l|42 i64)
+  (local $t|43 i64)
+  (local $w|44 i64)
+  (local $wp_frc i64)
+  (local $e1|46 i32)
+  (local $e2|47 i32)
+  (local $wp_exp i32)
+  (local $u|49 i64)
+  (local $v|50 i64)
+  (local $u0|51 i64)
+  (local $v0|52 i64)
+  (local $u1|53 i64)
+  (local $v1|54 i64)
+  (local $l|55 i64)
+  (local $t|56 i64)
+  (local $w|57 i64)
+  (local $wm_frc i64)
+  (local $delta i64)
+  (local $len i32)
+  local.get $value
+  f64.const 0
+  f64.lt
+  local.set $sign
+  local.get $sign
+  if
+   local.get $value
+   f64.neg
+   local.set $value
+   local.get $buffer
+   i32.const 45
+   i32.store16
+  end
+  block $~lib/util/number/grisu2|inlined.0 (result i32)
+   local.get $value
+   local.set $value|3
+   local.get $buffer
+   local.set $buffer|4
+   local.get $sign
+   local.set $sign|5
+   local.get $value|3
+   i64.reinterpret_f64
+   local.set $uv
+   local.get $uv
+   i64.const 9218868437227405312
+   i64.and
+   i64.const 52
+   i64.shr_u
+   i32.wrap_i64
+   local.set $exp
+   local.get $uv
+   i64.const 4503599627370495
+   i64.and
+   local.set $sid
+   local.get $exp
+   i32.const 0
+   i32.ne
+   i64.extend_i32_u
+   i64.const 52
+   i64.shl
+   local.get $sid
+   i64.add
+   local.set $frc
+   local.get $exp
+   i32.const 1
+   local.get $exp
+   select
+   i32.const 1023
+   i32.const 52
+   i32.add
+   i32.sub
+   local.set $exp
+   local.get $frc
+   local.set $f
+   local.get $exp
+   local.set $e
+   local.get $f
+   i64.const 1
+   i64.shl
+   i64.const 1
+   i64.add
+   local.set $frc|12
+   local.get $e
+   i32.const 1
+   i32.sub
+   local.set $exp|13
+   local.get $frc|12
+   i64.clz
+   i32.wrap_i64
+   local.set $off
+   local.get $frc|12
+   local.get $off
+   i64.extend_i32_s
+   i64.shl
+   local.set $frc|12
+   local.get $exp|13
+   local.get $off
+   i32.sub
+   local.set $exp|13
+   i32.const 1
+   local.get $f
+   i64.const 4503599627370496
+   i64.eq
+   i32.add
+   local.set $m
+   local.get $frc|12
+   global.set $~lib/util/number/_frc_plus
+   local.get $f
+   local.get $m
+   i64.extend_i32_s
+   i64.shl
+   i64.const 1
+   i64.sub
+   local.get $e
+   local.get $m
+   i32.sub
+   local.get $exp|13
+   i32.sub
+   i64.extend_i32_s
+   i64.shl
+   global.set $~lib/util/number/_frc_minus
+   local.get $exp|13
+   global.set $~lib/util/number/_exp
+   global.get $~lib/util/number/_exp
+   local.set $minExp
+   i32.const -61
+   local.get $minExp
+   i32.sub
+   f64.convert_i32_s
+   f64.const 0.30102999566398114
+   f64.mul
+   f64.const 347
+   f64.add
+   local.set $dk
+   local.get $dk
+   i32.trunc_sat_f64_s
+   local.set $k
+   local.get $k
+   local.get $k
+   f64.convert_i32_s
+   local.get $dk
+   f64.ne
+   i32.add
+   local.set $k
+   local.get $k
+   i32.const 3
+   i32.shr_s
+   i32.const 1
+   i32.add
+   local.set $index
+   i32.const 348
+   local.get $index
+   i32.const 3
+   i32.shl
+   i32.sub
+   global.set $~lib/util/number/_K
+   i32.const 9224
+   local.get $index
+   i32.const 3
+   i32.shl
+   i32.add
+   i64.load
+   global.set $~lib/util/number/_frc_pow
+   i32.const 9920
+   local.get $index
+   i32.const 1
+   i32.shl
+   i32.add
+   i32.load16_s
+   global.set $~lib/util/number/_exp_pow
+   local.get $frc
+   i64.clz
+   i32.wrap_i64
+   local.set $off|20
+   local.get $frc
+   local.get $off|20
+   i64.extend_i32_s
+   i64.shl
+   local.set $frc
+   local.get $exp
+   local.get $off|20
+   i32.sub
+   local.set $exp
+   global.get $~lib/util/number/_frc_pow
+   local.set $frc_pow
+   global.get $~lib/util/number/_exp_pow
+   local.set $exp_pow
+   block $~lib/util/number/umul64f|inlined.0 (result i64)
+    local.get $frc
+    local.set $u
+    local.get $frc_pow
+    local.set $v
+    local.get $u
+    i64.const 4294967295
+    i64.and
+    local.set $u0
+    local.get $v
+    i64.const 4294967295
+    i64.and
+    local.set $v0
+    local.get $u
+    i64.const 32
+    i64.shr_u
+    local.set $u1
+    local.get $v
+    i64.const 32
+    i64.shr_u
+    local.set $v1
+    local.get $u0
+    local.get $v0
+    i64.mul
+    local.set $l
+    local.get $u1
+    local.get $v0
+    i64.mul
+    local.get $l
+    i64.const 32
+    i64.shr_u
+    i64.add
+    local.set $t
+    local.get $u0
+    local.get $v1
+    i64.mul
+    local.get $t
+    i64.const 4294967295
+    i64.and
+    i64.add
+    local.set $w
+    local.get $w
+    i64.const 2147483647
+    i64.add
+    local.set $w
+    local.get $t
+    i64.const 32
+    i64.shr_u
+    local.set $t
+    local.get $w
+    i64.const 32
+    i64.shr_u
+    local.set $w
+    local.get $u1
+    local.get $v1
+    i64.mul
+    local.get $t
+    i64.add
+    local.get $w
+    i64.add
+    br $~lib/util/number/umul64f|inlined.0
+   end
+   local.set $w_frc
+   block $~lib/util/number/umul64e|inlined.0 (result i32)
+    local.get $exp
+    local.set $e1
+    local.get $exp_pow
+    local.set $e2
+    local.get $e1
+    local.get $e2
+    i32.add
+    i32.const 64
+    i32.add
+    br $~lib/util/number/umul64e|inlined.0
+   end
+   local.set $w_exp
+   block $~lib/util/number/umul64f|inlined.1 (result i64)
+    global.get $~lib/util/number/_frc_plus
+    local.set $u|36
+    local.get $frc_pow
+    local.set $v|37
+    local.get $u|36
+    i64.const 4294967295
+    i64.and
+    local.set $u0|38
+    local.get $v|37
+    i64.const 4294967295
+    i64.and
+    local.set $v0|39
+    local.get $u|36
+    i64.const 32
+    i64.shr_u
+    local.set $u1|40
+    local.get $v|37
+    i64.const 32
+    i64.shr_u
+    local.set $v1|41
+    local.get $u0|38
+    local.get $v0|39
+    i64.mul
+    local.set $l|42
+    local.get $u1|40
+    local.get $v0|39
+    i64.mul
+    local.get $l|42
+    i64.const 32
+    i64.shr_u
+    i64.add
+    local.set $t|43
+    local.get $u0|38
+    local.get $v1|41
+    i64.mul
+    local.get $t|43
+    i64.const 4294967295
+    i64.and
+    i64.add
+    local.set $w|44
+    local.get $w|44
+    i64.const 2147483647
+    i64.add
+    local.set $w|44
+    local.get $t|43
+    i64.const 32
+    i64.shr_u
+    local.set $t|43
+    local.get $w|44
+    i64.const 32
+    i64.shr_u
+    local.set $w|44
+    local.get $u1|40
+    local.get $v1|41
+    i64.mul
+    local.get $t|43
+    i64.add
+    local.get $w|44
+    i64.add
+    br $~lib/util/number/umul64f|inlined.1
+   end
+   i64.const 1
+   i64.sub
+   local.set $wp_frc
+   block $~lib/util/number/umul64e|inlined.1 (result i32)
+    global.get $~lib/util/number/_exp
+    local.set $e1|46
+    local.get $exp_pow
+    local.set $e2|47
+    local.get $e1|46
+    local.get $e2|47
+    i32.add
+    i32.const 64
+    i32.add
+    br $~lib/util/number/umul64e|inlined.1
+   end
+   local.set $wp_exp
+   block $~lib/util/number/umul64f|inlined.2 (result i64)
+    global.get $~lib/util/number/_frc_minus
+    local.set $u|49
+    local.get $frc_pow
+    local.set $v|50
+    local.get $u|49
+    i64.const 4294967295
+    i64.and
+    local.set $u0|51
+    local.get $v|50
+    i64.const 4294967295
+    i64.and
+    local.set $v0|52
+    local.get $u|49
+    i64.const 32
+    i64.shr_u
+    local.set $u1|53
+    local.get $v|50
+    i64.const 32
+    i64.shr_u
+    local.set $v1|54
+    local.get $u0|51
+    local.get $v0|52
+    i64.mul
+    local.set $l|55
+    local.get $u1|53
+    local.get $v0|52
+    i64.mul
+    local.get $l|55
+    i64.const 32
+    i64.shr_u
+    i64.add
+    local.set $t|56
+    local.get $u0|51
+    local.get $v1|54
+    i64.mul
+    local.get $t|56
+    i64.const 4294967295
+    i64.and
+    i64.add
+    local.set $w|57
+    local.get $w|57
+    i64.const 2147483647
+    i64.add
+    local.set $w|57
+    local.get $t|56
+    i64.const 32
+    i64.shr_u
+    local.set $t|56
+    local.get $w|57
+    i64.const 32
+    i64.shr_u
+    local.set $w|57
+    local.get $u1|53
+    local.get $v1|54
+    i64.mul
+    local.get $t|56
+    i64.add
+    local.get $w|57
+    i64.add
+    br $~lib/util/number/umul64f|inlined.2
+   end
+   i64.const 1
+   i64.add
+   local.set $wm_frc
+   local.get $wp_frc
+   local.get $wm_frc
+   i64.sub
+   local.set $delta
+   local.get $buffer|4
+   local.get $w_frc
+   local.get $w_exp
+   local.get $wp_frc
+   local.get $wp_exp
+   local.get $delta
+   local.get $sign|5
+   call $~lib/util/number/genDigits
+   br $~lib/util/number/grisu2|inlined.0
+  end
+  local.set $len
+  local.get $buffer
+  local.get $sign
+  i32.const 1
+  i32.shl
+  i32.add
+  local.get $len
+  local.get $sign
+  i32.sub
+  global.get $~lib/util/number/_K
+  call $~lib/util/number/prettify
+  local.set $len
+  local.get $len
+  local.get $sign
+  i32.add
+  return
+ )
+ (func $~lib/util/number/dtoa_buffered (param $buffer i32) (param $value f64) (result i32)
+  (local $sign i32)
+  local.get $value
+  f64.const 0
+  f64.eq
+  if
+   local.get $buffer
+   i32.const 48
+   i32.store16
+   local.get $buffer
+   i32.const 46
+   i32.store16 offset=2
+   local.get $buffer
+   i32.const 48
+   i32.store16 offset=4
+   i32.const 3
+   return
+  end
+  local.get $value
+  local.get $value
+  f64.sub
+  f64.const 0
+  f64.eq
+  i32.eqz
+  if
+   local.get $value
+   local.get $value
+   f64.ne
+   if
+    local.get $buffer
+    i32.const 78
+    i32.store16
+    local.get $buffer
+    i32.const 97
+    i32.store16 offset=2
+    local.get $buffer
+    i32.const 78
+    i32.store16 offset=4
+    i32.const 3
+    return
+   else
+    local.get $value
+    f64.const 0
+    f64.lt
+    local.set $sign
+    local.get $sign
+    if
+     local.get $buffer
+     i32.const 45
+     i32.store16
+     local.get $buffer
+     i32.const 2
+     i32.add
+     local.set $buffer
+    end
+    local.get $buffer
+    i64.const 29555310648492105
+    i64.store
+    local.get $buffer
+    i64.const 34058970405077102
+    i64.store offset=8
+    i32.const 8
+    local.get $sign
+    i32.add
+    return
+   end
+   unreachable
+  end
+  local.get $buffer
+  local.get $value
+  call $~lib/util/number/dtoa_core
+  return
  )
  (func $~lib/@artela/aspect-libs/types/aspect-interface/IAspectBase#isOwner@override (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -4685,6 +6948,9 @@
   local.get $0
   call $~lib/rt/itcms/__visit
   i32.const 528
+  local.get $0
+  call $~lib/rt/itcms/__visit
+  i32.const 8432
   local.get $0
   call $~lib/rt/itcms/__visit
   i32.const 32
@@ -5835,138 +8101,270 @@
    call $~lib/rt/itcms/__visit
   end
  )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  local.get $1
+  call $~lib/object/Object~visit
+  local.get $0
+  i32.load offset=12
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/staticarray/StaticArray<~lib/string/String>#__visit (param $this i32) (param $cookie i32)
+  (local $cur i32)
+  (local $end i32)
+  (local $val i32)
+  i32.const 1
+  drop
+  local.get $this
+  local.set $cur
+  local.get $cur
+  local.get $this
+  i32.const 20
+  i32.sub
+  call $~lib/rt/common/OBJECT#get:rtSize
+  i32.add
+  local.set $end
+  loop $while-continue|0
+   local.get $cur
+   local.get $end
+   i32.lt_u
+   if
+    local.get $cur
+    i32.load
+    local.set $val
+    local.get $val
+    if
+     local.get $val
+     local.get $cookie
+     call $~lib/rt/itcms/__visit
+    end
+    local.get $cur
+    i32.const 4
+    i32.add
+    local.set $cur
+    br $while-continue|0
+   end
+  end
+ )
+ (func $~lib/staticarray/StaticArray<~lib/string/String>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/object/Object~visit
+  local.get $0
+  local.get $1
+  call $~lib/staticarray/StaticArray<~lib/string/String>#__visit
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>~visit
+ )
  (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>~visit (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>~visit
  )
+ (func $~lib/typedarray/Float64Array~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/arraybuffer/ArrayBufferView~visit
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#get:buffer (param $this i32) (result i32)
+  local.get $this
+  i32.load
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/object/Object~visit
+  local.get $0
+  local.get $1
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#__visit
+ )
+ (func $~lib/array/Array<~lib/string/String>#get:buffer (param $this i32) (result i32)
+  local.get $this
+  i32.load
+ )
+ (func $~lib/array/Array<~lib/string/String>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/object/Object~visit
+  local.get $0
+  local.get $1
+  call $~lib/array/Array<~lib/string/String>#__visit
+ )
+ (func $~lib/array/Array<f64>#get:buffer (param $this i32) (result i32)
+  local.get $this
+  i32.load
+ )
+ (func $~lib/array/Array<f64>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/object/Object~visit
+  local.get $0
+  local.get $1
+  call $~lib/array/Array<f64>#__visit
+ )
  (func $~lib/rt/__visit_members (param $0 i32) (param $1 i32)
   block $invalid
-   block $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>
-    block $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/MutableAspectValue<~lib/string/String>
-     block $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>
-      block $~lib/typedarray/Uint32Array
-       block $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt
-        block $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/ImmutableAspectValue<~lib/string/String>
-         block $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>
-          block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput>
-           block $~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput
-            block $~lib/@artela/aspect-libs/types/aspect-interface/IPostTxExecuteJP
-             block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput>
-              block $~lib/@artela/aspect-libs/proto/aspect/v2/receipt-input/ReceiptInput
-               block $~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput
-                block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput>
-                 block $~lib/@artela/aspect-libs/proto/aspect/v2/post-exec-message-input/PostExecMessageInput
-                  block $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput
-                   block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput>
-                    block $~lib/@artela/aspect-libs/proto/aspect/v2/pre-exec-message-input/PreExecMessageInput
-                     block $~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput
-                      block $~lib/@artela/aspect-libs/types/aspect-interface/IPreTxExecuteJP
-                       block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput>
-                        block $~lib/@artela/aspect-libs/proto/aspect/v2/with-from-tx-input/WithFromTxInput
-                         block $~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput
-                          block $~lib/@artela/aspect-libs/types/aspect-interface/ITransactionVerifier
-                           block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput>
-                            block $~lib/@artela/aspect-libs/proto/aspect/v2/block-input/BlockInput
-                             block $~lib/@artela/aspect-libs/proto/aspect/v2/no-from-tx-input/NoFromTxInput
-                              block $~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput
-                               block $~lib/@artela/aspect-libs/common/wraptypes/basic-types/ABool
-                                block $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array
-                                 block $~lib/@artela/aspect-libs/common/wraptypes/basic-types/header
-                                  block $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AString
-                                   block $~lib/@artela/aspect-libs/types/aspect-interface/IPreContractCallJP
-                                    block $~lib/@artela/aspect-libs/types/aspect-interface/IPostContractCallJP
-                                     block $aspect/index/StoreAspect
-                                      block $~lib/@artela/aspect-libs/types/aspect-interface/IAspectOperation
-                                       block $~lib/@artela/aspect-libs/types/aspect-interface/IAspectBase
-                                        block $~lib/@artela/aspect-libs/types/aspect-entry/EntryPoint
-                                         block $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage
-                                          block $~lib/@artela/aspect-libs/components/aspect/aspect-property/AspectProperty
-                                           block $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState
-                                            block $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState
-                                             block $~lib/@artela/aspect-libs/components/aspect/aspect-context/AspectContext
-                                              block $~lib/@artela/aspect-libs/hostapi/statedb-api/StateDbApi
-                                               block $~lib/@artela/aspect-libs/hostapi/runtime-api/RuntimeContextApi
-                                                block $~lib/@artela/aspect-libs/hostapi/evm-call-api/EvmCallApi
-                                                 block $~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/AspectTransientStorageApi
-                                                  block $~lib/@artela/aspect-libs/hostapi/trace-api/TraceApi
-                                                   block $~lib/@artela/aspect-libs/hostapi/aspect-state-api/AspectStateApi
-                                                    block $~lib/@artela/aspect-libs/hostapi/util-api/UtilApi
-                                                     block $~lib/@artela/aspect-libs/hostapi/aspect-property-api/AspectPropertyApi
-                                                      block $~lib/@artela/aspect-libs/hostapi/crypto-api/CryptoApi
-                                                       block $~lib/error/Error
-                                                        block $~lib/@artela/aspect-libs/common/helper/message/MessageUtil
-                                                         block $~lib/as-proto/assembly/Reader/Reader
-                                                          block $~lib/as-proto/assembly/internal/FixedReader/FixedReader
-                                                           block $~lib/typedarray/Uint8Array
-                                                            block $~lib/array/Array<i32>
-                                                             block $~lib/array/Array<u32>
-                                                              block $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer
-                                                               block $~lib/as-proto/assembly/Writer/Writer
-                                                                block $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter
-                                                                 block $~lib/arraybuffer/ArrayBufferView
-                                                                  block $~lib/string/String
-                                                                   block $~lib/arraybuffer/ArrayBuffer
-                                                                    block $~lib/object/Object
+   block $~lib/array/Array<f64>
+    block $~lib/array/Array<~lib/string/String>
+     block $~lib/array/Array<~lib/typedarray/Float64Array>
+      block $~lib/typedarray/Float64Array
+       block $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>
+        block $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/MutableAspectValue<u64>
+         block $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64>
+          block $~lib/staticarray/StaticArray<~lib/string/String>
+           block $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/ImmutableAspectValue<u64>
+            block $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>
+             block $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/MutableAspectValue<~lib/string/String>
+              block $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>
+               block $~lib/typedarray/Uint32Array
+                block $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt
+                 block $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/ImmutableAspectValue<~lib/string/String>
+                  block $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>
+                   block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput>
+                    block $~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput
+                     block $~lib/@artela/aspect-libs/types/aspect-interface/IPostTxExecuteJP
+                      block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput>
+                       block $~lib/@artela/aspect-libs/proto/aspect/v2/receipt-input/ReceiptInput
+                        block $~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput
+                         block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput>
+                          block $~lib/@artela/aspect-libs/proto/aspect/v2/post-exec-message-input/PostExecMessageInput
+                           block $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput
+                            block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput>
+                             block $~lib/@artela/aspect-libs/proto/aspect/v2/pre-exec-message-input/PreExecMessageInput
+                              block $~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput
+                               block $~lib/@artela/aspect-libs/types/aspect-interface/IPreTxExecuteJP
+                                block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput>
+                                 block $~lib/@artela/aspect-libs/proto/aspect/v2/with-from-tx-input/WithFromTxInput
+                                  block $~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput
+                                   block $~lib/@artela/aspect-libs/types/aspect-interface/ITransactionVerifier
+                                    block $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput>
+                                     block $~lib/@artela/aspect-libs/proto/aspect/v2/block-input/BlockInput
+                                      block $~lib/@artela/aspect-libs/proto/aspect/v2/no-from-tx-input/NoFromTxInput
+                                       block $~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput
+                                        block $~lib/@artela/aspect-libs/common/wraptypes/basic-types/ABool
+                                         block $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array
+                                          block $~lib/@artela/aspect-libs/common/wraptypes/basic-types/header
+                                           block $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AString
+                                            block $~lib/@artela/aspect-libs/types/aspect-interface/IPreContractCallJP
+                                             block $~lib/@artela/aspect-libs/types/aspect-interface/IPostContractCallJP
+                                              block $aspect/index/StoreAspect
+                                               block $~lib/@artela/aspect-libs/types/aspect-interface/IAspectOperation
+                                                block $~lib/@artela/aspect-libs/types/aspect-interface/IAspectBase
+                                                 block $~lib/@artela/aspect-libs/types/aspect-entry/EntryPoint
+                                                  block $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage
+                                                   block $~lib/@artela/aspect-libs/components/aspect/aspect-property/AspectProperty
+                                                    block $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState
+                                                     block $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState
+                                                      block $~lib/@artela/aspect-libs/components/aspect/aspect-context/AspectContext
+                                                       block $~lib/@artela/aspect-libs/hostapi/statedb-api/StateDbApi
+                                                        block $~lib/@artela/aspect-libs/hostapi/runtime-api/RuntimeContextApi
+                                                         block $~lib/@artela/aspect-libs/hostapi/evm-call-api/EvmCallApi
+                                                          block $~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/AspectTransientStorageApi
+                                                           block $~lib/@artela/aspect-libs/hostapi/trace-api/TraceApi
+                                                            block $~lib/@artela/aspect-libs/hostapi/aspect-state-api/AspectStateApi
+                                                             block $~lib/@artela/aspect-libs/hostapi/util-api/UtilApi
+                                                              block $~lib/@artela/aspect-libs/hostapi/aspect-property-api/AspectPropertyApi
+                                                               block $~lib/@artela/aspect-libs/hostapi/crypto-api/CryptoApi
+                                                                block $~lib/error/Error
+                                                                 block $~lib/@artela/aspect-libs/common/helper/message/MessageUtil
+                                                                  block $~lib/as-proto/assembly/Reader/Reader
+                                                                   block $~lib/as-proto/assembly/internal/FixedReader/FixedReader
+                                                                    block $~lib/typedarray/Uint8Array
+                                                                     block $~lib/array/Array<i32>
+                                                                      block $~lib/array/Array<u32>
+                                                                       block $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer
+                                                                        block $~lib/as-proto/assembly/Writer/Writer
+                                                                         block $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter
+                                                                          block $~lib/arraybuffer/ArrayBufferView
+                                                                           block $~lib/string/String
+                                                                            block $~lib/arraybuffer/ArrayBuffer
+                                                                             block $~lib/object/Object
+                                                                              local.get $0
+                                                                              i32.const 8
+                                                                              i32.sub
+                                                                              i32.load
+                                                                              br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter $~lib/as-proto/assembly/Writer/Writer $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer $~lib/array/Array<u32> $~lib/array/Array<i32> $~lib/typedarray/Uint8Array $~lib/as-proto/assembly/internal/FixedReader/FixedReader $~lib/as-proto/assembly/Reader/Reader $~lib/@artela/aspect-libs/common/helper/message/MessageUtil $~lib/error/Error $~lib/@artela/aspect-libs/hostapi/crypto-api/CryptoApi $~lib/@artela/aspect-libs/hostapi/aspect-property-api/AspectPropertyApi $~lib/@artela/aspect-libs/hostapi/util-api/UtilApi $~lib/@artela/aspect-libs/hostapi/aspect-state-api/AspectStateApi $~lib/@artela/aspect-libs/hostapi/trace-api/TraceApi $~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/AspectTransientStorageApi $~lib/@artela/aspect-libs/hostapi/evm-call-api/EvmCallApi $~lib/@artela/aspect-libs/hostapi/runtime-api/RuntimeContextApi $~lib/@artela/aspect-libs/hostapi/statedb-api/StateDbApi $~lib/@artela/aspect-libs/components/aspect/aspect-context/AspectContext $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState $~lib/@artela/aspect-libs/components/aspect/aspect-property/AspectProperty $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage $~lib/@artela/aspect-libs/types/aspect-entry/EntryPoint $~lib/@artela/aspect-libs/types/aspect-interface/IAspectBase $~lib/@artela/aspect-libs/types/aspect-interface/IAspectOperation $aspect/index/StoreAspect $~lib/@artela/aspect-libs/types/aspect-interface/IPostContractCallJP $~lib/@artela/aspect-libs/types/aspect-interface/IPreContractCallJP $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AString $~lib/@artela/aspect-libs/common/wraptypes/basic-types/header $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array $~lib/@artela/aspect-libs/common/wraptypes/basic-types/ABool $~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput $~lib/@artela/aspect-libs/proto/aspect/v2/no-from-tx-input/NoFromTxInput $~lib/@artela/aspect-libs/proto/aspect/v2/block-input/BlockInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput> $~lib/@artela/aspect-libs/types/aspect-interface/ITransactionVerifier $~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput $~lib/@artela/aspect-libs/proto/aspect/v2/with-from-tx-input/WithFromTxInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput> $~lib/@artela/aspect-libs/types/aspect-interface/IPreTxExecuteJP $~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput $~lib/@artela/aspect-libs/proto/aspect/v2/pre-exec-message-input/PreExecMessageInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput> $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput $~lib/@artela/aspect-libs/proto/aspect/v2/post-exec-message-input/PostExecMessageInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput> $~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput $~lib/@artela/aspect-libs/proto/aspect/v2/receipt-input/ReceiptInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput> $~lib/@artela/aspect-libs/types/aspect-interface/IPostTxExecuteJP $~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput> $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String> $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/ImmutableAspectValue<~lib/string/String> $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt $~lib/typedarray/Uint32Array $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String> $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/MutableAspectValue<~lib/string/String> $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64> $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/ImmutableAspectValue<u64> $~lib/staticarray/StaticArray<~lib/string/String> $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64> $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/MutableAspectValue<u64> $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String> $~lib/typedarray/Float64Array $~lib/array/Array<~lib/typedarray/Float64Array> $~lib/array/Array<~lib/string/String> $~lib/array/Array<f64> $invalid
+                                                                             end
+                                                                             return
+                                                                            end
+                                                                            return
+                                                                           end
+                                                                           return
+                                                                          end
+                                                                          local.get $0
+                                                                          local.get $1
+                                                                          call $~lib/arraybuffer/ArrayBufferView~visit
+                                                                          return
+                                                                         end
+                                                                         local.get $0
+                                                                         local.get $1
+                                                                         call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter~visit
+                                                                         return
+                                                                        end
+                                                                        return
+                                                                       end
+                                                                       local.get $0
+                                                                       local.get $1
+                                                                       call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer~visit
+                                                                       return
+                                                                      end
+                                                                      local.get $0
+                                                                      local.get $1
+                                                                      call $~lib/array/Array<u32>~visit
+                                                                      return
+                                                                     end
                                                                      local.get $0
-                                                                     i32.const 8
-                                                                     i32.sub
-                                                                     i32.load
-                                                                     br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter $~lib/as-proto/assembly/Writer/Writer $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer $~lib/array/Array<u32> $~lib/array/Array<i32> $~lib/typedarray/Uint8Array $~lib/as-proto/assembly/internal/FixedReader/FixedReader $~lib/as-proto/assembly/Reader/Reader $~lib/@artela/aspect-libs/common/helper/message/MessageUtil $~lib/error/Error $~lib/@artela/aspect-libs/hostapi/crypto-api/CryptoApi $~lib/@artela/aspect-libs/hostapi/aspect-property-api/AspectPropertyApi $~lib/@artela/aspect-libs/hostapi/util-api/UtilApi $~lib/@artela/aspect-libs/hostapi/aspect-state-api/AspectStateApi $~lib/@artela/aspect-libs/hostapi/trace-api/TraceApi $~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/AspectTransientStorageApi $~lib/@artela/aspect-libs/hostapi/evm-call-api/EvmCallApi $~lib/@artela/aspect-libs/hostapi/runtime-api/RuntimeContextApi $~lib/@artela/aspect-libs/hostapi/statedb-api/StateDbApi $~lib/@artela/aspect-libs/components/aspect/aspect-context/AspectContext $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState $~lib/@artela/aspect-libs/components/aspect/aspect-property/AspectProperty $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage $~lib/@artela/aspect-libs/types/aspect-entry/EntryPoint $~lib/@artela/aspect-libs/types/aspect-interface/IAspectBase $~lib/@artela/aspect-libs/types/aspect-interface/IAspectOperation $aspect/index/StoreAspect $~lib/@artela/aspect-libs/types/aspect-interface/IPostContractCallJP $~lib/@artela/aspect-libs/types/aspect-interface/IPreContractCallJP $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AString $~lib/@artela/aspect-libs/common/wraptypes/basic-types/header $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array $~lib/@artela/aspect-libs/common/wraptypes/basic-types/ABool $~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput $~lib/@artela/aspect-libs/proto/aspect/v2/no-from-tx-input/NoFromTxInput $~lib/@artela/aspect-libs/proto/aspect/v2/block-input/BlockInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput> $~lib/@artela/aspect-libs/types/aspect-interface/ITransactionVerifier $~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput $~lib/@artela/aspect-libs/proto/aspect/v2/with-from-tx-input/WithFromTxInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput> $~lib/@artela/aspect-libs/types/aspect-interface/IPreTxExecuteJP $~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput $~lib/@artela/aspect-libs/proto/aspect/v2/pre-exec-message-input/PreExecMessageInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput> $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput $~lib/@artela/aspect-libs/proto/aspect/v2/post-exec-message-input/PostExecMessageInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput> $~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput $~lib/@artela/aspect-libs/proto/aspect/v2/receipt-input/ReceiptInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput> $~lib/@artela/aspect-libs/types/aspect-interface/IPostTxExecuteJP $~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput> $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String> $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/ImmutableAspectValue<~lib/string/String> $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt $~lib/typedarray/Uint32Array $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String> $~lib/@artela/aspect-libs/components/aspect/aspect-state-interface/MutableAspectValue<~lib/string/String> $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String> $invalid
+                                                                     local.get $1
+                                                                     call $~lib/array/Array<i32>~visit
+                                                                     return
                                                                     end
+                                                                    local.get $0
+                                                                    local.get $1
+                                                                    call $~lib/typedarray/Uint8Array~visit
                                                                     return
                                                                    end
+                                                                   local.get $0
+                                                                   local.get $1
+                                                                   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader~visit
                                                                    return
                                                                   end
                                                                   return
                                                                  end
                                                                  local.get $0
                                                                  local.get $1
-                                                                 call $~lib/arraybuffer/ArrayBufferView~visit
+                                                                 call $~lib/@artela/aspect-libs/common/helper/message/MessageUtil~visit
                                                                  return
                                                                 end
                                                                 local.get $0
                                                                 local.get $1
-                                                                call $~lib/as-proto/assembly/internal/FixedWriter/FixedWriter~visit
+                                                                call $~lib/error/Error~visit
                                                                 return
                                                                end
                                                                return
                                                               end
-                                                              local.get $0
-                                                              local.get $1
-                                                              call $~lib/as-proto/assembly/internal/FixedSizer/FixedSizer~visit
                                                               return
                                                              end
-                                                             local.get $0
-                                                             local.get $1
-                                                             call $~lib/array/Array<u32>~visit
                                                              return
                                                             end
-                                                            local.get $0
-                                                            local.get $1
-                                                            call $~lib/array/Array<i32>~visit
                                                             return
                                                            end
-                                                           local.get $0
-                                                           local.get $1
-                                                           call $~lib/typedarray/Uint8Array~visit
                                                            return
                                                           end
-                                                          local.get $0
-                                                          local.get $1
-                                                          call $~lib/as-proto/assembly/internal/FixedReader/FixedReader~visit
                                                           return
                                                          end
                                                          return
                                                         end
-                                                        local.get $0
-                                                        local.get $1
-                                                        call $~lib/@artela/aspect-libs/common/helper/message/MessageUtil~visit
                                                         return
                                                        end
-                                                       local.get $0
-                                                       local.get $1
-                                                       call $~lib/error/Error~visit
                                                        return
                                                       end
                                                       return
@@ -5979,6 +8377,9 @@
                                                   end
                                                   return
                                                  end
+                                                 local.get $0
+                                                 local.get $1
+                                                 call $~lib/@artela/aspect-libs/types/aspect-entry/EntryPoint~visit
                                                  return
                                                 end
                                                 return
@@ -5991,161 +8392,179 @@
                                             end
                                             return
                                            end
+                                           local.get $0
+                                           local.get $1
+                                           call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AString~visit
                                            return
                                           end
                                           return
                                          end
+                                         local.get $0
+                                         local.get $1
+                                         call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array~visit
                                          return
                                         end
                                         local.get $0
                                         local.get $1
-                                        call $~lib/@artela/aspect-libs/types/aspect-entry/EntryPoint~visit
+                                        call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/ABool~visit
                                         return
                                        end
+                                       local.get $0
+                                       local.get $1
+                                       call $~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput~visit
                                        return
                                       end
+                                      local.get $0
+                                      local.get $1
+                                      call $~lib/@artela/aspect-libs/proto/aspect/v2/no-from-tx-input/NoFromTxInput~visit
                                       return
                                      end
                                      return
                                     end
+                                    local.get $0
+                                    local.get $1
+                                    call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput>~visit
                                     return
                                    end
                                    return
                                   end
                                   local.get $0
                                   local.get $1
-                                  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AString~visit
+                                  call $~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput~visit
                                   return
                                  end
+                                 local.get $0
+                                 local.get $1
+                                 call $~lib/@artela/aspect-libs/proto/aspect/v2/with-from-tx-input/WithFromTxInput~visit
                                  return
                                 end
                                 local.get $0
                                 local.get $1
-                                call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array~visit
+                                call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput>~visit
                                 return
                                end
-                               local.get $0
-                               local.get $1
-                               call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/ABool~visit
                                return
                               end
                               local.get $0
                               local.get $1
-                              call $~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput~visit
+                              call $~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput~visit
                               return
                              end
                              local.get $0
                              local.get $1
-                             call $~lib/@artela/aspect-libs/proto/aspect/v2/no-from-tx-input/NoFromTxInput~visit
+                             call $~lib/@artela/aspect-libs/proto/aspect/v2/pre-exec-message-input/PreExecMessageInput~visit
                              return
                             end
+                            local.get $0
+                            local.get $1
+                            call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput>~visit
                             return
                            end
                            local.get $0
                            local.get $1
-                           call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/tx-verify-input/TxVerifyInput>~visit
+                           call $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput~visit
                            return
                           end
+                          local.get $0
+                          local.get $1
+                          call $~lib/@artela/aspect-libs/proto/aspect/v2/post-exec-message-input/PostExecMessageInput~visit
                           return
                          end
                          local.get $0
                          local.get $1
-                         call $~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput~visit
+                         call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput>~visit
                          return
                         end
                         local.get $0
                         local.get $1
-                        call $~lib/@artela/aspect-libs/proto/aspect/v2/with-from-tx-input/WithFromTxInput~visit
+                        call $~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput~visit
                         return
                        end
-                       local.get $0
-                       local.get $1
-                       call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-tx-execute-input/PreTxExecuteInput>~visit
                        return
                       end
+                      local.get $0
+                      local.get $1
+                      call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput>~visit
                       return
                      end
-                     local.get $0
-                     local.get $1
-                     call $~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput~visit
                      return
                     end
                     local.get $0
                     local.get $1
-                    call $~lib/@artela/aspect-libs/proto/aspect/v2/pre-exec-message-input/PreExecMessageInput~visit
+                    call $~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput~visit
                     return
                    end
                    local.get $0
                    local.get $1
-                   call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput>~visit
+                   call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput>~visit
                    return
                   end
                   local.get $0
                   local.get $1
-                  call $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput~visit
+                  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>~visit
                   return
                  end
-                 local.get $0
-                 local.get $1
-                 call $~lib/@artela/aspect-libs/proto/aspect/v2/post-exec-message-input/PostExecMessageInput~visit
                  return
                 end
                 local.get $0
                 local.get $1
-                call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput>~visit
+                call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt~visit
                 return
                end
                local.get $0
                local.get $1
-               call $~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput~visit
+               call $~lib/typedarray/Uint32Array~visit
                return
               end
+              local.get $0
+              local.get $1
+              call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>~visit
               return
              end
-             local.get $0
-             local.get $1
-             call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/post-tx-execute-input/PostTxExecuteInput>~visit
              return
             end
+            local.get $0
+            local.get $1
+            call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>~visit
             return
            end
-           local.get $0
-           local.get $1
-           call $~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput~visit
            return
           end
           local.get $0
           local.get $1
-          call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput>~visit
+          call $~lib/staticarray/StaticArray<~lib/string/String>~visit
           return
          end
          local.get $0
          local.get $1
-         call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>~visit
+         call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64>~visit
          return
         end
         return
        end
        local.get $0
        local.get $1
-       call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt~visit
+       call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>~visit
        return
       end
       local.get $0
       local.get $1
-      call $~lib/typedarray/Uint32Array~visit
+      call $~lib/typedarray/Float64Array~visit
       return
      end
      local.get $0
      local.get $1
-     call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>~visit
+     call $~lib/array/Array<~lib/typedarray/Float64Array>~visit
      return
     end
+    local.get $0
+    local.get $1
+    call $~lib/array/Array<~lib/string/String>~visit
     return
    end
    local.get $0
    local.get $1
-   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>~visit
+   call $~lib/array/Array<f64>~visit
    return
   end
   unreachable
@@ -6158,8 +8577,8 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 40400
-   i32.const 40448
+   i32.const 43280
+   i32.const 43328
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -18427,178 +20846,6 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $aspect/index/StoreAspect#preContractCall (param $this i32) (param $input i32)
-  (local $modelValue i32)
-  (local $3 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 24
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 24
-  memory.fill
-  global.get $~lib/memory/__stack_pointer
-  global.get $~lib/@artela/aspect-libs/package/sys.aspect.readonlyState
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store offset=4
-  local.get $3
-  i32.const 7072
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store offset=8
-  local.get $3
-  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState#get<~lib/string/String>
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store
-  local.get $3
-  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>#unwrap
-  local.tee $modelValue
-  i32.store offset=12
-  global.get $~lib/@artela/aspect-libs/package/sys.aspect.transientStorage
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store offset=8
-  local.get $3
-  i32.const 7072
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store offset=16
-  local.get $3
-  i32.const 672
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store offset=20
-  local.get $3
-  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage#get<~lib/string/String>
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store
-  local.get $3
-  local.get $modelValue
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store offset=4
-  local.get $3
-  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#set<~lib/string/String>
-  global.get $~lib/memory/__stack_pointer
-  i32.const 24
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#string (param $this i32) (result i32)
-  (local $this|1 i32)
-  (local $length i32)
-  (local $this|3 i32)
-  (local $step i32)
-  (local $ptr i32)
-  (local $6 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 16
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store offset=8
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.3 (result i32)
-   global.get $~lib/memory/__stack_pointer
-   local.get $this
-   local.tee $this|1
-   i32.store
-   local.get $this|1
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store offset=4
-   local.get $6
-   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.3
-  end
-  local.set $length
-  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.23 (result i32)
-   global.get $~lib/memory/__stack_pointer
-   local.get $this
-   local.tee $this|3
-   i32.store offset=8
-   local.get $length
-   local.set $step
-   local.get $this|3
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store offset=4
-   local.get $6
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.set $ptr
-   local.get $this|3
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store offset=4
-   local.get $6
-   local.get $this|3
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store offset=12
-   local.get $6
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $step
-   i32.add
-   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
-   local.get $this|3
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store offset=4
-   local.get $6
-   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
-   local.get $this|3
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store offset=4
-   local.get $6
-   call $~lib/as-proto/assembly/Reader/Reader#get:end
-   i32.le_u
-   i32.eqz
-   if
-    i32.const 224
-    i32.const 5120
-    i32.const 210
-    i32.const 5
-    call $~lib/builtins/abort
-    unreachable
-   end
-   local.get $ptr
-   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.23
-  end
-  local.get $length
-  i32.const 0
-  call $~lib/string/String.UTF8.decodeUnsafe
-  local.set $6
-  global.get $~lib/memory/__stack_pointer
-  i32.const 16
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $6
-  return
- )
  (func $~lib/typedarray/Uint8Array#slice (param $this i32) (param $begin i32) (param $end i32) (result i32)
   (local $array i32)
   (local $start i32)
@@ -18962,7 +21209,3762 @@
   local.get $1
   return
  )
- (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>#constructor (param $this i32) (param $key i32) (result i32)
+ (func $~lib/@artela/aspect-libs/hostapi/crypto-api/CryptoApi#keccak (param $this i32) (param $data i32) (result i32)
+  (local $dataPtr i32)
+  (local $resPtr i32)
+  (local $resRaw i32)
+  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  i32.const 0
+  local.get $data
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#constructor
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#store
+  local.set $dataPtr
+  local.get $dataPtr
+  call $~lib/@artela/aspect-libs/hostapi/crypto-api/__CryptoApi__.keccak
+  local.set $resPtr
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 0
+  global.set $~argumentsLength
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#constructor@varargs
+  local.tee $resRaw
+  i32.store offset=8
+  local.get $resRaw
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  local.get $resPtr
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#load
+  local.get $resRaw
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#get:body
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $5
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/abi/ethereum/index/ethereum.computeMethodSig (param $method i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 24
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 24
+  memory.fill
+  global.get $~lib/@artela/aspect-libs/common/abi/ethereum/index/crypto
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=12
+  local.get $1
+  local.get $method
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=20
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/helper/convert/stringToUint8Array
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=16
+  local.get $1
+  call $~lib/@artela/aspect-libs/hostapi/crypto-api/CryptoApi#keccak
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=8
+  local.get $1
+  i32.const 0
+  i32.const 4
+  call $~lib/typedarray/Uint8Array#slice
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  i32.const 672
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/helper/convert/uint8ArrayToHex
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 24
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/typedarray/Uint32Array#constructor (param $this i32) (param $length i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 62
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  local.get $length
+  i32.const 2
+  call $~lib/arraybuffer/ArrayBufferView#constructor
+  local.tee $this
+  i32.store
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#constructor (param $this i32) (param $size i32) (param $isNegative i32) (result i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 9
+   i32.const 61
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:d
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:isNeg
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  i32.const 0
+  local.get $size
+  call $~lib/typedarray/Uint32Array#constructor
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=8
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:d
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  local.get $isNegative
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:isNeg
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+ )
+ (func $~lib/typedarray/Uint32Array#__set (param $this i32) (param $index i32) (param $value i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  i32.const 2
+  i32.shr_u
+  i32.ge_u
+  if
+   i32.const 224
+   i32.const 4480
+   i32.const 889
+   i32.const 64
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/arraybuffer/ArrayBufferView#get:dataStart
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $value
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/typedarray/Uint32Array#__get (param $this i32) (param $index i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  i32.const 2
+  i32.shr_u
+  i32.ge_u
+  if
+   i32.const 224
+   i32.const 4480
+   i32.const 878
+   i32.const 64
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/arraybuffer/ArrayBufferView#get:dataStart
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromUInt16 (param $val i32) (result i32)
+  (local $res i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.precision
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#constructor
+  local.tee $res
+  i32.store
+  local.get $res
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=8
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 0
+  local.get $val
+  i32.const 65535
+  i32.and
+  global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.digitMask
+  i32.and
+  call $~lib/typedarray/Uint32Array#__set
+  local.get $res
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  local.get $res
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=12
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=8
+  local.get $2
+  i32.const 0
+  call $~lib/typedarray/Uint32Array#__get
+  i32.const 0
+  i32.eq
+  if (result i32)
+   i32.const 0
+  else
+   i32.const 1
+  end
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n
+  local.get $res
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/typedarray/Uint8Array#subarray (param $this i32) (param $begin i32) (param $end i32) (result i32)
+  (local $array i32)
+  (local $begin|4 i32)
+  (local $end|5 i32)
+  (local $len i32)
+  (local $7 i32)
+  (local $8 i32)
+  (local $9 i32)
+  (local $10 i32)
+  (local $11 i32)
+  (local $12 i32)
+  (local $13 i32)
+  (local $14 i32)
+  (local $15 i32)
+  (local $16 i32)
+  (local $out i32)
+  (local $buf i32)
+  (local $19 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  block $"~lib/typedarray/SUBARRAY<~lib/typedarray/Uint8Array,u8>|inlined.0" (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.get $this
+   local.tee $array
+   i32.store
+   local.get $begin
+   local.set $begin|4
+   local.get $end
+   local.set $end|5
+   local.get $array
+   local.set $19
+   global.get $~lib/memory/__stack_pointer
+   local.get $19
+   i32.store offset=4
+   local.get $19
+   call $~lib/typedarray/Uint8Array#get:length
+   local.set $len
+   local.get $begin|4
+   i32.const 0
+   i32.lt_s
+   if (result i32)
+    local.get $len
+    local.get $begin|4
+    i32.add
+    local.tee $7
+    i32.const 0
+    local.tee $8
+    local.get $7
+    local.get $8
+    i32.gt_s
+    select
+   else
+    local.get $begin|4
+    local.tee $9
+    local.get $len
+    local.tee $10
+    local.get $9
+    local.get $10
+    i32.lt_s
+    select
+   end
+   local.set $begin|4
+   local.get $end|5
+   i32.const 0
+   i32.lt_s
+   if (result i32)
+    local.get $len
+    local.get $end|5
+    i32.add
+    local.tee $11
+    i32.const 0
+    local.tee $12
+    local.get $11
+    local.get $12
+    i32.gt_s
+    select
+   else
+    local.get $end|5
+    local.tee $13
+    local.get $len
+    local.tee $14
+    local.get $13
+    local.get $14
+    i32.lt_s
+    select
+   end
+   local.set $end|5
+   local.get $end|5
+   local.tee $15
+   local.get $begin|4
+   local.tee $16
+   local.get $15
+   local.get $16
+   i32.gt_s
+   select
+   local.set $end|5
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 9
+   call $~lib/rt/itcms/__new
+   local.tee $out
+   i32.store offset=8
+   local.get $array
+   local.set $19
+   global.get $~lib/memory/__stack_pointer
+   local.get $19
+   i32.store offset=4
+   local.get $19
+   call $~lib/arraybuffer/ArrayBufferView#get:buffer
+   local.set $buf
+   local.get $out
+   local.get $buf
+   i32.store
+   local.get $out
+   local.get $buf
+   i32.const 0
+   call $~lib/rt/itcms/__link
+   local.get $out
+   local.get $array
+   local.set $19
+   global.get $~lib/memory/__stack_pointer
+   local.get $19
+   i32.store offset=4
+   local.get $19
+   call $~lib/arraybuffer/ArrayBufferView#get:dataStart
+   local.get $begin|4
+   i32.const 0
+   i32.shl
+   i32.add
+   i32.store offset=4
+   local.get $out
+   local.get $end|5
+   local.get $begin|4
+   i32.sub
+   i32.const 0
+   i32.shl
+   i32.store offset=8
+   local.get $out
+   br $"~lib/typedarray/SUBARRAY<~lib/typedarray/Uint8Array,u8>|inlined.0"
+  end
+  local.set $19
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $19
+  return
+ )
+ (func $~lib/typedarray/Uint8Array#subarray@varargs (param $this i32) (param $begin i32) (param $end i32) (result i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  block $2of2
+   block $1of2
+    block $0of2
+     block $outOfRange
+      global.get $~argumentsLength
+      br_table $0of2 $1of2 $2of2 $outOfRange
+     end
+     unreachable
+    end
+    i32.const 0
+    local.set $begin
+   end
+   global.get $~lib/builtins/i32.MAX_VALUE
+   local.set $end
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  local.get $begin
+  local.get $end
+  call $~lib/typedarray/Uint8Array#subarray
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#trimLeadingZeros (param $this i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  loop $while-continue|0
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store
+   local.get $1
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+   i32.const 0
+   i32.gt_s
+   if (result i32)
+    local.get $this
+    local.set $1
+    global.get $~lib/memory/__stack_pointer
+    local.get $1
+    i32.store offset=4
+    local.get $1
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $1
+    global.get $~lib/memory/__stack_pointer
+    local.get $1
+    i32.store
+    local.get $1
+    local.get $this
+    local.set $1
+    global.get $~lib/memory/__stack_pointer
+    local.get $1
+    i32.store offset=4
+    local.get $1
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+    i32.const 1
+    i32.sub
+    call $~lib/typedarray/Uint32Array#__get
+    i32.const 0
+    i32.eq
+   else
+    i32.const 0
+   end
+   if
+    local.get $this
+    local.set $1
+    global.get $~lib/memory/__stack_pointer
+    local.get $1
+    i32.store
+    local.get $1
+    local.get $this
+    local.set $1
+    global.get $~lib/memory/__stack_pointer
+    local.get $1
+    i32.store offset=4
+    local.get $1
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+    i32.const 1
+    i32.sub
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n
+    br $while-continue|0
+   end
+  end
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 0
+  i32.eq
+  if
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store
+   local.get $1
+   i32.const 0
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:isNeg
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromUint8Array (param $bytes i32) (param $isNegative i32) (result i32)
+  (local $res i32)
+  (local $digit i32)
+  (local $shift i32)
+  (local $i i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.get $bytes
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $~lib/typedarray/Uint8Array#get:length
+  i32.const 3
+  i32.add
+  i32.const 4
+  i32.div_s
+  local.get $isNegative
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#constructor
+  local.tee $res
+  i32.store offset=4
+  i32.const 0
+  local.set $digit
+  i32.const 0
+  local.set $shift
+  i32.const 0
+  local.set $i
+  loop $for-loop|1
+   local.get $i
+   local.get $bytes
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store
+   local.get $8
+   call $~lib/typedarray/Uint8Array#get:length
+   i32.lt_s
+   if
+    local.get $digit
+    local.get $bytes
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store
+    local.get $8
+    local.get $i
+    call $~lib/typedarray/Uint8Array#__get
+    local.get $shift
+    i32.const 255
+    i32.and
+    i32.shl
+    i32.or
+    local.set $digit
+    local.get $shift
+    i32.const 8
+    i32.add
+    local.set $shift
+    local.get $shift
+    i32.const 255
+    i32.and
+    i32.const 32
+    i32.eq
+    if
+     local.get $res
+     local.set $8
+     global.get $~lib/memory/__stack_pointer
+     local.get $8
+     i32.store offset=8
+     local.get $8
+     call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+     local.set $8
+     global.get $~lib/memory/__stack_pointer
+     local.get $8
+     i32.store
+     local.get $8
+     local.get $res
+     local.set $8
+     global.get $~lib/memory/__stack_pointer
+     local.get $8
+     i32.store offset=8
+     local.get $8
+     local.get $res
+     local.set $8
+     global.get $~lib/memory/__stack_pointer
+     local.get $8
+     i32.store offset=12
+     local.get $8
+     call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+     local.tee $6
+     i32.const 1
+     i32.add
+     call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n
+     local.get $6
+     local.get $digit
+     call $~lib/typedarray/Uint32Array#__set
+     i32.const 0
+     local.set $digit
+     i32.const 0
+     local.set $shift
+    end
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|1
+   end
+  end
+  local.get $shift
+  i32.const 255
+  i32.and
+  i32.const 0
+  i32.gt_u
+  if
+   local.get $res
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store offset=8
+   local.get $8
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store
+   local.get $8
+   local.get $res
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store offset=8
+   local.get $8
+   local.get $res
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store offset=12
+   local.get $8
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+   local.tee $7
+   i32.const 1
+   i32.add
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n
+   local.get $7
+   local.get $digit
+   call $~lib/typedarray/Uint32Array#__set
+  end
+  local.get $res
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#trimLeadingZeros
+  local.get $res
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $8
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromUint8ArrayWithSign (param $bytes i32) (result i32)
+  (local $isNegative i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $bytes
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/typedarray/Uint8Array#get:length
+  i32.const 0
+  i32.eq
+  if
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.get:ZERO
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $2
+   return
+  end
+  local.get $bytes
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  i32.const 0
+  call $~lib/typedarray/Uint8Array#__get
+  i32.const 255
+  i32.eq
+  local.set $isNegative
+  local.get $bytes
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 1
+  i32.const 1
+  global.set $~argumentsLength
+  i32.const 0
+  call $~lib/typedarray/Uint8Array#subarray@varargs
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  local.get $isNegative
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromUint8Array
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#countBits (param $this i32) (result i32)
+  (local $bits i32)
+  (local $q i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 0
+  i32.eq
+  if
+   i32.const 0
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $3
+   return
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 1
+  i32.sub
+  global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.p
+  i32.mul
+  local.set $bits
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 1
+  i32.sub
+  call $~lib/typedarray/Uint32Array#__get
+  local.set $q
+  loop $while-continue|0
+   local.get $q
+   i32.const 0
+   i32.gt_u
+   if
+    local.get $bits
+    i32.const 1
+    i32.add
+    local.set $bits
+    local.get $q
+    i32.const 1
+    i32.shr_u
+    local.set $q
+    br $while-continue|0
+   end
+  end
+  local.get $bits
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+  return
+ )
+ (func $~lib/util/string/joinStringArray (param $dataStart i32) (param $length i32) (param $separator i32) (result i32)
+  (local $lastIndex i32)
+  (local $4 i32)
+  (local $estLen i32)
+  (local $value i32)
+  (local $i i32)
+  (local $offset i32)
+  (local $sepLen i32)
+  (local $result i32)
+  (local $i|11 i32)
+  (local $valueLen i32)
+  (local $13 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  local.get $length
+  i32.const 1
+  i32.sub
+  local.set $lastIndex
+  local.get $lastIndex
+  i32.const 0
+  i32.lt_s
+  if
+   i32.const 672
+   local.set $13
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $13
+   return
+  end
+  local.get $lastIndex
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   local.get $dataStart
+   i32.load
+   local.tee $4
+   i32.store
+   local.get $4
+   if (result i32)
+    local.get $4
+   else
+    i32.const 672
+   end
+   local.set $13
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $13
+   return
+  end
+  i32.const 0
+  local.set $estLen
+  i32.const 0
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   local.get $length
+   i32.lt_s
+   if
+    global.get $~lib/memory/__stack_pointer
+    local.get $dataStart
+    local.get $i
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
+    local.tee $value
+    i32.store offset=4
+    local.get $value
+    i32.const 0
+    i32.ne
+    if
+     local.get $estLen
+     local.get $value
+     local.set $13
+     global.get $~lib/memory/__stack_pointer
+     local.get $13
+     i32.store offset=8
+     local.get $13
+     call $~lib/string/String#get:length
+     i32.add
+     local.set $estLen
+    end
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  i32.const 0
+  local.set $offset
+  local.get $separator
+  local.set $13
+  global.get $~lib/memory/__stack_pointer
+  local.get $13
+  i32.store offset=8
+  local.get $13
+  call $~lib/string/String#get:length
+  local.set $sepLen
+  global.get $~lib/memory/__stack_pointer
+  local.get $estLen
+  local.get $sepLen
+  local.get $lastIndex
+  i32.mul
+  i32.add
+  i32.const 1
+  i32.shl
+  i32.const 2
+  call $~lib/rt/itcms/__new
+  local.tee $result
+  i32.store offset=12
+  i32.const 0
+  local.set $i|11
+  loop $for-loop|1
+   local.get $i|11
+   local.get $lastIndex
+   i32.lt_s
+   if
+    global.get $~lib/memory/__stack_pointer
+    local.get $dataStart
+    local.get $i|11
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
+    local.tee $value
+    i32.store offset=4
+    local.get $value
+    i32.const 0
+    i32.ne
+    if
+     local.get $value
+     local.set $13
+     global.get $~lib/memory/__stack_pointer
+     local.get $13
+     i32.store offset=8
+     local.get $13
+     call $~lib/string/String#get:length
+     local.set $valueLen
+     local.get $result
+     local.get $offset
+     i32.const 1
+     i32.shl
+     i32.add
+     local.get $value
+     local.get $valueLen
+     i32.const 1
+     i32.shl
+     memory.copy
+     local.get $offset
+     local.get $valueLen
+     i32.add
+     local.set $offset
+    end
+    local.get $sepLen
+    if
+     local.get $result
+     local.get $offset
+     i32.const 1
+     i32.shl
+     i32.add
+     local.get $separator
+     local.get $sepLen
+     i32.const 1
+     i32.shl
+     memory.copy
+     local.get $offset
+     local.get $sepLen
+     i32.add
+     local.set $offset
+    end
+    local.get $i|11
+    i32.const 1
+    i32.add
+    local.set $i|11
+    br $for-loop|1
+   end
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $dataStart
+  local.get $lastIndex
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $value
+  i32.store offset=4
+  local.get $value
+  i32.const 0
+  i32.ne
+  if
+   local.get $result
+   local.get $offset
+   i32.const 1
+   i32.shl
+   i32.add
+   local.get $value
+   local.get $value
+   local.set $13
+   global.get $~lib/memory/__stack_pointer
+   local.get $13
+   i32.store offset=8
+   local.get $13
+   call $~lib/string/String#get:length
+   i32.const 1
+   i32.shl
+   memory.copy
+  end
+  local.get $result
+  local.set $13
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $13
+  return
+ )
+ (func $~lib/staticarray/StaticArray<~lib/string/String>#join (param $this i32) (param $separator i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  i32.const 1
+  i32.lt_s
+  drop
+  i32.const 1
+  drop
+  local.get $this
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  call $~lib/staticarray/StaticArray<~lib/string/String>#get:length
+  local.get $separator
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/util/string/joinStringArray
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/typedarray/Uint32Array#get:length (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  i32.const 2
+  i32.shr_u
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromDigits (param $digits i32) (param $isNegative i32) (param $n i32) (param $minSize i32) (result i32)
+  (local $size i32)
+  (local $extra i32)
+  (local $res i32)
+  (local $i i32)
+  (local $8 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $minSize
+  local.set $size
+  local.get $size
+  local.get $digits
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $~lib/typedarray/Uint32Array#get:length
+  i32.lt_s
+  if
+   local.get $digits
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store
+   local.get $8
+   call $~lib/typedarray/Uint32Array#get:length
+   local.set $size
+  end
+  local.get $size
+  global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.precision
+  i32.rem_s
+  local.set $extra
+  local.get $extra
+  i32.const 0
+  i32.ne
+  if
+   local.get $size
+   global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.precision
+   local.get $extra
+   i32.sub
+   i32.add
+   local.set $size
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.get $size
+  local.get $isNegative
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#constructor
+  local.tee $res
+  i32.store offset=4
+  i32.const 0
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   local.get $digits
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store
+   local.get $8
+   call $~lib/typedarray/Uint32Array#get:length
+   i32.lt_s
+   if
+    local.get $res
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store offset=8
+    local.get $8
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store
+    local.get $8
+    local.get $i
+    local.get $digits
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store offset=8
+    local.get $8
+    local.get $i
+    call $~lib/typedarray/Uint32Array#__get
+    call $~lib/typedarray/Uint32Array#__set
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  local.get $res
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  local.get $n
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n
+  local.get $res
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $8
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromDigits@varargs (param $digits i32) (param $isNegative i32) (param $n i32) (param $minSize i32) (result i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  block $3of3
+   block $2of3
+    block $1of3
+     block $0of3
+      block $outOfRange
+       global.get $~argumentsLength
+       i32.const 1
+       i32.sub
+       br_table $0of3 $1of3 $2of3 $3of3 $outOfRange
+      end
+      unreachable
+     end
+     i32.const 0
+     local.set $isNegative
+    end
+    local.get $digits
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store
+    local.get $4
+    call $~lib/typedarray/Uint32Array#get:length
+    local.set $n
+   end
+   local.get $digits
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   local.get $4
+   i32.store
+   local.get $4
+   call $~lib/typedarray/Uint32Array#get:length
+   local.set $minSize
+  end
+  local.get $digits
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  local.get $isNegative
+  local.get $n
+  local.get $minSize
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromDigits
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#abs (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  i32.const 0
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 3
+  global.set $~argumentsLength
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromDigits@varargs
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#magCompareTo (param $this i32) (param $other i32) (result i32)
+  (local $i i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  local.get $other
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.gt_s
+  if
+   i32.const 1
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $3
+   return
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  local.get $other
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.lt_s
+  if
+   i32.const -1
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $3
+   return
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 1
+  i32.sub
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   i32.const 0
+   i32.ge_s
+   if
+    local.get $this
+    local.set $3
+    global.get $~lib/memory/__stack_pointer
+    local.get $3
+    i32.store offset=4
+    local.get $3
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $3
+    global.get $~lib/memory/__stack_pointer
+    local.get $3
+    i32.store
+    local.get $3
+    local.get $i
+    call $~lib/typedarray/Uint32Array#__get
+    local.get $other
+    local.set $3
+    global.get $~lib/memory/__stack_pointer
+    local.get $3
+    i32.store offset=4
+    local.get $3
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $3
+    global.get $~lib/memory/__stack_pointer
+    local.get $3
+    i32.store
+    local.get $3
+    local.get $i
+    call $~lib/typedarray/Uint32Array#__get
+    i32.ne
+    if
+     local.get $this
+     local.set $3
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store offset=4
+     local.get $3
+     call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+     local.set $3
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store
+     local.get $3
+     local.get $i
+     call $~lib/typedarray/Uint32Array#__get
+     local.get $other
+     local.set $3
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store offset=4
+     local.get $3
+     call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+     local.set $3
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store
+     local.get $3
+     local.get $i
+     call $~lib/typedarray/Uint32Array#__get
+     i32.lt_u
+     if
+      i32.const -1
+      local.set $3
+      global.get $~lib/memory/__stack_pointer
+      i32.const 8
+      i32.add
+      global.set $~lib/memory/__stack_pointer
+      local.get $3
+      return
+     end
+     i32.const 1
+     local.set $3
+     global.get $~lib/memory/__stack_pointer
+     i32.const 8
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     local.get $3
+     return
+    end
+    local.get $i
+    i32.const 1
+    i32.sub
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  i32.const 0
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#compareTo (param $this i32) (param $other i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg
+  if (result i32)
+   local.get $other
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   local.get $2
+   i32.store
+   local.get $2
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg
+   i32.eqz
+  else
+   i32.const 0
+  end
+  if
+   i32.const -1
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $2
+   return
+  end
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg
+  i32.eqz
+  if (result i32)
+   local.get $other
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   local.get $2
+   i32.store
+   local.get $2
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg
+  else
+   i32.const 0
+  end
+  if
+   i32.const 1
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $2
+   return
+  end
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg
+  if
+   local.get $other
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   local.get $2
+   i32.store
+   local.get $2
+   local.get $this
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   local.get $2
+   i32.store offset=4
+   local.get $2
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#magCompareTo
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $2
+   return
+  end
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  local.get $other
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#magCompareTo
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#eq<~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt> (param $this i32) (param $other i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  local.get $other
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=8
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.from<~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt>
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#compareTo
+  i32.const 0
+  i32.eq
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#ne<~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt> (param $this i32) (param $other i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  local.get $other
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=8
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.from<~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt>
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#eq<~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt>
+  i32.eqz
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#modInt (param $this i32) (param $b i32) (result i32)
+  (local $pow2Bit i32)
+  (local $r i64)
+  (local $val i32)
+  (local $i i32)
+  (local $6 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $b
+  i32.const 0
+  i32.eq
+  if
+   i32.const 8128
+   i32.const 7600
+   i32.const 1350
+   i32.const 17
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $b
+  i32.const 1
+  i32.eq
+  if (result i32)
+   i32.const 1
+  else
+   local.get $this
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store
+   local.get $6
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+   i32.const 0
+   i32.eq
+  end
+  if
+   i32.const 0
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $6
+   return
+  end
+  local.get $b
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.isPow2
+  local.set $pow2Bit
+  local.get $pow2Bit
+  i32.const 0
+  i32.ne
+  if
+   local.get $this
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store offset=4
+   local.get $6
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store
+   local.get $6
+   i32.const 0
+   call $~lib/typedarray/Uint32Array#__get
+   i32.const 1
+   local.get $pow2Bit
+   i32.shl
+   i32.const 1
+   i32.sub
+   i32.and
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $6
+   return
+  end
+  i64.const 0
+  local.set $r
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store
+  local.get $6
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 1
+  i32.sub
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   i32.const 0
+   i32.ge_s
+   if
+    local.get $r
+    global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.p
+    i64.extend_i32_s
+    i64.shl
+    local.get $this
+    local.set $6
+    global.get $~lib/memory/__stack_pointer
+    local.get $6
+    i32.store offset=4
+    local.get $6
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $6
+    global.get $~lib/memory/__stack_pointer
+    local.get $6
+    i32.store
+    local.get $6
+    local.get $i
+    call $~lib/typedarray/Uint32Array#__get
+    i64.extend_i32_u
+    i64.or
+    local.set $r
+    local.get $r
+    local.get $b
+    i64.extend_i32_u
+    i64.ge_u
+    if
+     local.get $r
+     local.get $b
+     i64.extend_i32_u
+     i64.div_u
+     i32.wrap_i64
+     local.set $val
+     local.get $r
+     local.get $val
+     i64.extend_i32_u
+     local.get $b
+     i64.extend_i32_u
+     i64.mul
+     i64.sub
+     local.set $r
+    else
+     i32.const 0
+     local.set $val
+    end
+    local.get $i
+    i32.const 1
+    i32.sub
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  local.get $r
+  i32.wrap_i64
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $6
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#copy (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 3
+  global.set $~argumentsLength
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromDigits@varargs
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#divBasisPow (param $this i32) (param $b i32)
+  (local $i i32)
+  (local $j i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $b
+  i32.const 0
+  i32.le_s
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   return
+  end
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  local.get $b
+  i32.le_s
+  if
+   local.get $this
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   local.get $4
+   i32.store
+   local.get $4
+   i32.const 0
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n
+   local.get $this
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   local.get $4
+   i32.store
+   local.get $4
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#trimLeadingZeros
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   return
+  end
+  i32.const 0
+  local.set $i
+  local.get $b
+  local.set $j
+  loop $for-loop|0
+   local.get $i
+   local.get $this
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   local.get $4
+   i32.store
+   local.get $4
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+   local.get $b
+   i32.sub
+   i32.lt_s
+   if
+    local.get $this
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=4
+    local.get $4
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store
+    local.get $4
+    local.get $i
+    local.get $this
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=8
+    local.get $4
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=4
+    local.get $4
+    local.get $j
+    call $~lib/typedarray/Uint32Array#__get
+    call $~lib/typedarray/Uint32Array#__set
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    local.get $j
+    i32.const 1
+    i32.add
+    local.set $j
+    br $for-loop|0
+   end
+  end
+  loop $for-loop|1
+   local.get $i
+   local.get $this
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   local.get $4
+   i32.store
+   local.get $4
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+   i32.lt_s
+   if
+    local.get $this
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=4
+    local.get $4
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store
+    local.get $4
+    local.get $i
+    i32.const 0
+    call $~lib/typedarray/Uint32Array#__set
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|1
+   end
+  end
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=4
+  local.get $4
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  local.get $b
+  i32.sub
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#divPowTwo (param $this i32) (param $k i32) (result i32)
+  (local $res i32)
+  (local $remK i32)
+  (local $mask i32)
+  (local $shift i32)
+  (local $r i32)
+  (local $i i32)
+  (local $rr i32)
+  (local $9 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store
+  local.get $9
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#copy
+  local.tee $res
+  i32.store offset=4
+  local.get $k
+  i32.const 0
+  i32.le_s
+  if
+   local.get $res
+   local.set $9
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $9
+   return
+  end
+  local.get $k
+  global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.p
+  i32.ge_s
+  if
+   local.get $res
+   local.set $9
+   global.get $~lib/memory/__stack_pointer
+   local.get $9
+   i32.store
+   local.get $9
+   local.get $k
+   global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.p
+   i32.div_s
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#divBasisPow
+  end
+  local.get $k
+  global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.p
+  i32.rem_s
+  local.set $remK
+  local.get $remK
+  i32.const 0
+  i32.ne
+  if
+   i32.const 1
+   local.get $remK
+   i32.shl
+   i32.const 1
+   i32.sub
+   local.set $mask
+   global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.p
+   local.get $remK
+   i32.sub
+   local.set $shift
+   i32.const 0
+   local.set $r
+   local.get $res
+   local.set $9
+   global.get $~lib/memory/__stack_pointer
+   local.get $9
+   i32.store
+   local.get $9
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+   i32.const 1
+   i32.sub
+   local.set $i
+   loop $for-loop|0
+    local.get $i
+    i32.const 0
+    i32.ge_s
+    if
+     local.get $res
+     local.set $9
+     global.get $~lib/memory/__stack_pointer
+     local.get $9
+     i32.store offset=8
+     local.get $9
+     call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+     local.set $9
+     global.get $~lib/memory/__stack_pointer
+     local.get $9
+     i32.store
+     local.get $9
+     local.get $i
+     call $~lib/typedarray/Uint32Array#__get
+     local.get $mask
+     i32.and
+     local.set $rr
+     local.get $res
+     local.set $9
+     global.get $~lib/memory/__stack_pointer
+     local.get $9
+     i32.store offset=8
+     local.get $9
+     call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+     local.set $9
+     global.get $~lib/memory/__stack_pointer
+     local.get $9
+     i32.store
+     local.get $9
+     local.get $i
+     local.get $res
+     local.set $9
+     global.get $~lib/memory/__stack_pointer
+     local.get $9
+     i32.store offset=12
+     local.get $9
+     call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+     local.set $9
+     global.get $~lib/memory/__stack_pointer
+     local.get $9
+     i32.store offset=8
+     local.get $9
+     local.get $i
+     call $~lib/typedarray/Uint32Array#__get
+     local.get $remK
+     i32.shr_u
+     local.get $r
+     local.get $shift
+     i32.shl
+     i32.or
+     call $~lib/typedarray/Uint32Array#__set
+     local.get $rr
+     local.set $r
+     local.get $i
+     i32.const 1
+     i32.sub
+     local.set $i
+     br $for-loop|0
+    end
+   end
+  end
+  local.get $res
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store
+  local.get $9
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#trimLeadingZeros
+  local.get $res
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $9
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#inplaceDivInt (param $this i32) (param $b i32) (result i32)
+  (local $pow2Bit i32)
+  (local $r i64)
+  (local $val i32)
+  (local $i i32)
+  (local $6 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $b
+  i32.const 0
+  i32.eq
+  if
+   i32.const 8128
+   i32.const 7600
+   i32.const 1327
+   i32.const 17
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $b
+  i32.const 1
+  i32.eq
+  if (result i32)
+   i32.const 1
+  else
+   local.get $this
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store
+   local.get $6
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+   i32.const 0
+   i32.eq
+  end
+  if
+   local.get $this
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $6
+   return
+  end
+  local.get $b
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.isPow2
+  local.set $pow2Bit
+  local.get $pow2Bit
+  i32.const 0
+  i32.ne
+  if
+   local.get $this
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store
+   local.get $6
+   local.get $pow2Bit
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#divPowTwo
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $6
+   return
+  end
+  i64.const 0
+  local.set $r
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store
+  local.get $6
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 1
+  i32.sub
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   i32.const 0
+   i32.ge_s
+   if
+    local.get $r
+    global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.p
+    i64.extend_i32_s
+    i64.shl
+    local.get $this
+    local.set $6
+    global.get $~lib/memory/__stack_pointer
+    local.get $6
+    i32.store offset=4
+    local.get $6
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $6
+    global.get $~lib/memory/__stack_pointer
+    local.get $6
+    i32.store
+    local.get $6
+    local.get $i
+    call $~lib/typedarray/Uint32Array#__get
+    i64.extend_i32_u
+    i64.or
+    local.set $r
+    local.get $r
+    local.get $b
+    i64.extend_i32_u
+    i64.ge_u
+    if
+     local.get $r
+     local.get $b
+     i64.extend_i32_u
+     i64.div_u
+     i32.wrap_i64
+     local.set $val
+     local.get $r
+     local.get $val
+     i64.extend_i32_u
+     local.get $b
+     i64.extend_i32_u
+     i64.mul
+     i64.sub
+     local.set $r
+    else
+     i32.const 0
+     local.set $val
+    end
+    local.get $this
+    local.set $6
+    global.get $~lib/memory/__stack_pointer
+    local.get $6
+    i32.store offset=4
+    local.get $6
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $6
+    global.get $~lib/memory/__stack_pointer
+    local.get $6
+    i32.store
+    local.get $6
+    local.get $i
+    local.get $val
+    call $~lib/typedarray/Uint32Array#__set
+    local.get $i
+    i32.const 1
+    i32.sub
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store
+  local.get $6
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#trimLeadingZeros
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $6
+  return
+ )
+ (func $~lib/array/ensureCapacity (param $array i32) (param $newSize i32) (param $alignLog2 i32) (param $canGrow i32)
+  (local $oldCapacity i32)
+  (local $oldData i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $newCapacity i32)
+  (local $9 i32)
+  (local $10 i32)
+  (local $11 i32)
+  (local $12 i32)
+  (local $newData i32)
+  (local $14 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $array
+  local.set $14
+  global.get $~lib/memory/__stack_pointer
+  local.get $14
+  i32.store
+  local.get $14
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  local.set $oldCapacity
+  local.get $newSize
+  local.get $oldCapacity
+  local.get $alignLog2
+  i32.shr_u
+  i32.gt_u
+  if
+   local.get $newSize
+   i32.const 1073741820
+   local.get $alignLog2
+   i32.shr_u
+   i32.gt_u
+   if
+    i32.const 528
+    i32.const 8176
+    i32.const 19
+    i32.const 48
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $array
+   local.set $14
+   global.get $~lib/memory/__stack_pointer
+   local.get $14
+   i32.store
+   local.get $14
+   call $~lib/arraybuffer/ArrayBufferView#get:buffer
+   local.set $oldData
+   local.get $newSize
+   local.tee $6
+   i32.const 8
+   local.tee $7
+   local.get $6
+   local.get $7
+   i32.gt_u
+   select
+   local.get $alignLog2
+   i32.shl
+   local.set $newCapacity
+   local.get $canGrow
+   if
+    local.get $oldCapacity
+    i32.const 1
+    i32.shl
+    local.tee $9
+    i32.const 1073741820
+    local.tee $10
+    local.get $9
+    local.get $10
+    i32.lt_u
+    select
+    local.tee $11
+    local.get $newCapacity
+    local.tee $12
+    local.get $11
+    local.get $12
+    i32.gt_u
+    select
+    local.set $newCapacity
+   end
+   local.get $oldData
+   local.get $newCapacity
+   call $~lib/rt/itcms/__renew
+   local.set $newData
+   i32.const 2
+   global.get $~lib/shared/runtime/Runtime.Incremental
+   i32.ne
+   drop
+   local.get $newData
+   local.get $oldData
+   i32.ne
+   if
+    local.get $array
+    local.get $newData
+    i32.store
+    local.get $array
+    local.get $newData
+    i32.store offset=4
+    local.get $array
+    local.get $newData
+    i32.const 0
+    call $~lib/rt/itcms/__link
+   end
+   local.get $array
+   local.get $newCapacity
+   i32.store offset=8
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/array/Array<i32>#push (param $this i32) (param $value i32) (result i32)
+  (local $oldLen i32)
+  (local $len i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/array/Array<i32>#get:length_
+  local.set $oldLen
+  local.get $oldLen
+  i32.const 1
+  i32.add
+  local.set $len
+  local.get $this
+  local.get $len
+  i32.const 2
+  i32.const 1
+  call $~lib/array/ensureCapacity
+  i32.const 0
+  drop
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/array/Array<i32>#get:dataStart
+  local.get $oldLen
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $value
+  i32.store
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  local.get $len
+  call $~lib/array/Array<i32>#set:length_
+  local.get $len
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+  return
+ )
+ (func $~lib/array/Array<i32>#reverse (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/array/Array<i32>#get:dataStart
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/array/Array<i32>#get:length_
+  call $~lib/util/bytes/REVERSE<i32>
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/array/Array<i32>#get:length (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/array/Array<i32>#get:length_
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/string/String.fromCharCodes (param $units i32) (result i32)
+  (local $length i32)
+  (local $out i32)
+  (local $ptr i32)
+  (local $i i32)
+  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $units
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<i32>#get:length
+  local.set $length
+  global.get $~lib/memory/__stack_pointer
+  local.get $length
+  i32.const 1
+  i32.shl
+  i32.const 2
+  call $~lib/rt/itcms/__new
+  local.tee $out
+  i32.store offset=4
+  local.get $units
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<i32>#get:dataStart
+  local.set $ptr
+  i32.const 0
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   local.get $length
+   i32.lt_s
+   if
+    local.get $out
+    local.get $i
+    i32.const 1
+    i32.shl
+    i32.add
+    local.get $ptr
+    local.get $i
+    i32.const 2
+    i32.shl
+    i32.add
+    i32.load
+    i32.store16
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  local.get $out
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $5
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#toString (param $this i32) (param $radix i32) (result i32)
+  (local $res i32)
+  (local $t i32)
+  (local $zero i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $codes i32)
+  (local $radixU i32)
+  (local $d i32)
+  (local $10 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 28
+  memory.fill
+  local.get $radix
+  i32.const 2
+  i32.lt_s
+  if (result i32)
+   i32.const 1
+  else
+   local.get $radix
+   i32.const 16
+   i32.gt_s
+  end
+  if
+   i32.const 7936
+   i32.const 7600
+   i32.const 297
+   i32.const 7
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $this
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store
+  local.get $10
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 0
+  i32.eq
+  if
+   i32.const 5488
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   i32.const 28
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $10
+   return
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store
+  local.get $10
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg
+  if (result i32)
+   i32.const 8064
+  else
+   i32.const 672
+  end
+  local.tee $res
+  i32.store offset=4
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store
+  local.get $10
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#abs
+  local.tee $t
+  i32.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromUInt16
+  local.tee $zero
+  i32.store offset=12
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 2
+  i32.const 8
+  i32.const 8096
+  call $~lib/rt/__newArray
+  local.tee $codes
+  i32.store offset=16
+  local.get $radix
+  local.set $radixU
+  loop $while-continue|0
+   local.get $t
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   local.get $10
+   i32.store
+   local.get $10
+   local.get $zero
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   local.get $10
+   i32.store offset=20
+   local.get $10
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#ne<~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt>
+   if
+    local.get $t
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store
+    local.get $10
+    local.get $radixU
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#modInt
+    local.set $d
+    global.get $~lib/memory/__stack_pointer
+    local.get $t
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store
+    local.get $10
+    local.get $radixU
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#inplaceDivInt
+    local.tee $t
+    i32.store offset=8
+    local.get $d
+    i32.const 10
+    i32.lt_s
+    if
+     local.get $codes
+     local.set $10
+     global.get $~lib/memory/__stack_pointer
+     local.get $10
+     i32.store
+     local.get $10
+     local.get $d
+     i32.const 48
+     i32.add
+     call $~lib/array/Array<i32>#push
+     drop
+    else
+     local.get $codes
+     local.set $10
+     global.get $~lib/memory/__stack_pointer
+     local.get $10
+     i32.store
+     local.get $10
+     local.get $d
+     i32.const 87
+     i32.add
+     call $~lib/array/Array<i32>#push
+     drop
+    end
+    br $while-continue|0
+   end
+  end
+  local.get $codes
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store
+  local.get $10
+  call $~lib/array/Array<i32>#reverse
+  drop
+  global.get $~lib/memory/__stack_pointer
+  local.get $res
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store
+  local.get $10
+  local.get $codes
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store offset=24
+  local.get $10
+  call $~lib/string/String.fromCharCodes
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store offset=20
+  local.get $10
+  call $~lib/string/String.__concat
+  local.tee $res
+  i32.store offset=4
+  local.get $res
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $10
+  return
+ )
+ (func $~lib/util/string/strtol<i64> (param $str i32) (param $radix i32) (result i64)
+  (local $len i32)
+  (local $ptr i32)
+  (local $code i32)
+  (local $sign i64)
+  (local $6 i32)
+  (local $num i64)
+  (local $initial i32)
+  (local $9 i32)
+  (local $10 i32)
+  (local $11 i64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $str
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store
+  local.get $10
+  call $~lib/string/String#get:length
+  local.set $len
+  local.get $len
+  i32.eqz
+  if
+   i32.const 0
+   drop
+   i64.const 0
+   local.set $11
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $11
+   return
+  end
+  local.get $str
+  local.set $ptr
+  local.get $ptr
+  i32.load16_u
+  local.set $code
+  loop $while-continue|0
+   local.get $code
+   call $~lib/util/string/isSpace
+   if
+    local.get $ptr
+    i32.const 2
+    i32.add
+    local.tee $ptr
+    i32.load16_u
+    local.set $code
+    local.get $len
+    i32.const 1
+    i32.sub
+    local.set $len
+    br $while-continue|0
+   end
+  end
+  i64.const 1
+  local.set $sign
+  local.get $code
+  i32.const 45
+  i32.eq
+  if (result i32)
+   i32.const 1
+  else
+   local.get $code
+   i32.const 43
+   i32.eq
+  end
+  if
+   local.get $len
+   i32.const 1
+   i32.sub
+   local.tee $len
+   i32.eqz
+   if
+    i32.const 0
+    drop
+    i64.const 0
+    local.set $11
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $11
+    return
+   end
+   local.get $code
+   i32.const 45
+   i32.eq
+   if
+    i64.const -1
+    local.set $sign
+   end
+   local.get $ptr
+   i32.const 2
+   i32.add
+   local.tee $ptr
+   i32.load16_u
+   local.set $code
+  end
+  local.get $radix
+  if
+   local.get $radix
+   i32.const 2
+   i32.lt_s
+   if (result i32)
+    i32.const 1
+   else
+    local.get $radix
+    i32.const 36
+    i32.gt_s
+   end
+   if
+    i32.const 0
+    drop
+    i64.const 0
+    local.set $11
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $11
+    return
+   end
+   local.get $radix
+   i32.const 16
+   i32.eq
+   if
+    local.get $len
+    i32.const 2
+    i32.gt_s
+    if (result i32)
+     local.get $code
+     i32.const 48
+     i32.eq
+    else
+     i32.const 0
+    end
+    if (result i32)
+     local.get $ptr
+     i32.load16_u offset=2
+     i32.const 32
+     i32.or
+     i32.const 120
+     i32.eq
+    else
+     i32.const 0
+    end
+    if
+     local.get $ptr
+     i32.const 4
+     i32.add
+     local.set $ptr
+     local.get $len
+     i32.const 2
+     i32.sub
+     local.set $len
+    end
+   end
+  else
+   local.get $code
+   i32.const 48
+   i32.eq
+   if (result i32)
+    local.get $len
+    i32.const 2
+    i32.gt_s
+   else
+    i32.const 0
+   end
+   if
+    block $break|1
+     block $case2|1
+      block $case1|1
+       block $case0|1
+        local.get $ptr
+        i32.load16_u offset=2
+        i32.const 32
+        i32.or
+        local.set $6
+        local.get $6
+        i32.const 98
+        i32.eq
+        br_if $case0|1
+        local.get $6
+        i32.const 111
+        i32.eq
+        br_if $case1|1
+        local.get $6
+        i32.const 120
+        i32.eq
+        br_if $case2|1
+        br $break|1
+       end
+       local.get $ptr
+       i32.const 4
+       i32.add
+       local.set $ptr
+       local.get $len
+       i32.const 2
+       i32.sub
+       local.set $len
+       i32.const 2
+       local.set $radix
+       br $break|1
+      end
+      local.get $ptr
+      i32.const 4
+      i32.add
+      local.set $ptr
+      local.get $len
+      i32.const 2
+      i32.sub
+      local.set $len
+      i32.const 8
+      local.set $radix
+      br $break|1
+     end
+     local.get $ptr
+     i32.const 4
+     i32.add
+     local.set $ptr
+     local.get $len
+     i32.const 2
+     i32.sub
+     local.set $len
+     i32.const 16
+     local.set $radix
+     br $break|1
+    end
+   end
+   local.get $radix
+   i32.eqz
+   if
+    i32.const 10
+    local.set $radix
+   end
+  end
+  i64.const 0
+  local.set $num
+  local.get $len
+  i32.const 1
+  i32.sub
+  local.set $initial
+  block $while-break|2
+   loop $while-continue|2
+    local.get $len
+    local.tee $9
+    i32.const 1
+    i32.sub
+    local.set $len
+    local.get $9
+    if
+     local.get $ptr
+     i32.load16_u
+     local.set $code
+     local.get $code
+     i32.const 48
+     i32.sub
+     i32.const 10
+     i32.lt_u
+     if
+      local.get $code
+      i32.const 48
+      i32.sub
+      local.set $code
+     else
+      local.get $code
+      i32.const 65
+      i32.sub
+      i32.const 90
+      i32.const 65
+      i32.sub
+      i32.le_u
+      if
+       local.get $code
+       i32.const 65
+       i32.const 10
+       i32.sub
+       i32.sub
+       local.set $code
+      else
+       local.get $code
+       i32.const 97
+       i32.sub
+       i32.const 122
+       i32.const 97
+       i32.sub
+       i32.le_u
+       if
+        local.get $code
+        i32.const 97
+        i32.const 10
+        i32.sub
+        i32.sub
+        local.set $code
+       end
+      end
+     end
+     local.get $code
+     local.get $radix
+     i32.ge_u
+     if
+      local.get $initial
+      local.get $len
+      i32.eq
+      if
+       i32.const 0
+       drop
+       i64.const 0
+       local.set $11
+       global.get $~lib/memory/__stack_pointer
+       i32.const 4
+       i32.add
+       global.set $~lib/memory/__stack_pointer
+       local.get $11
+       return
+      end
+      br $while-break|2
+     end
+     local.get $num
+     local.get $radix
+     i64.extend_i32_s
+     i64.mul
+     local.get $code
+     i64.extend_i32_u
+     i64.add
+     local.set $num
+     local.get $ptr
+     i32.const 2
+     i32.add
+     local.set $ptr
+     br $while-continue|2
+    end
+   end
+  end
+  local.get $sign
+  local.get $num
+  i64.mul
+  local.set $11
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $11
+  return
+ )
+ (func $~lib/number/U64.parseInt (param $value i32) (param $radix i32) (result i64)
+  (local $2 i32)
+  (local $3 i64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $value
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  local.get $radix
+  call $~lib/util/string/strtol<i64>
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#toUInt64 (param $this i32) (result i64)
+  (local $bitCount i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg
+  if
+   i32.const 7504
+   i32.const 7600
+   i32.const 415
+   i32.const 7
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 1
+  i32.le_s
+  if
+   local.get $this
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+   i32.const 0
+   i32.eq
+   if (result i64)
+    i64.const 0
+   else
+    local.get $this
+    local.set $3
+    global.get $~lib/memory/__stack_pointer
+    local.get $3
+    i32.store offset=4
+    local.get $3
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $3
+    global.get $~lib/memory/__stack_pointer
+    local.get $3
+    i32.store
+    local.get $3
+    i32.const 0
+    call $~lib/typedarray/Uint32Array#__get
+    i64.extend_i32_u
+   end
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $4
+   return
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#countBits
+  local.set $bitCount
+  local.get $bitCount
+  i32.const 64
+  i32.gt_s
+  if
+   global.get $~lib/memory/__stack_pointer
+   local.get $bitCount
+   i32.const 10
+   call $~lib/number/I32#toString
+   local.tee $2
+   i32.store offset=8
+   i32.const 7904
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   i32.const 1
+   local.get $2
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store offset=4
+   local.get $3
+   call $~lib/staticarray/StaticArray<~lib/string/String>#__uset
+   i32.const 7904
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   i32.const 672
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store offset=4
+   local.get $3
+   call $~lib/staticarray/StaticArray<~lib/string/String>#join
+   i32.const 7600
+   i32.const 422
+   i32.const 7
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  i32.const 10
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#toString
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  i32.const 0
+  call $~lib/number/U64.parseInt
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/helper/convert/fromUint8Array<u64> (param $value i32) (result i64)
+  (local $1 i32)
+  (local $2 i64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  i32.const 0
+  drop
+  i32.const 8
+  i32.const 1
+  i32.eq
+  drop
+  i32.const 0
+  drop
+  i32.const 8
+  i32.const 2
+  i32.eq
+  drop
+  i32.const 0
+  drop
+  i32.const 8
+  i32.const 4
+  i32.eq
+  drop
+  i32.const 0
+  drop
+  i32.const 8
+  i32.const 8
+  i32.eq
+  drop
+  local.get $value
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromUint8ArrayWithSign
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#toUInt64
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#constructor (param $this i32) (param $key i32) (result i32)
   (local $2 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 12
@@ -18979,8 +24981,634 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 12
+   i32.const 16
    i32.const 65
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  local.get $key
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=8
+  local.get $2
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:key
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i64.const 0
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:val
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 0
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:loaded
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 0
+  i32.const 0
+  call $~lib/typedarray/Uint8Array#constructor
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=8
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/helper/convert/fromUint8Array<u64>
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:val
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState#get<u64> (param $this i32) (param $key i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  i32.const 0
+  local.get $key
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#constructor
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#reload (param $this i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 20
+  memory.fill
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  global.get $~lib/@artela/aspect-libs/components/aspect/aspect-state/stateApi
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=8
+  local.get $1
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=16
+  local.get $1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#get:key
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=12
+  local.get $1
+  call $~lib/@artela/aspect-libs/hostapi/aspect-state-api/AspectStateApi#get
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/helper/convert/fromUint8Array<u64>
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:val
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  i32.const 1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:loaded
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#unwrap (param $this i32) (result i64)
+  (local $1 i32)
+  (local $2 i64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#get:loaded
+  i32.eqz
+  if
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store
+   local.get $1
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#reload
+  end
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#get:val
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $aspect/index/StoreAspect#preContractCall (param $this i32) (param $input i32)
+  (local $modelValue i32)
+  (local $3 i32)
+  (local $currentCallMethod i32)
+  (local $modelValue|5 i32)
+  (local $counterValue i64)
+  (local $7 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 36
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 36
+  memory.fill
+  global.get $~lib/memory/__stack_pointer
+  global.get $~lib/@artela/aspect-libs/package/sys.aspect.readonlyState
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=4
+  local.get $7
+  i32.const 7072
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=8
+  local.get $7
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState#get<~lib/string/String>
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store
+  local.get $7
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>#unwrap
+  local.tee $modelValue
+  i32.store offset=12
+  global.get $~lib/@artela/aspect-libs/package/sys.aspect.transientStorage
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=8
+  local.get $7
+  i32.const 7072
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=16
+  local.get $7
+  i32.const 672
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=20
+  local.get $7
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage#get<~lib/string/String>
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store
+  local.get $7
+  local.get $modelValue
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=4
+  local.get $7
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#set<~lib/string/String>
+  global.get $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  local.get $input
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=8
+  local.get $7
+  call $~lib/@artela/aspect-libs/proto/aspect/v2/pre-contract-call-input/PreContractCallInput#get:call
+  local.tee $3
+  i32.store offset=24
+  local.get $3
+  if (result i32)
+   local.get $3
+  else
+   i32.const 1360
+   i32.const 7200
+   i32.const 31
+   i32.const 59
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=4
+  local.get $7
+  call $~lib/@artela/aspect-libs/proto/aspect/v2/pre-exec-message-input/PreExecMessageInput#get:data
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store
+  local.get $7
+  call $~lib/@artela/aspect-libs/common/abi/ethereum/index/ethereum.parseMethodSig
+  local.tee $currentCallMethod
+  i32.store offset=28
+  local.get $currentCallMethod
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store
+  local.get $7
+  i32.const 7328
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=8
+  local.get $7
+  call $~lib/@artela/aspect-libs/common/abi/ethereum/index/ethereum.computeMethodSig
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=4
+  local.get $7
+  call $~lib/string/String.__eq
+  if (result i32)
+   i32.const 1
+  else
+   local.get $currentCallMethod
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store
+   local.get $7
+   i32.const 7392
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=8
+   local.get $7
+   call $~lib/@artela/aspect-libs/common/abi/ethereum/index/ethereum.computeMethodSig
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=4
+   local.get $7
+   call $~lib/string/String.__eq
+  end
+  if
+   global.get $~lib/memory/__stack_pointer
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.readonlyState
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=4
+   local.get $7
+   i32.const 7072
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=8
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState#get<~lib/string/String>
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>#unwrap
+   local.tee $modelValue|5
+   i32.store offset=32
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.readonlyState
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=4
+   local.get $7
+   i32.const 7456
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=8
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState#get<u64>
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#unwrap
+   local.set $counterValue
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.transientStorage
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=8
+   local.get $7
+   i32.const 7072
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=16
+   local.get $7
+   i32.const 672
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=20
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage#get<~lib/string/String>
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store
+   local.get $7
+   local.get $modelValue|5
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=4
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#set<~lib/string/String>
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.transientStorage
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=8
+   local.get $7
+   i32.const 7456
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=16
+   local.get $7
+   i32.const 672
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=20
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage#get<~lib/string/String>
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store
+   local.get $7
+   local.get $counterValue
+   i32.const 10
+   call $~lib/number/U64#toString
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=4
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#set<~lib/string/String>
+  else
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.transientStorage
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=8
+   local.get $7
+   i32.const 7072
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=16
+   local.get $7
+   i32.const 672
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=20
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage#get<~lib/string/String>
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store
+   local.get $7
+   i32.const 8224
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=4
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#set<~lib/string/String>
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.transientStorage
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=8
+   local.get $7
+   i32.const 7456
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=16
+   local.get $7
+   i32.const 672
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=20
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage#get<~lib/string/String>
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store
+   local.get $7
+   i32.const 5488
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=4
+   local.get $7
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#set<~lib/string/String>
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 36
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/as-proto/assembly/internal/FixedReader/FixedReader#string (param $this i32) (result i32)
+  (local $this|1 i32)
+  (local $length i32)
+  (local $this|3 i32)
+  (local $step i32)
+  (local $ptr i32)
+  (local $6 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.3 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.get $this
+   local.tee $this|1
+   i32.store
+   local.get $this|1
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store offset=4
+   local.get $6
+   call $~lib/as-proto/assembly/internal/FixedReader/FixedReader#varint32
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#uint32|inlined.3
+  end
+  local.set $length
+  block $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.23 (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.get $this
+   local.tee $this|3
+   i32.store offset=8
+   local.get $length
+   local.set $step
+   local.get $this|3
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store offset=4
+   local.get $6
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.set $ptr
+   local.get $this|3
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store offset=4
+   local.get $6
+   local.get $this|3
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store offset=12
+   local.get $6
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $step
+   i32.add
+   call $~lib/as-proto/assembly/Reader/Reader#set:ptr
+   local.get $this|3
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store offset=4
+   local.get $6
+   call $~lib/as-proto/assembly/Reader/Reader#get:ptr
+   local.get $this|3
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $6
+   i32.store offset=4
+   local.get $6
+   call $~lib/as-proto/assembly/Reader/Reader#get:end
+   i32.le_u
+   i32.eqz
+   if
+    i32.const 224
+    i32.const 5120
+    i32.const 210
+    i32.const 5
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $ptr
+   br $~lib/as-proto/assembly/internal/FixedReader/FixedReader#inc|inlined.23
+  end
+  local.get $length
+  i32.const 0
+  call $~lib/string/String.UTF8.decodeUnsafe
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $6
+  return
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64>#constructor (param $this i32) (param $key i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.const 68
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store
@@ -18998,7 +25626,7 @@
   local.get $2
   i32.store offset=8
   local.get $2
-  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>#constructor
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#constructor
   local.tee $this
   i32.store
   local.get $this
@@ -19009,7 +25637,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $2
  )
- (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState#get<~lib/string/String> (param $this i32) (param $key i32) (result i32)
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState#get<u64> (param $this i32) (param $key i32) (result i32)
   (local $2 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -19026,10 +25654,312 @@
   local.get $2
   i32.store
   local.get $2
-  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>#constructor
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64>#constructor
   local.set $2
   global.get $~lib/memory/__stack_pointer
   i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromUInt64 (param $val i64) (result i32)
+  (local $res i32)
+  (local $i i32)
+  (local $3 i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.precision
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#constructor
+  local.tee $res
+  i32.store
+  i32.const 0
+  local.set $i
+  loop $while-continue|0
+   local.get $val
+   i64.const 0
+   i64.ne
+   if
+    local.get $res
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=8
+    local.get $4
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=4
+    local.get $4
+    local.get $i
+    local.tee $3
+    i32.const 1
+    i32.add
+    local.set $i
+    local.get $3
+    local.get $val
+    i32.wrap_i64
+    global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.digitMask
+    i32.and
+    call $~lib/typedarray/Uint32Array#__set
+    local.get $val
+    global.get $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.p
+    i64.extend_i32_s
+    i64.shr_u
+    local.set $val
+    br $while-continue|0
+   end
+  end
+  local.get $res
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=4
+  local.get $4
+  local.get $i
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#set:n
+  local.get $res
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=4
+  local.get $4
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#trimLeadingZeros
+  local.get $res
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#toUint8ArrayWithSign (param $this i32) (result i32)
+  (local $byteArray i32)
+  (local $byteIndex i32)
+  (local $i i32)
+  (local $digit i32)
+  (local $shift i32)
+  (local $6 i32)
+  (local $7 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.get $this
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store
+  local.get $7
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+  i32.const 4
+  i32.mul
+  i32.const 1
+  i32.add
+  call $~lib/typedarray/Uint8Array#constructor
+  local.tee $byteArray
+  i32.store offset=4
+  local.get $byteArray
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store
+  local.get $7
+  i32.const 0
+  local.get $this
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=8
+  local.get $7
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:isNeg
+  if (result i32)
+   i32.const 255
+  else
+   i32.const 0
+  end
+  call $~lib/typedarray/Uint8Array#__set
+  i32.const 1
+  local.set $byteIndex
+  i32.const 0
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   local.get $this
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store
+   local.get $7
+   call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:n
+   i32.lt_s
+   if
+    local.get $this
+    local.set $7
+    global.get $~lib/memory/__stack_pointer
+    local.get $7
+    i32.store offset=8
+    local.get $7
+    call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#get:d
+    local.set $7
+    global.get $~lib/memory/__stack_pointer
+    local.get $7
+    i32.store
+    local.get $7
+    local.get $i
+    call $~lib/typedarray/Uint32Array#__get
+    local.set $digit
+    i32.const 0
+    local.set $shift
+    loop $for-loop|1
+     local.get $shift
+     i32.const 32
+     i32.lt_s
+     if
+      local.get $byteArray
+      local.set $7
+      global.get $~lib/memory/__stack_pointer
+      local.get $7
+      i32.store
+      local.get $7
+      local.get $byteIndex
+      local.tee $6
+      i32.const 1
+      i32.add
+      local.set $byteIndex
+      local.get $6
+      local.get $digit
+      local.get $shift
+      i32.shr_u
+      i32.const 255
+      i32.and
+      call $~lib/typedarray/Uint8Array#__set
+      local.get $shift
+      i32.const 8
+      i32.add
+      local.set $shift
+      br $for-loop|1
+     end
+    end
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  local.get $byteArray
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $7
+  return
+ )
+ (func $~lib/@artela/aspect-libs/common/helper/convert/toUint8Array<u64> (param $value i64) (result i32)
+  (local $valueBuffer i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $value
+  i64.const 0
+  i64.ne
+  i32.eqz
+  if
+   i32.const 0
+   i32.const 0
+   call $~lib/typedarray/Uint8Array#constructor
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $2
+   return
+  end
+  i32.const 0
+  local.set $valueBuffer
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 1
+  drop
+  global.get $~lib/memory/__stack_pointer
+  local.get $value
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt.fromUInt64
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/@artela/aspect-libs/common/wraptypes/bigint/BigInt#toUint8ArrayWithSign
+  local.tee $valueBuffer
+  i32.store offset=4
+  local.get $valueBuffer
+  i32.const 0
+  i32.eq
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 0
+   i32.const 0
+   call $~lib/typedarray/Uint8Array#constructor
+   local.tee $valueBuffer
+   i32.store offset=4
+  end
+  local.get $valueBuffer
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $2
@@ -19121,6 +26051,359 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64>#set<u64> (param $this i32) (param $value i64)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/@artela/aspect-libs/components/aspect/aspect-state/stateApi
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=12
+  local.get $2
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#get:key
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  local.get $value
+  call $~lib/@artela/aspect-libs/common/helper/convert/toUint8Array<u64>
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=8
+  local.get $2
+  call $~lib/@artela/aspect-libs/hostapi/aspect-state-api/AspectStateApi#set
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  i32.const 0
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#set:loaded
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/AspectTransientStorageApi#get (param $this i32) (param $key i32) (param $aspectId i32) (result i32)
+  (local $inputAspectId i32)
+  (local $aspectIdPtr i32)
+  (local $inputKey i32)
+  (local $inPtr i32)
+  (local $ret i32)
+  (local $bytes i32)
+  (local $9 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 20
+  memory.fill
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 0
+  global.set $~argumentsLength
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#constructor@varargs
+  local.tee $inputAspectId
+  i32.store
+  local.get $inputAspectId
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store offset=4
+  local.get $9
+  local.get $aspectId
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store offset=8
+  local.get $9
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#set
+  local.get $inputAspectId
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store offset=4
+  local.get $9
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#store
+  local.set $aspectIdPtr
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 672
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store offset=4
+  local.get $9
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AString#constructor
+  local.tee $inputKey
+  i32.store offset=12
+  local.get $inputKey
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store offset=4
+  local.get $9
+  local.get $key
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store offset=8
+  local.get $9
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AString#set
+  local.get $inputKey
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store offset=4
+  local.get $9
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AString#store
+  local.set $inPtr
+  local.get $aspectIdPtr
+  local.get $inPtr
+  call $~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/__AspectTransientStorageApi__.get
+  local.set $ret
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 0
+  global.set $~argumentsLength
+  i32.const 0
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#constructor@varargs
+  local.tee $bytes
+  i32.store offset=16
+  local.get $bytes
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store offset=4
+  local.get $9
+  local.get $ret
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#load
+  local.get $bytes
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  local.get $9
+  i32.store offset=4
+  local.get $9
+  call $~lib/@artela/aspect-libs/common/wraptypes/basic-types/AUint8Array#get
+  local.set $9
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $9
+  return
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#reload (param $this i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 28
+  memory.fill
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  global.get $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/transientStorageApi
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=12
+  local.get $1
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=24
+  local.get $1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#get:key
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=16
+  local.get $1
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=24
+  local.get $1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#get:aspectId
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=20
+  local.get $1
+  call $~lib/@artela/aspect-libs/hostapi/aspect-transient-storage-api/AspectTransientStorageApi#get
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=8
+  local.get $1
+  call $~lib/@artela/aspect-libs/common/helper/convert/fromUint8Array<~lib/string/String>
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#set:val
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  i32.const 1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#set:loaded
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#unwrap (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#get:loaded
+  i32.eqz
+  if
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store
+   local.get $1
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#reload
+  end
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#get:val
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>#constructor (param $this i32) (param $key i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 70
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  local.get $key
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=8
+  local.get $2
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>#constructor
+  local.tee $this
+  i32.store
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState#get<~lib/string/String> (param $this i32) (param $key i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  i32.const 0
+  local.get $key
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>#constructor
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
  (func $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>#set<~lib/string/String> (param $this i32) (param $value i32)
   (local $2 i32)
   global.get $~lib/memory/__stack_pointer
@@ -19178,30 +26461,4023 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $aspect/index/StoreAspect#postContractCall (param $this i32) (param $input i32)
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#constructor (param $this i32) (param $length i32) (result i32)
   (local $2 i32)
-  (local $currentCallMethod i32)
-  (local $4 i32)
-  (local $to i32)
-  (local $model i32)
-  (local $7 i32)
+  (local $3 i32)
+  (local $bufferSize i32)
+  (local $buffer i32)
+  (local $6 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 36
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.const 72
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#set:length_
+  local.get $length
+  i32.const 1073741820
+  i32.const 2
+  i32.shr_u
+  i32.gt_u
+  if
+   i32.const 528
+   i32.const 8176
+   i32.const 70
+   i32.const 60
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $length
+  local.tee $2
+  i32.const 8
+  local.tee $3
+  local.get $2
+  local.get $3
+  i32.gt_u
+  select
+  i32.const 2
+  i32.shl
+  local.set $bufferSize
+  global.get $~lib/memory/__stack_pointer
+  local.get $bufferSize
+  i32.const 1
+  call $~lib/rt/itcms/__new
+  local.tee $buffer
+  i32.store offset=8
+  i32.const 2
+  global.get $~lib/shared/runtime/Runtime.Incremental
+  i32.ne
+  drop
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=12
+  local.get $6
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $bufferSize
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $length
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#set:length_
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $6
+ )
+ (func $~lib/string/String#slice (param $this i32) (param $start i32) (param $end i32) (result i32)
+  (local $len i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  (local $9 i32)
+  (local $10 i32)
+  (local $11 i32)
+  (local $out i32)
+  (local $13 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  local.set $13
+  global.get $~lib/memory/__stack_pointer
+  local.get $13
+  i32.store
+  local.get $13
+  call $~lib/string/String#get:length
+  local.set $len
+  local.get $start
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $start
+   local.get $len
+   i32.add
+   local.tee $4
+   i32.const 0
+   local.tee $5
+   local.get $4
+   local.get $5
+   i32.gt_s
+   select
+  else
+   local.get $start
+   local.tee $6
+   local.get $len
+   local.tee $7
+   local.get $6
+   local.get $7
+   i32.lt_s
+   select
+  end
+  local.set $start
+  local.get $end
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $end
+   local.get $len
+   i32.add
+   local.tee $8
+   i32.const 0
+   local.tee $9
+   local.get $8
+   local.get $9
+   i32.gt_s
+   select
+  else
+   local.get $end
+   local.tee $10
+   local.get $len
+   local.tee $11
+   local.get $10
+   local.get $11
+   i32.lt_s
+   select
+  end
+  local.set $end
+  local.get $end
+  local.get $start
+  i32.sub
+  local.set $len
+  local.get $len
+  i32.const 0
+  i32.le_s
+  if
+   i32.const 672
+   local.set $13
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $13
+   return
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $len
+  i32.const 1
+  i32.shl
+  i32.const 2
+  call $~lib/rt/itcms/__new
+  local.tee $out
+  i32.store offset=4
+  local.get $out
+  local.get $this
+  local.get $start
+  i32.const 1
+  i32.shl
+  i32.add
+  local.get $len
+  i32.const 1
+  i32.shl
+  memory.copy
+  local.get $out
+  local.set $13
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $13
+  return
+ )
+ (func $~lib/array/Array<~lib/string/String>#__set (param $this i32) (param $index i32) (param $value i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.const 36
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/string/String>#get:length_
+  i32.ge_u
+  if
+   local.get $index
+   i32.const 0
+   i32.lt_s
+   if
+    i32.const 224
+    i32.const 8176
+    i32.const 130
+    i32.const 22
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $this
+   local.get $index
+   i32.const 1
+   i32.add
+   i32.const 2
+   i32.const 1
+   call $~lib/array/ensureCapacity
+   local.get $this
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   local.get $index
+   i32.const 1
+   i32.add
+   call $~lib/array/Array<~lib/string/String>#set:length_
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/string/String>#get:dataStart
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $value
+  i32.store
+  i32.const 1
+  drop
+  local.get $this
+  local.get $value
+  i32.const 1
+  call $~lib/rt/itcms/__link
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/string/String#indexOf (param $this i32) (param $search i32) (param $start i32) (result i32)
+  (local $searchLen i32)
+  (local $len i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  (local $searchStart i32)
+  (local $10 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $search
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store
+  local.get $10
+  call $~lib/string/String#get:length
+  local.set $searchLen
+  local.get $searchLen
+  i32.eqz
+  if
+   i32.const 0
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $10
+   return
+  end
+  local.get $this
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store
+  local.get $10
+  call $~lib/string/String#get:length
+  local.set $len
+  local.get $len
+  i32.eqz
+  if
+   i32.const -1
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $10
+   return
+  end
+  local.get $start
+  local.tee $5
+  i32.const 0
+  local.tee $6
+  local.get $5
+  local.get $6
+  i32.gt_s
+  select
+  local.tee $7
+  local.get $len
+  local.tee $8
+  local.get $7
+  local.get $8
+  i32.lt_s
+  select
+  local.set $searchStart
+  local.get $len
+  local.get $searchLen
+  i32.sub
+  local.set $len
+  loop $for-loop|0
+   local.get $searchStart
+   local.get $len
+   i32.le_s
+   if
+    local.get $this
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store
+    local.get $10
+    local.get $searchStart
+    local.get $search
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store offset=4
+    local.get $10
+    i32.const 0
+    local.get $searchLen
+    call $~lib/util/string/compareImpl
+    i32.eqz
+    if
+     local.get $searchStart
+     local.set $10
+     global.get $~lib/memory/__stack_pointer
+     i32.const 8
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     local.get $10
+     return
+    end
+    local.get $searchStart
+    i32.const 1
+    i32.add
+    local.set $searchStart
+    br $for-loop|0
+   end
+  end
+  i32.const -1
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $10
+  return
+ )
+ (func $~lib/array/Array<~lib/string/String>#push (param $this i32) (param $value i32) (result i32)
+  (local $oldLen i32)
+  (local $len i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/array/Array<~lib/string/String>#get:length_
+  local.set $oldLen
+  local.get $oldLen
+  i32.const 1
+  i32.add
+  local.set $len
+  local.get $this
+  local.get $len
+  i32.const 2
+  i32.const 1
+  call $~lib/array/ensureCapacity
+  i32.const 1
+  drop
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/array/Array<~lib/string/String>#get:dataStart
+  local.get $oldLen
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $value
+  i32.store
+  local.get $this
+  local.get $value
+  i32.const 1
+  call $~lib/rt/itcms/__link
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  local.get $len
+  call $~lib/array/Array<~lib/string/String>#set:length_
+  local.get $len
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+  return
+ )
+ (func $~lib/string/String#split (param $this i32) (param $separator i32) (param $limit i32) (result i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $length i32)
+  (local $sepLen i32)
+  (local $7 i32)
+  (local $8 i32)
+  (local $result i32)
+  (local $resultStart i32)
+  (local $i i32)
+  (local $charStr i32)
+  (local $result|13 i32)
+  (local $result|14 i32)
+  (local $end i32)
+  (local $start i32)
+  (local $i|17 i32)
+  (local $len i32)
+  (local $out i32)
+  (local $len|20 i32)
+  (local $out|21 i32)
+  (local $22 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 40
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 40
+  memory.fill
+  local.get $limit
+  i32.eqz
+  if
+   i32.const 0
+   i32.const 2
+   i32.const 73
+   i32.const 0
+   call $~lib/rt/__newArray
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   i32.const 40
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $22
+   return
+  end
+  local.get $separator
+  i32.const 0
+  i32.eq
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1
+   i32.const 2
+   i32.const 73
+   i32.const 0
+   call $~lib/rt/__newArray
+   local.tee $3
+   i32.store
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.load offset=4
+   local.tee $4
+   i32.store offset=4
+   local.get $3
+   i32.const 0
+   local.get $this
+   call $~lib/array/Array<~lib/string/String>#__set
+   local.get $3
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   i32.const 40
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $22
+   return
+  end
+  local.get $this
+  local.set $22
+  global.get $~lib/memory/__stack_pointer
+  local.get $22
+  i32.store offset=8
+  local.get $22
+  call $~lib/string/String#get:length
+  local.set $length
+  local.get $separator
+  local.set $22
+  global.get $~lib/memory/__stack_pointer
+  local.get $22
+  i32.store offset=8
+  local.get $22
+  call $~lib/string/String#get:length
+  local.set $sepLen
+  local.get $limit
+  i32.const 0
+  i32.lt_s
+  if
+   global.get $~lib/builtins/i32.MAX_VALUE
+   local.set $limit
+  end
+  local.get $sepLen
+  i32.eqz
+  if
+   local.get $length
+   i32.eqz
+   if
+    i32.const 0
+    i32.const 2
+    i32.const 73
+    i32.const 0
+    call $~lib/rt/__newArray
+    local.set $22
+    global.get $~lib/memory/__stack_pointer
+    i32.const 40
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $22
+    return
+   end
+   local.get $length
+   local.tee $7
+   local.get $limit
+   local.tee $8
+   local.get $7
+   local.get $8
+   i32.lt_s
+   select
+   local.set $length
+   global.get $~lib/memory/__stack_pointer
+   local.get $length
+   i32.const 2
+   i32.const 73
+   i32.const 0
+   call $~lib/rt/__newArray
+   local.tee $result
+   i32.store offset=12
+   local.get $result
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   local.get $22
+   i32.store offset=8
+   local.get $22
+   call $~lib/array/Array<~lib/string/String>#get:dataStart
+   local.set $resultStart
+   i32.const 0
+   local.set $i
+   loop $for-loop|0
+    local.get $i
+    local.get $length
+    i32.lt_s
+    if
+     global.get $~lib/memory/__stack_pointer
+     i32.const 2
+     i32.const 2
+     call $~lib/rt/itcms/__new
+     local.tee $charStr
+     i32.store offset=16
+     local.get $charStr
+     local.get $this
+     local.get $i
+     i32.const 1
+     i32.shl
+     i32.add
+     i32.load16_u
+     i32.store16
+     local.get $resultStart
+     local.get $i
+     i32.const 2
+     i32.shl
+     i32.add
+     local.get $charStr
+     i32.store
+     local.get $result
+     local.get $charStr
+     i32.const 1
+     call $~lib/rt/itcms/__link
+     local.get $i
+     i32.const 1
+     i32.add
+     local.set $i
+     br $for-loop|0
+    end
+   end
+   local.get $result
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   i32.const 40
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $22
+   return
+  else
+   local.get $length
+   i32.eqz
+   if
+    global.get $~lib/memory/__stack_pointer
+    i32.const 1
+    i32.const 2
+    i32.const 73
+    i32.const 0
+    call $~lib/rt/__newArray
+    local.tee $result|13
+    i32.store offset=20
+    local.get $result|13
+    local.set $22
+    global.get $~lib/memory/__stack_pointer
+    local.get $22
+    i32.store offset=8
+    local.get $22
+    call $~lib/array/Array<~lib/string/String>#get:dataStart
+    i32.const 672
+    i32.store
+    local.get $result|13
+    local.set $22
+    global.get $~lib/memory/__stack_pointer
+    i32.const 40
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $22
+    return
+   end
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 2
+  i32.const 73
+  i32.const 0
+  call $~lib/rt/__newArray
+  local.tee $result|14
+  i32.store offset=24
+  i32.const 0
+  local.set $end
+  i32.const 0
+  local.set $start
+  i32.const 0
+  local.set $i|17
+  loop $while-continue|1
+   local.get $this
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   local.get $22
+   i32.store offset=8
+   local.get $22
+   local.get $separator
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   local.get $22
+   i32.store offset=28
+   local.get $22
+   local.get $start
+   call $~lib/string/String#indexOf
+   local.tee $end
+   i32.const -1
+   i32.xor
+   if
+    local.get $end
+    local.get $start
+    i32.sub
+    local.set $len
+    local.get $len
+    i32.const 0
+    i32.gt_s
+    if
+     global.get $~lib/memory/__stack_pointer
+     local.get $len
+     i32.const 1
+     i32.shl
+     i32.const 2
+     call $~lib/rt/itcms/__new
+     local.tee $out
+     i32.store offset=32
+     local.get $out
+     local.get $this
+     local.get $start
+     i32.const 1
+     i32.shl
+     i32.add
+     local.get $len
+     i32.const 1
+     i32.shl
+     memory.copy
+     local.get $result|14
+     local.set $22
+     global.get $~lib/memory/__stack_pointer
+     local.get $22
+     i32.store offset=8
+     local.get $22
+     local.get $out
+     local.set $22
+     global.get $~lib/memory/__stack_pointer
+     local.get $22
+     i32.store offset=28
+     local.get $22
+     call $~lib/array/Array<~lib/string/String>#push
+     drop
+    else
+     local.get $result|14
+     local.set $22
+     global.get $~lib/memory/__stack_pointer
+     local.get $22
+     i32.store offset=8
+     local.get $22
+     i32.const 672
+     local.set $22
+     global.get $~lib/memory/__stack_pointer
+     local.get $22
+     i32.store offset=28
+     local.get $22
+     call $~lib/array/Array<~lib/string/String>#push
+     drop
+    end
+    local.get $i|17
+    i32.const 1
+    i32.add
+    local.tee $i|17
+    local.get $limit
+    i32.eq
+    if
+     local.get $result|14
+     local.set $22
+     global.get $~lib/memory/__stack_pointer
+     i32.const 40
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     local.get $22
+     return
+    end
+    local.get $end
+    local.get $sepLen
+    i32.add
+    local.set $start
+    br $while-continue|1
+   end
+  end
+  local.get $start
+  i32.eqz
+  if
+   local.get $result|14
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   local.get $22
+   i32.store offset=8
+   local.get $22
+   local.get $this
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   local.get $22
+   i32.store offset=28
+   local.get $22
+   call $~lib/array/Array<~lib/string/String>#push
+   drop
+   local.get $result|14
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   i32.const 40
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $22
+   return
+  end
+  local.get $length
+  local.get $start
+  i32.sub
+  local.set $len|20
+  local.get $len|20
+  i32.const 0
+  i32.gt_s
+  if
+   global.get $~lib/memory/__stack_pointer
+   local.get $len|20
+   i32.const 1
+   i32.shl
+   i32.const 2
+   call $~lib/rt/itcms/__new
+   local.tee $out|21
+   i32.store offset=36
+   local.get $out|21
+   local.get $this
+   local.get $start
+   i32.const 1
+   i32.shl
+   i32.add
+   local.get $len|20
+   i32.const 1
+   i32.shl
+   memory.copy
+   local.get $result|14
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   local.get $22
+   i32.store offset=8
+   local.get $22
+   local.get $out|21
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   local.get $22
+   i32.store offset=28
+   local.get $22
+   call $~lib/array/Array<~lib/string/String>#push
+   drop
+  else
+   local.get $result|14
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   local.get $22
+   i32.store offset=8
+   local.get $22
+   i32.const 672
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   local.get $22
+   i32.store offset=28
+   local.get $22
+   call $~lib/array/Array<~lib/string/String>#push
+   drop
+  end
+  local.get $result|14
+  local.set $22
+  global.get $~lib/memory/__stack_pointer
+  i32.const 40
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $22
+  return
+ )
+ (func $~lib/string/String#split@varargs (param $this i32) (param $separator i32) (param $limit i32) (result i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  block $2of2
+   block $1of2
+    block $0of2
+     block $outOfRange
+      global.get $~argumentsLength
+      br_table $0of2 $1of2 $2of2 $outOfRange
+     end
+     unreachable
+    end
+    i32.const 0
+    local.set $separator
+   end
+   global.get $~lib/builtins/i32.MAX_VALUE
+   local.set $limit
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  local.get $separator
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  local.get $limit
+  call $~lib/string/String#split
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+ )
+ (func $~lib/array/Array<~lib/string/String>#get:length (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/array/Array<~lib/string/String>#get:length_
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/array/Array<~lib/string/String>#__get (param $this i32) (param $index i32) (result i32)
+  (local $value i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/string/String>#get:length_
+  i32.ge_u
+  if
+   i32.const 224
+   i32.const 8176
+   i32.const 114
+   i32.const 42
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/string/String>#get:dataStart
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $value
+  i32.store offset=4
+  i32.const 1
+  drop
+  i32.const 0
+  i32.eqz
+  drop
+  local.get $value
+  i32.eqz
+  if
+   i32.const 8432
+   i32.const 8176
+   i32.const 118
+   i32.const 40
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $value
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+  return
+ )
+ (func $~lib/array/Array<f64>#constructor (param $this i32) (param $length i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $bufferSize i32)
+  (local $buffer i32)
+  (local $6 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.const 74
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<f64>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<f64>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<f64>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<f64>#set:length_
+  local.get $length
+  i32.const 1073741820
+  i32.const 3
+  i32.shr_u
+  i32.gt_u
+  if
+   i32.const 528
+   i32.const 8176
+   i32.const 70
+   i32.const 60
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $length
+  local.tee $2
+  i32.const 8
+  local.tee $3
+  local.get $2
+  local.get $3
+  i32.gt_u
+  select
+  i32.const 3
+  i32.shl
+  local.set $bufferSize
+  global.get $~lib/memory/__stack_pointer
+  local.get $bufferSize
+  i32.const 1
+  call $~lib/rt/itcms/__new
+  local.tee $buffer
+  i32.store offset=8
+  i32.const 2
+  global.get $~lib/shared/runtime/Runtime.Incremental
+  i32.ne
+  drop
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=12
+  local.get $6
+  call $~lib/array/Array<f64>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  call $~lib/array/Array<f64>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $bufferSize
+  call $~lib/array/Array<f64>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $length
+  call $~lib/array/Array<f64>#set:length_
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $6
+ )
+ (func $~lib/util/string/strtod (param $str i32) (result f64)
+  (local $len i32)
+  (local $ptr i32)
+  (local $code i32)
+  (local $sign f64)
+  (local $savedPtr i32)
+  (local $pointed i32)
+  (local $consumed i32)
+  (local $position i32)
+  (local $x i64)
+  (local $noDigits i32)
+  (local $digit i32)
+  (local $12 i32)
+  (local $13 i32)
+  (local $ptr|14 i32)
+  (local $len|15 i32)
+  (local $sign|16 i32)
+  (local $magnitude i32)
+  (local $code|18 i32)
+  (local $digit|19 i32)
+  (local $significand i64)
+  (local $exp i32)
+  (local $significandf f64)
+  (local $n i32)
+  (local $24 i32)
+  (local $25 i32)
+  (local $n|26 i32)
+  (local $n|27 i32)
+  (local $significand|28 i64)
+  (local $exp|29 i32)
+  (local $shift i64)
+  (local $q i64)
+  (local $r i64)
+  (local $s i64)
+  (local $b i64)
+  (local $q|35 i64)
+  (local $r|36 i64)
+  (local $s|37 i64)
+  (local $significand|38 i64)
+  (local $exp|39 i32)
+  (local $shift|40 i64)
+  (local $a i64)
+  (local $b|42 i32)
+  (local $low i64)
+  (local $high i64)
+  (local $overflow i32)
+  (local $space i32)
+  (local $revspace i64)
+  (local $a|48 i64)
+  (local $b|49 i32)
+  (local $low|50 i64)
+  (local $high|51 i64)
+  (local $overflow|52 i32)
+  (local $space|53 i32)
+  (local $revspace|54 i64)
+  (local $55 i32)
+  (local $56 f64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $str
+  local.set $55
+  global.get $~lib/memory/__stack_pointer
+  local.get $55
+  i32.store
+  local.get $55
+  call $~lib/string/String#get:length
+  local.set $len
+  local.get $len
+  i32.eqz
+  if
+   f64.const nan:0x8000000000000
+   local.set $56
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $56
+   return
+  end
+  local.get $str
+  local.set $ptr
+  local.get $ptr
+  i32.load16_u
+  local.set $code
+  f64.const 1
+  local.set $sign
+  loop $while-continue|0
+   local.get $len
+   if (result i32)
+    local.get $code
+    call $~lib/util/string/isSpace
+   else
+    i32.const 0
+   end
+   if
+    local.get $ptr
+    i32.const 2
+    i32.add
+    local.tee $ptr
+    i32.load16_u
+    local.set $code
+    local.get $len
+    i32.const 1
+    i32.sub
+    local.set $len
+    br $while-continue|0
+   end
+  end
+  local.get $len
+  i32.eqz
+  if
+   f64.const nan:0x8000000000000
+   local.set $56
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $56
+   return
+  end
+  local.get $code
+  i32.const 45
+  i32.eq
+  if
+   local.get $len
+   i32.const 1
+   i32.sub
+   local.tee $len
+   i32.eqz
+   if
+    f64.const nan:0x8000000000000
+    local.set $56
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $56
+    return
+   end
+   local.get $ptr
+   i32.const 2
+   i32.add
+   local.tee $ptr
+   i32.load16_u
+   local.set $code
+   f64.const -1
+   local.set $sign
+  else
+   local.get $code
+   i32.const 43
+   i32.eq
+   if
+    local.get $len
+    i32.const 1
+    i32.sub
+    local.tee $len
+    i32.eqz
+    if
+     f64.const nan:0x8000000000000
+     local.set $56
+     global.get $~lib/memory/__stack_pointer
+     i32.const 4
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     local.get $56
+     return
+    end
+    local.get $ptr
+    i32.const 2
+    i32.add
+    local.tee $ptr
+    i32.load16_u
+    local.set $code
+   end
+  end
+  local.get $len
+  i32.const 8
+  i32.ge_s
+  if (result i32)
+   local.get $code
+   i32.const 73
+   i32.eq
+  else
+   i32.const 0
+  end
+  if
+   local.get $ptr
+   i64.load
+   i64.const 29555310648492105
+   i64.eq
+   if (result i32)
+    local.get $ptr
+    i64.load offset=8
+    i64.const 34058970405077102
+    i64.eq
+   else
+    i32.const 0
+   end
+   if
+    f64.const inf
+    local.get $sign
+    f64.mul
+    local.set $56
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $56
+    return
+   end
+   f64.const nan:0x8000000000000
+   local.set $56
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $56
+   return
+  end
+  local.get $code
+  i32.const 46
+  i32.ne
+  if (result i32)
+   local.get $code
+   i32.const 48
+   i32.sub
+   i32.const 10
+   i32.ge_u
+  else
+   i32.const 0
+  end
+  if
+   f64.const nan:0x8000000000000
+   local.set $56
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $56
+   return
+  end
+  local.get $ptr
+  local.set $savedPtr
+  loop $while-continue|1
+   local.get $code
+   i32.const 48
+   i32.eq
+   if
+    local.get $ptr
+    i32.const 2
+    i32.add
+    local.tee $ptr
+    i32.load16_u
+    local.set $code
+    local.get $len
+    i32.const 1
+    i32.sub
+    local.set $len
+    br $while-continue|1
+   end
+  end
+  local.get $len
+  i32.const 0
+  i32.le_s
+  if
+   f64.const 0
+   local.get $sign
+   f64.mul
+   local.set $56
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $56
+   return
+  end
+  i32.const 0
+  local.set $pointed
+  i32.const 0
+  local.set $consumed
+  i32.const 0
+  local.set $position
+  i64.const 0
+  local.set $x
+  local.get $code
+  i32.const 46
+  i32.eq
+  if
+   local.get $savedPtr
+   local.get $ptr
+   i32.sub
+   i32.eqz
+   local.set $noDigits
+   local.get $ptr
+   i32.const 2
+   i32.add
+   local.set $ptr
+   local.get $len
+   i32.const 1
+   i32.sub
+   local.set $len
+   local.get $len
+   i32.eqz
+   if (result i32)
+    local.get $noDigits
+   else
+    i32.const 0
+   end
+   if
+    f64.const nan:0x8000000000000
+    local.set $56
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $56
+    return
+   end
+   i32.const 1
+   local.set $pointed
+   loop $for-loop|2
+    local.get $ptr
+    i32.load16_u
+    local.tee $code
+    i32.const 48
+    i32.eq
+    if
+     local.get $len
+     i32.const 1
+     i32.sub
+     local.set $len
+     local.get $position
+     i32.const 1
+     i32.sub
+     local.set $position
+     local.get $ptr
+     i32.const 2
+     i32.add
+     local.set $ptr
+     br $for-loop|2
+    end
+   end
+   local.get $len
+   i32.const 0
+   i32.le_s
+   if
+    f64.const 0
+    local.get $sign
+    f64.mul
+    local.set $56
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $56
+    return
+   end
+   local.get $position
+   i32.eqz
+   if (result i32)
+    local.get $noDigits
+   else
+    i32.const 0
+   end
+   if (result i32)
+    local.get $code
+    i32.const 48
+    i32.sub
+    i32.const 10
+    i32.ge_u
+   else
+    i32.const 0
+   end
+   if
+    f64.const nan:0x8000000000000
+    local.set $56
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $56
+    return
+   end
+  end
+  local.get $code
+  i32.const 48
+  i32.sub
+  local.set $digit
+  block $for-break3
+   loop $for-loop|3
+    local.get $digit
+    i32.const 10
+    i32.lt_u
+    if (result i32)
+     i32.const 1
+    else
+     local.get $code
+     i32.const 46
+     i32.eq
+     if (result i32)
+      local.get $pointed
+      i32.eqz
+     else
+      i32.const 0
+     end
+    end
+    if
+     local.get $digit
+     i32.const 10
+     i32.lt_u
+     if
+      local.get $consumed
+      i32.const 19
+      i32.lt_s
+      if (result i64)
+       i64.const 10
+       local.get $x
+       i64.mul
+       local.get $digit
+       i64.extend_i32_u
+       i64.add
+      else
+       local.get $x
+       local.get $digit
+       i32.eqz
+       i32.eqz
+       i64.extend_i32_u
+       i64.or
+      end
+      local.set $x
+      local.get $consumed
+      i32.const 1
+      i32.add
+      local.set $consumed
+     else
+      local.get $consumed
+      local.set $position
+      i32.const 1
+      local.set $pointed
+     end
+     local.get $len
+     i32.const 1
+     i32.sub
+     local.tee $len
+     i32.eqz
+     if
+      br $for-break3
+     end
+     local.get $ptr
+     i32.const 2
+     i32.add
+     local.tee $ptr
+     i32.load16_u
+     local.set $code
+     local.get $code
+     i32.const 48
+     i32.sub
+     local.set $digit
+     br $for-loop|3
+    end
+   end
+  end
+  local.get $pointed
+  i32.eqz
+  if
+   local.get $consumed
+   local.set $position
+  end
+  block $~lib/util/string/scientific|inlined.0 (result f64)
+   local.get $x
+   local.set $significand
+   local.get $position
+   i32.const 19
+   local.tee $12
+   local.get $consumed
+   local.tee $13
+   local.get $12
+   local.get $13
+   i32.lt_s
+   select
+   i32.sub
+   block $~lib/util/string/parseExp|inlined.0 (result i32)
+    local.get $ptr
+    local.set $ptr|14
+    local.get $len
+    local.set $len|15
+    i32.const 1
+    local.set $sign|16
+    i32.const 0
+    local.set $magnitude
+    local.get $ptr|14
+    i32.load16_u
+    local.set $code|18
+    local.get $code|18
+    i32.const 32
+    i32.or
+    i32.const 101
+    i32.ne
+    if
+     i32.const 0
+     br $~lib/util/string/parseExp|inlined.0
+    end
+    local.get $len|15
+    i32.const 1
+    i32.sub
+    local.tee $len|15
+    i32.eqz
+    if
+     i32.const 0
+     br $~lib/util/string/parseExp|inlined.0
+    end
+    local.get $ptr|14
+    i32.const 2
+    i32.add
+    local.tee $ptr|14
+    i32.load16_u
+    local.set $code|18
+    local.get $code|18
+    i32.const 45
+    i32.eq
+    if
+     local.get $len|15
+     i32.const 1
+     i32.sub
+     local.tee $len|15
+     i32.eqz
+     if
+      i32.const 0
+      br $~lib/util/string/parseExp|inlined.0
+     end
+     local.get $ptr|14
+     i32.const 2
+     i32.add
+     local.tee $ptr|14
+     i32.load16_u
+     local.set $code|18
+     i32.const -1
+     local.set $sign|16
+    else
+     local.get $code|18
+     i32.const 43
+     i32.eq
+     if
+      local.get $len|15
+      i32.const 1
+      i32.sub
+      local.tee $len|15
+      i32.eqz
+      if
+       i32.const 0
+       br $~lib/util/string/parseExp|inlined.0
+      end
+      local.get $ptr|14
+      i32.const 2
+      i32.add
+      local.tee $ptr|14
+      i32.load16_u
+      local.set $code|18
+     end
+    end
+    loop $while-continue|4
+     local.get $code|18
+     i32.const 48
+     i32.eq
+     if
+      local.get $len|15
+      i32.const 1
+      i32.sub
+      local.tee $len|15
+      i32.eqz
+      if
+       i32.const 0
+       br $~lib/util/string/parseExp|inlined.0
+      end
+      local.get $ptr|14
+      i32.const 2
+      i32.add
+      local.tee $ptr|14
+      i32.load16_u
+      local.set $code|18
+      br $while-continue|4
+     end
+    end
+    local.get $code|18
+    i32.const 48
+    i32.sub
+    local.set $digit|19
+    loop $for-loop|5
+     local.get $len|15
+     if (result i32)
+      local.get $digit|19
+      i32.const 10
+      i32.lt_u
+     else
+      i32.const 0
+     end
+     if
+      local.get $magnitude
+      i32.const 3200
+      i32.ge_s
+      if
+       local.get $sign|16
+       i32.const 3200
+       i32.mul
+       br $~lib/util/string/parseExp|inlined.0
+      end
+      i32.const 10
+      local.get $magnitude
+      i32.mul
+      local.get $digit|19
+      i32.add
+      local.set $magnitude
+      local.get $ptr|14
+      i32.const 2
+      i32.add
+      local.tee $ptr|14
+      i32.load16_u
+      local.set $code|18
+      local.get $len|15
+      i32.const 1
+      i32.sub
+      local.set $len|15
+      local.get $code|18
+      i32.const 48
+      i32.sub
+      local.set $digit|19
+      br $for-loop|5
+     end
+    end
+    local.get $sign|16
+    local.get $magnitude
+    i32.mul
+    br $~lib/util/string/parseExp|inlined.0
+   end
+   i32.add
+   local.set $exp
+   local.get $significand
+   i64.const 0
+   i64.ne
+   i32.eqz
+   if (result i32)
+    i32.const 1
+   else
+    local.get $exp
+    i32.const -342
+    i32.lt_s
+   end
+   if
+    f64.const 0
+    br $~lib/util/string/scientific|inlined.0
+   end
+   local.get $exp
+   i32.const 308
+   i32.gt_s
+   if
+    f64.const inf
+    br $~lib/util/string/scientific|inlined.0
+   end
+   local.get $significand
+   f64.convert_i64_u
+   local.set $significandf
+   local.get $exp
+   i32.eqz
+   if
+    local.get $significandf
+    br $~lib/util/string/scientific|inlined.0
+   end
+   local.get $exp
+   i32.const 22
+   i32.gt_s
+   if (result i32)
+    local.get $exp
+    i32.const 22
+    i32.const 15
+    i32.add
+    i32.le_s
+   else
+    i32.const 0
+   end
+   if
+    local.get $significandf
+    block $~lib/util/string/pow10|inlined.0 (result f64)
+     local.get $exp
+     i32.const 22
+     i32.sub
+     local.set $n
+     i32.const 8576
+     local.get $n
+     i32.const 3
+     i32.shl
+     i32.add
+     f64.load
+     br $~lib/util/string/pow10|inlined.0
+    end
+    f64.mul
+    local.set $significandf
+    i32.const 22
+    local.set $exp
+   end
+   local.get $significand
+   i64.const 9007199254740991
+   i64.le_u
+   if (result i32)
+    local.get $exp
+    local.tee $24
+    i32.const 31
+    i32.shr_s
+    local.tee $25
+    local.get $24
+    i32.add
+    local.get $25
+    i32.xor
+    i32.const 22
+    i32.le_s
+   else
+    i32.const 0
+   end
+   if
+    local.get $exp
+    i32.const 0
+    i32.gt_s
+    if
+     local.get $significandf
+     block $~lib/util/string/pow10|inlined.1 (result f64)
+      local.get $exp
+      local.set $n|26
+      i32.const 8576
+      local.get $n|26
+      i32.const 3
+      i32.shl
+      i32.add
+      f64.load
+      br $~lib/util/string/pow10|inlined.1
+     end
+     f64.mul
+     br $~lib/util/string/scientific|inlined.0
+    end
+    local.get $significandf
+    block $~lib/util/string/pow10|inlined.2 (result f64)
+     i32.const 0
+     local.get $exp
+     i32.sub
+     local.set $n|27
+     i32.const 8576
+     local.get $n|27
+     i32.const 3
+     i32.shl
+     i32.add
+     f64.load
+     br $~lib/util/string/pow10|inlined.2
+    end
+    f64.div
+    br $~lib/util/string/scientific|inlined.0
+   else
+    local.get $exp
+    i32.const 0
+    i32.lt_s
+    if
+     block $~lib/util/string/scaledown|inlined.0 (result f64)
+      local.get $significand
+      local.set $significand|28
+      local.get $exp
+      local.set $exp|29
+      local.get $significand|28
+      i64.clz
+      local.set $shift
+      local.get $significand|28
+      local.get $shift
+      i64.shl
+      local.set $significand|28
+      local.get $exp|29
+      i64.extend_i32_s
+      local.get $shift
+      i64.sub
+      local.set $shift
+      loop $for-loop|6
+       local.get $exp|29
+       i32.const -14
+       i32.le_s
+       if
+        local.get $significand|28
+        i64.const 6103515625
+        i64.div_u
+        local.set $q
+        local.get $significand|28
+        i64.const 6103515625
+        i64.rem_u
+        local.set $r
+        local.get $q
+        i64.clz
+        local.set $s
+        local.get $q
+        local.get $s
+        i64.shl
+        f64.const 0.00004294967296
+        local.get $r
+        local.get $s
+        i64.const 18
+        i64.sub
+        i64.shl
+        f64.convert_i64_u
+        f64.mul
+        f64.nearest
+        i64.trunc_sat_f64_u
+        i64.add
+        local.set $significand|28
+        local.get $shift
+        local.get $s
+        i64.sub
+        local.set $shift
+        local.get $exp|29
+        i32.const 14
+        i32.add
+        local.set $exp|29
+        br $for-loop|6
+       end
+      end
+      i32.const 5
+      i32.const 0
+      local.get $exp|29
+      i32.sub
+      call $~lib/math/ipow32
+      i64.extend_i32_s
+      local.set $b
+      local.get $significand|28
+      local.get $b
+      i64.div_u
+      local.set $q|35
+      local.get $significand|28
+      local.get $b
+      i64.rem_u
+      local.set $r|36
+      local.get $q|35
+      i64.clz
+      local.set $s|37
+      local.get $q|35
+      local.get $s|37
+      i64.shl
+      local.get $r|36
+      f64.convert_i64_u
+      i64.reinterpret_f64
+      local.get $s|37
+      i64.const 52
+      i64.shl
+      i64.add
+      f64.reinterpret_i64
+      local.get $b
+      f64.convert_i64_u
+      f64.div
+      i64.trunc_sat_f64_u
+      i64.add
+      local.set $significand|28
+      local.get $shift
+      local.get $s|37
+      i64.sub
+      local.set $shift
+      local.get $significand|28
+      f64.convert_i64_u
+      local.get $shift
+      i32.wrap_i64
+      call $~lib/math/NativeMath.scalbn
+      br $~lib/util/string/scaledown|inlined.0
+     end
+     br $~lib/util/string/scientific|inlined.0
+    else
+     block $~lib/util/string/scaleup|inlined.0 (result f64)
+      local.get $significand
+      local.set $significand|38
+      local.get $exp
+      local.set $exp|39
+      local.get $significand|38
+      i64.ctz
+      local.set $shift|40
+      local.get $significand|38
+      local.get $shift|40
+      i64.shr_u
+      local.set $significand|38
+      local.get $shift|40
+      local.get $exp|39
+      i64.extend_i32_s
+      i64.add
+      local.set $shift|40
+      local.get $shift|40
+      global.set $~lib/util/string/__fixmulShift
+      loop $for-loop|7
+       local.get $exp|39
+       i32.const 13
+       i32.ge_s
+       if
+        block $~lib/util/string/fixmul|inlined.0 (result i64)
+         local.get $significand|38
+         local.set $a
+         i32.const 1220703125
+         local.set $b|42
+         local.get $a
+         i64.const 4294967295
+         i64.and
+         local.get $b|42
+         i64.extend_i32_u
+         i64.mul
+         local.set $low
+         local.get $a
+         i64.const 32
+         i64.shr_u
+         local.get $b|42
+         i64.extend_i32_u
+         i64.mul
+         local.get $low
+         i64.const 32
+         i64.shr_u
+         i64.add
+         local.set $high
+         local.get $high
+         i64.const 32
+         i64.shr_u
+         i32.wrap_i64
+         local.set $overflow
+         local.get $overflow
+         i32.clz
+         local.set $space
+         i64.const 32
+         local.get $space
+         i64.extend_i32_u
+         i64.sub
+         local.set $revspace
+         global.get $~lib/util/string/__fixmulShift
+         local.get $revspace
+         i64.add
+         global.set $~lib/util/string/__fixmulShift
+         local.get $high
+         local.get $space
+         i64.extend_i32_u
+         i64.shl
+         local.get $low
+         i64.const 4294967295
+         i64.and
+         local.get $revspace
+         i64.shr_u
+         i64.or
+         local.get $low
+         local.get $space
+         i64.extend_i32_u
+         i64.shl
+         i64.const 31
+         i64.shr_u
+         i64.const 1
+         i64.and
+         i64.add
+         br $~lib/util/string/fixmul|inlined.0
+        end
+        local.set $significand|38
+        local.get $exp|39
+        i32.const 13
+        i32.sub
+        local.set $exp|39
+        br $for-loop|7
+       end
+      end
+      block $~lib/util/string/fixmul|inlined.1 (result i64)
+       local.get $significand|38
+       local.set $a|48
+       i32.const 5
+       local.get $exp|39
+       call $~lib/math/ipow32
+       local.set $b|49
+       local.get $a|48
+       i64.const 4294967295
+       i64.and
+       local.get $b|49
+       i64.extend_i32_u
+       i64.mul
+       local.set $low|50
+       local.get $a|48
+       i64.const 32
+       i64.shr_u
+       local.get $b|49
+       i64.extend_i32_u
+       i64.mul
+       local.get $low|50
+       i64.const 32
+       i64.shr_u
+       i64.add
+       local.set $high|51
+       local.get $high|51
+       i64.const 32
+       i64.shr_u
+       i32.wrap_i64
+       local.set $overflow|52
+       local.get $overflow|52
+       i32.clz
+       local.set $space|53
+       i64.const 32
+       local.get $space|53
+       i64.extend_i32_u
+       i64.sub
+       local.set $revspace|54
+       global.get $~lib/util/string/__fixmulShift
+       local.get $revspace|54
+       i64.add
+       global.set $~lib/util/string/__fixmulShift
+       local.get $high|51
+       local.get $space|53
+       i64.extend_i32_u
+       i64.shl
+       local.get $low|50
+       i64.const 4294967295
+       i64.and
+       local.get $revspace|54
+       i64.shr_u
+       i64.or
+       local.get $low|50
+       local.get $space|53
+       i64.extend_i32_u
+       i64.shl
+       i64.const 31
+       i64.shr_u
+       i64.const 1
+       i64.and
+       i64.add
+       br $~lib/util/string/fixmul|inlined.1
+      end
+      local.set $significand|38
+      global.get $~lib/util/string/__fixmulShift
+      local.set $shift|40
+      local.get $significand|38
+      f64.convert_i64_u
+      local.get $shift|40
+      i32.wrap_i64
+      call $~lib/math/NativeMath.scalbn
+      br $~lib/util/string/scaleup|inlined.0
+     end
+     br $~lib/util/string/scientific|inlined.0
+    end
+    unreachable
+   end
+   unreachable
+  end
+  local.get $sign
+  f64.copysign
+  local.set $56
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $56
+  return
+ )
+ (func $~lib/string/parseFloat (param $str i32) (result f64)
+  (local $1 i32)
+  (local $2 f64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $str
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/util/string/strtod
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/array/Array<f64>#__set (param $this i32) (param $index i32) (param $value f64)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<f64>#get:length_
+  i32.ge_u
+  if
+   local.get $index
+   i32.const 0
+   i32.lt_s
+   if
+    i32.const 224
+    i32.const 8176
+    i32.const 130
+    i32.const 22
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $this
+   local.get $index
+   i32.const 1
+   i32.add
+   i32.const 3
+   i32.const 1
+   call $~lib/array/ensureCapacity
+   local.get $this
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   local.get $index
+   i32.const 1
+   i32.add
+   call $~lib/array/Array<f64>#set:length_
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<f64>#get:dataStart
+  local.get $index
+  i32.const 3
+  i32.shl
+  i32.add
+  local.get $value
+  f64.store
+  i32.const 0
+  drop
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/typedarray/Float64Array#constructor (param $this i32) (param $length i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 71
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  local.get $length
+  i32.const 3
+  call $~lib/arraybuffer/ArrayBufferView#constructor
+  local.tee $this
+  i32.store
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/array/Array<f64>#get:length (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/array/Array<f64>#get:length_
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/array/Array<f64>#__get (param $this i32) (param $index i32) (result f64)
+  (local $value f64)
+  (local $3 i32)
+  (local $4 f64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<f64>#get:length_
+  i32.ge_u
+  if
+   i32.const 224
+   i32.const 8176
+   i32.const 114
+   i32.const 42
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<f64>#get:dataStart
+  local.get $index
+  i32.const 3
+  i32.shl
+  i32.add
+  f64.load
+  local.set $value
+  i32.const 0
+  drop
+  local.get $value
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+  return
+ )
+ (func $~lib/typedarray/Float64Array#__set (param $this i32) (param $index i32) (param $value f64)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  i32.const 3
+  i32.shr_u
+  i32.ge_u
+  if
+   i32.const 224
+   i32.const 4480
+   i32.const 1457
+   i32.const 64
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/arraybuffer/ArrayBufferView#get:dataStart
+  local.get $index
+  i32.const 3
+  i32.shl
+  i32.add
+  local.get $value
+  f64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#push (param $this i32) (param $value i32) (result i32)
+  (local $oldLen i32)
+  (local $len i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length_
+  local.set $oldLen
+  local.get $oldLen
+  i32.const 1
+  i32.add
+  local.set $len
+  local.get $this
+  local.get $len
+  i32.const 2
+  i32.const 1
+  call $~lib/array/ensureCapacity
+  i32.const 1
+  drop
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:dataStart
+  local.get $oldLen
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $value
+  i32.store
+  local.get $this
+  local.get $value
+  i32.const 1
+  call $~lib/rt/itcms/__link
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  local.get $len
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#set:length_
+  local.get $len
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+  return
+ )
+ (func $aspect/index/StoreAspect#jsonStringToObject (param $this i32) (param $str i32) (result i32)
+  (local $result i32)
+  (local $strArr i32)
+  (local $i i32)
+  (local $strNumArr i32)
+  (local $numArr i32)
+  (local $j i32)
+  (local $floatArr i32)
+  (local $j|9 i32)
+  (local $10 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 32
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 32
+  memory.fill
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 0
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#constructor
+  local.tee $result
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $str
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store offset=12
+  local.get $10
+  i32.const 1
+  i32.const -1
+  call $~lib/string/String#slice
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store offset=4
+  local.get $10
+  i32.const 8400
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store offset=8
+  local.get $10
+  i32.const 1
+  global.set $~argumentsLength
+  i32.const 0
+  call $~lib/string/String#split@varargs
+  local.tee $strArr
+  i32.store offset=16
+  i32.const 0
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   local.get $strArr
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   local.get $10
+   i32.store offset=4
+   local.get $10
+   call $~lib/array/Array<~lib/string/String>#get:length
+   i32.lt_s
+   if
+    global.get $~lib/memory/__stack_pointer
+    local.get $strArr
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store offset=12
+    local.get $10
+    local.get $i
+    call $~lib/array/Array<~lib/string/String>#__get
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store offset=4
+    local.get $10
+    i32.const 8560
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store offset=8
+    local.get $10
+    i32.const 1
+    global.set $~argumentsLength
+    i32.const 0
+    call $~lib/string/String#split@varargs
+    local.tee $strNumArr
+    i32.store offset=20
+    global.get $~lib/memory/__stack_pointer
+    i32.const 0
+    local.get $strNumArr
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store offset=4
+    local.get $10
+    call $~lib/array/Array<~lib/string/String>#get:length
+    call $~lib/array/Array<f64>#constructor
+    local.tee $numArr
+    i32.store offset=24
+    i32.const 0
+    local.set $j
+    loop $for-loop|1
+     local.get $j
+     local.get $strNumArr
+     local.set $10
+     global.get $~lib/memory/__stack_pointer
+     local.get $10
+     i32.store offset=4
+     local.get $10
+     call $~lib/array/Array<~lib/string/String>#get:length
+     i32.lt_s
+     if
+      local.get $numArr
+      local.set $10
+      global.get $~lib/memory/__stack_pointer
+      local.get $10
+      i32.store offset=4
+      local.get $10
+      local.get $j
+      local.get $strNumArr
+      local.set $10
+      global.get $~lib/memory/__stack_pointer
+      local.get $10
+      i32.store offset=12
+      local.get $10
+      local.get $j
+      call $~lib/array/Array<~lib/string/String>#__get
+      local.set $10
+      global.get $~lib/memory/__stack_pointer
+      local.get $10
+      i32.store offset=8
+      local.get $10
+      call $~lib/string/parseFloat
+      call $~lib/array/Array<f64>#__set
+      local.get $j
+      i32.const 1
+      i32.add
+      local.set $j
+      br $for-loop|1
+     end
+    end
+    global.get $~lib/memory/__stack_pointer
+    i32.const 0
+    local.get $numArr
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store offset=4
+    local.get $10
+    call $~lib/array/Array<f64>#get:length
+    call $~lib/typedarray/Float64Array#constructor
+    local.tee $floatArr
+    i32.store offset=28
+    i32.const 0
+    local.set $j|9
+    loop $for-loop|2
+     local.get $j|9
+     local.get $numArr
+     local.set $10
+     global.get $~lib/memory/__stack_pointer
+     local.get $10
+     i32.store offset=4
+     local.get $10
+     call $~lib/array/Array<f64>#get:length
+     i32.lt_s
+     if
+      local.get $floatArr
+      local.set $10
+      global.get $~lib/memory/__stack_pointer
+      local.get $10
+      i32.store offset=4
+      local.get $10
+      local.get $j|9
+      local.get $numArr
+      local.set $10
+      global.get $~lib/memory/__stack_pointer
+      local.get $10
+      i32.store offset=8
+      local.get $10
+      local.get $j|9
+      call $~lib/array/Array<f64>#__get
+      call $~lib/typedarray/Float64Array#__set
+      local.get $j|9
+      i32.const 1
+      i32.add
+      local.set $j|9
+      br $for-loop|2
+     end
+    end
+    local.get $result
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store offset=4
+    local.get $10
+    local.get $floatArr
+    local.set $10
+    global.get $~lib/memory/__stack_pointer
+    local.get $10
+    i32.store offset=8
+    local.get $10
+    call $~lib/array/Array<~lib/typedarray/Float64Array>#push
+    drop
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  local.get $result
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  i32.const 32
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $10
+  return
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#get:length (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length_
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#__get (param $this i32) (param $index i32) (result i32)
+  (local $value i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length_
+  i32.ge_u
+  if
+   i32.const 224
+   i32.const 8176
+   i32.const 114
+   i32.const 42
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:dataStart
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $value
+  i32.store offset=4
+  i32.const 1
+  drop
+  i32.const 0
+  i32.eqz
+  drop
+  local.get $value
+  i32.eqz
+  if
+   i32.const 8432
+   i32.const 8176
+   i32.const 118
+   i32.const 40
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $value
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+  return
+ )
+ (func $~lib/typedarray/Float64Array#get:length (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store
+  local.get $1
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  i32.const 3
+  i32.shr_u
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#__set (param $this i32) (param $index i32) (param $value i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length_
+  i32.ge_u
+  if
+   local.get $index
+   i32.const 0
+   i32.lt_s
+   if
+    i32.const 224
+    i32.const 8176
+    i32.const 130
+    i32.const 22
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $this
+   local.get $index
+   i32.const 1
+   i32.add
+   i32.const 2
+   i32.const 1
+   call $~lib/array/ensureCapacity
+   local.get $this
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   local.get $index
+   i32.const 1
+   i32.add
+   call $~lib/array/Array<~lib/typedarray/Float64Array>#set:length_
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:dataStart
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $value
+  i32.store
+  i32.const 1
+  drop
+  local.get $this
+  local.get $value
+  i32.const 1
+  call $~lib/rt/itcms/__link
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/typedarray/Float64Array#__get (param $this i32) (param $index i32) (result f64)
+  (local $2 i32)
+  (local $3 f64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/arraybuffer/ArrayBufferView#get:byteLength
+  i32.const 3
+  i32.shr_u
+  i32.ge_u
+  if
+   i32.const 224
+   i32.const 4480
+   i32.const 1446
+   i32.const 64
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/arraybuffer/ArrayBufferView#get:dataStart
+  local.get $index
+  i32.const 3
+  i32.shl
+  i32.add
+  f64.load
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+  return
+ )
+ (func $aspect/index/StoreAspect#mergeWeights (param $this i32) (param $A i32) (param $B i32) (param $Wa f64) (param $Wb f64) (result i32)
+  (local $result i32)
+  (local $i i32)
+  (local $j i32)
+  (local $8 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 20
+  memory.fill
+  local.get $A
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length
+  local.get $B
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length
+  i32.ne
+  if
+   i32.const 8784
+   i32.const 7200
+   i32.const 104
+   i32.const 13
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.get $A
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#constructor
+  local.tee $result
+  i32.store offset=4
+  i32.const 0
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   local.get $A
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store
+   local.get $8
+   call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length
+   i32.lt_s
+   if
+    local.get $A
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store offset=8
+    local.get $8
+    local.get $i
+    call $~lib/array/Array<~lib/typedarray/Float64Array>#__get
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store
+    local.get $8
+    call $~lib/typedarray/Float64Array#get:length
+    local.get $B
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store offset=8
+    local.get $8
+    local.get $i
+    call $~lib/array/Array<~lib/typedarray/Float64Array>#__get
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store
+    local.get $8
+    call $~lib/typedarray/Float64Array#get:length
+    i32.ne
+    if
+     i32.const 8880
+     i32.const 7200
+     i32.const 109
+     i32.const 17
+     call $~lib/builtins/abort
+     unreachable
+    end
+    local.get $result
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store
+    local.get $8
+    local.get $i
+    i32.const 0
+    local.get $A
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store offset=16
+    local.get $8
+    local.get $i
+    call $~lib/array/Array<~lib/typedarray/Float64Array>#__get
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store offset=12
+    local.get $8
+    call $~lib/typedarray/Float64Array#get:length
+    call $~lib/typedarray/Float64Array#constructor
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store offset=8
+    local.get $8
+    call $~lib/array/Array<~lib/typedarray/Float64Array>#__set
+    i32.const 0
+    local.set $j
+    loop $for-loop|1
+     local.get $j
+     local.get $A
+     local.set $8
+     global.get $~lib/memory/__stack_pointer
+     local.get $8
+     i32.store offset=8
+     local.get $8
+     local.get $i
+     call $~lib/array/Array<~lib/typedarray/Float64Array>#__get
+     local.set $8
+     global.get $~lib/memory/__stack_pointer
+     local.get $8
+     i32.store
+     local.get $8
+     call $~lib/typedarray/Float64Array#get:length
+     i32.lt_s
+     if
+      local.get $result
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=8
+      local.get $8
+      local.get $i
+      call $~lib/array/Array<~lib/typedarray/Float64Array>#__get
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store
+      local.get $8
+      local.get $j
+      local.get $Wa
+      local.get $A
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=12
+      local.get $8
+      local.get $i
+      call $~lib/array/Array<~lib/typedarray/Float64Array>#__get
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=8
+      local.get $8
+      local.get $j
+      call $~lib/typedarray/Float64Array#__get
+      f64.mul
+      local.get $Wb
+      local.get $B
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=12
+      local.get $8
+      local.get $i
+      call $~lib/array/Array<~lib/typedarray/Float64Array>#__get
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=8
+      local.get $8
+      local.get $j
+      call $~lib/typedarray/Float64Array#__get
+      f64.mul
+      f64.add
+      local.get $Wa
+      local.get $Wb
+      f64.add
+      f64.div
+      call $~lib/typedarray/Float64Array#__set
+      local.get $j
+      i32.const 1
+      i32.add
+      local.set $j
+      br $for-loop|1
+     end
+    end
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  local.get $result
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $8
+  return
+ )
+ (func $~lib/array/Array<~lib/string/String>#constructor (param $this i32) (param $length i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $bufferSize i32)
+  (local $buffer i32)
+  (local $6 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.const 73
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/string/String>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/string/String>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/string/String>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/string/String>#set:length_
+  local.get $length
+  i32.const 1073741820
+  i32.const 2
+  i32.shr_u
+  i32.gt_u
+  if
+   i32.const 528
+   i32.const 8176
+   i32.const 70
+   i32.const 60
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $length
+  local.tee $2
+  i32.const 8
+  local.tee $3
+  local.get $2
+  local.get $3
+  i32.gt_u
+  select
+  i32.const 2
+  i32.shl
+  local.set $bufferSize
+  global.get $~lib/memory/__stack_pointer
+  local.get $bufferSize
+  i32.const 1
+  call $~lib/rt/itcms/__new
+  local.tee $buffer
+  i32.store offset=8
+  i32.const 2
+  global.get $~lib/shared/runtime/Runtime.Incremental
+  i32.ne
+  drop
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=12
+  local.get $6
+  call $~lib/array/Array<~lib/string/String>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  call $~lib/array/Array<~lib/string/String>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $bufferSize
+  call $~lib/array/Array<~lib/string/String>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $length
+  call $~lib/array/Array<~lib/string/String>#set:length_
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $6
+ )
+ (func $~lib/string/String#substring (param $this i32) (param $start i32) (param $end i32) (result i32)
+  (local $len i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $finalStart i32)
+  (local $9 i32)
+  (local $10 i32)
+  (local $11 i32)
+  (local $12 i32)
+  (local $finalEnd i32)
+  (local $14 i32)
+  (local $15 i32)
+  (local $fromPos i32)
+  (local $17 i32)
+  (local $18 i32)
+  (local $toPos i32)
+  (local $size i32)
+  (local $out i32)
+  (local $22 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  local.set $22
+  global.get $~lib/memory/__stack_pointer
+  local.get $22
+  i32.store
+  local.get $22
+  call $~lib/string/String#get:length
+  local.set $len
+  local.get $start
+  local.tee $4
+  i32.const 0
+  local.tee $5
+  local.get $4
+  local.get $5
+  i32.gt_s
+  select
+  local.tee $6
+  local.get $len
+  local.tee $7
+  local.get $6
+  local.get $7
+  i32.lt_s
+  select
+  local.set $finalStart
+  local.get $end
+  local.tee $9
+  i32.const 0
+  local.tee $10
+  local.get $9
+  local.get $10
+  i32.gt_s
+  select
+  local.tee $11
+  local.get $len
+  local.tee $12
+  local.get $11
+  local.get $12
+  i32.lt_s
+  select
+  local.set $finalEnd
+  local.get $finalStart
+  local.tee $14
+  local.get $finalEnd
+  local.tee $15
+  local.get $14
+  local.get $15
+  i32.lt_s
+  select
+  i32.const 1
+  i32.shl
+  local.set $fromPos
+  local.get $finalStart
+  local.tee $17
+  local.get $finalEnd
+  local.tee $18
+  local.get $17
+  local.get $18
+  i32.gt_s
+  select
+  i32.const 1
+  i32.shl
+  local.set $toPos
+  local.get $toPos
+  local.get $fromPos
+  i32.sub
+  local.set $size
+  local.get $size
+  i32.eqz
+  if
+   i32.const 672
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $22
+   return
+  end
+  local.get $fromPos
+  i32.eqz
+  if (result i32)
+   local.get $toPos
+   local.get $len
+   i32.const 1
+   i32.shl
+   i32.eq
+  else
+   i32.const 0
+  end
+  if
+   local.get $this
+   local.set $22
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $22
+   return
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $size
+  i32.const 2
+  call $~lib/rt/itcms/__new
+  local.tee $out
+  i32.store offset=4
+  local.get $out
+  local.get $this
+  local.get $fromPos
+  i32.add
+  local.get $size
+  memory.copy
+  local.get $out
+  local.set $22
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $22
+  return
+ )
+ (func $~lib/util/string/joinFloatArray<f64> (param $dataStart i32) (param $length i32) (param $separator i32) (result i32)
+  (local $lastIndex i32)
+  (local $sepLen i32)
+  (local $estLen i32)
+  (local $result i32)
+  (local $offset i32)
+  (local $value f64)
+  (local $i i32)
+  (local $10 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $length
+  i32.const 1
+  i32.sub
+  local.set $lastIndex
+  local.get $lastIndex
+  i32.const 0
+  i32.lt_s
+  if
+   i32.const 672
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $10
+   return
+  end
+  local.get $lastIndex
+  i32.eqz
+  if
+   local.get $dataStart
+   f64.load
+   call $~lib/util/number/dtoa
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $10
+   return
+  end
+  local.get $separator
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  local.get $10
+  i32.store
+  local.get $10
+  call $~lib/string/String#get:length
+  local.set $sepLen
+  i32.const 28
+  local.get $sepLen
+  i32.add
+  local.get $lastIndex
+  i32.mul
+  i32.const 28
+  i32.add
+  local.set $estLen
+  global.get $~lib/memory/__stack_pointer
+  local.get $estLen
+  i32.const 1
+  i32.shl
+  i32.const 2
+  call $~lib/rt/itcms/__new
+  local.tee $result
+  i32.store offset=4
+  i32.const 0
+  local.set $offset
+  i32.const 0
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   local.get $lastIndex
+   i32.lt_s
+   if
+    local.get $dataStart
+    local.get $i
+    i32.const 3
+    i32.shl
+    i32.add
+    f64.load
+    local.set $value
+    local.get $offset
+    local.get $result
+    local.get $offset
+    i32.const 1
+    i32.shl
+    i32.add
+    local.get $value
+    call $~lib/util/number/dtoa_buffered
+    i32.add
+    local.set $offset
+    local.get $sepLen
+    if
+     local.get $result
+     local.get $offset
+     i32.const 1
+     i32.shl
+     i32.add
+     local.get $separator
+     local.get $sepLen
+     i32.const 1
+     i32.shl
+     memory.copy
+     local.get $offset
+     local.get $sepLen
+     i32.add
+     local.set $offset
+    end
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  local.get $dataStart
+  local.get $lastIndex
+  i32.const 3
+  i32.shl
+  i32.add
+  f64.load
+  local.set $value
+  local.get $offset
+  local.get $result
+  local.get $offset
+  i32.const 1
+  i32.shl
+  i32.add
+  local.get $value
+  call $~lib/util/number/dtoa_buffered
+  i32.add
+  local.set $offset
+  local.get $estLen
+  local.get $offset
+  i32.gt_s
+  if
+   local.get $result
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   local.get $10
+   i32.store
+   local.get $10
+   i32.const 0
+   local.get $offset
+   call $~lib/string/String#substring
+   local.set $10
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $10
+   return
+  end
+  local.get $result
+  local.set $10
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $10
+  return
+ )
+ (func $~lib/typedarray/Float64Array#join (param $this i32) (param $separator i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  call $~lib/arraybuffer/ArrayBufferView#get:dataStart
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  call $~lib/typedarray/Float64Array#get:length
+  local.get $separator
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/util/string/joinFloatArray<f64>
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/array/Array<~lib/string/String>#join (param $this i32) (param $separator i32) (result i32)
+  (local $ptr i32)
+  (local $len i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/array/Array<~lib/string/String>#get:dataStart
+  local.set $ptr
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/array/Array<~lib/string/String>#get:length_
+  local.set $len
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  drop
+  i32.const 0
+  i32.const 1
+  i32.lt_s
+  drop
+  i32.const 1
+  drop
+  local.get $ptr
+  local.get $len
+  local.get $separator
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store
+  local.get $4
+  call $~lib/util/string/joinStringArray
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+  return
+ )
+ (func $aspect/index/StoreAspect#objectToJsonString (param $this i32) (param $arr i32) (result i32)
+  (local $strArr i32)
+  (local $i i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 40
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 40
+  memory.fill
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 0
+  call $~lib/array/Array<~lib/string/String>#constructor
+  local.tee $strArr
+  i32.store
+  i32.const 0
+  local.set $i
+  loop $for-loop|0
+   local.get $i
+   local.get $arr
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   local.get $4
+   i32.store offset=4
+   local.get $4
+   call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length
+   i32.lt_s
+   if
+    local.get $strArr
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=4
+    local.get $4
+    i32.const 8992
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=20
+    local.get $4
+    local.get $arr
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=36
+    local.get $4
+    local.get $i
+    call $~lib/array/Array<~lib/typedarray/Float64Array>#__get
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=28
+    local.get $4
+    i32.const 8560
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=32
+    local.get $4
+    call $~lib/typedarray/Float64Array#join
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=24
+    local.get $4
+    call $~lib/string/String.__concat
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=12
+    local.get $4
+    i32.const 10160
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=16
+    local.get $4
+    call $~lib/string/String.__concat
+    local.set $4
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.store offset=8
+    local.get $4
+    call $~lib/array/Array<~lib/string/String>#push
+    drop
+    local.get $i
+    i32.const 1
+    i32.add
+    local.set $i
+    br $for-loop|0
+   end
+  end
+  i32.const 8992
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=12
+  local.get $4
+  local.get $strArr
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=20
+  local.get $4
+  i32.const 8560
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=24
+  local.get $4
+  call $~lib/array/Array<~lib/string/String>#join
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=16
+  local.get $4
+  call $~lib/string/String.__concat
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=4
+  local.get $4
+  i32.const 10160
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=8
+  local.get $4
+  call $~lib/string/String.__concat
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 40
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+  return
+ )
+ (func $aspect/index/StoreAspect#postContractCall (param $this i32) (param $input i32)
+  (local $2 i32)
+  (local $currentCallMethod i32)
+  (local $4 i32)
+  (local $to i32)
+  (local $balance i64)
+  (local $counterValue i64)
+  (local $uploadValue i32)
+  (local $model i32)
+  (local $modelValue i32)
+  (local $points i64)
+  (local $uploadWeights i32)
+  (local $modelWeights i32)
+  (local $newWeights i32)
+  (local $newWeightsString i32)
+  (local $16 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 60
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 60
   memory.fill
   global.get $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
   local.get $input
-  local.set $7
+  local.set $16
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $16
   i32.store offset=8
-  local.get $7
+  local.get $16
   call $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput#get:call
   local.tee $2
   i32.store offset=12
@@ -19211,33 +30487,33 @@
   else
    i32.const 1360
    i32.const 7200
-   i32.const 41
+   i32.const 45
    i32.const 59
    call $~lib/builtins/abort
    unreachable
   end
-  local.set $7
+  local.set $16
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $16
   i32.store offset=4
-  local.get $7
+  local.get $16
   call $~lib/@artela/aspect-libs/proto/aspect/v2/post-exec-message-input/PostExecMessageInput#get:data
-  local.set $7
+  local.set $16
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $16
   i32.store
-  local.get $7
+  local.get $16
   call $~lib/@artela/aspect-libs/common/abi/ethereum/index/ethereum.parseMethodSig
   local.tee $currentCallMethod
   i32.store offset=16
   global.get $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
   local.get $input
-  local.set $7
+  local.set $16
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $16
   i32.store offset=20
-  local.get $7
+  local.get $16
   call $~lib/@artela/aspect-libs/proto/aspect/v2/post-contract-call-input/PostContractCallInput#get:call
   local.tee $4
   i32.store offset=24
@@ -19247,62 +30523,369 @@
   else
    i32.const 1360
    i32.const 7200
-   i32.const 42
+   i32.const 46
    i32.const 36
    call $~lib/builtins/abort
    unreachable
   end
-  local.set $7
+  local.set $16
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $16
   i32.store offset=8
-  local.get $7
+  local.get $16
   call $~lib/@artela/aspect-libs/proto/aspect/v2/post-exec-message-input/PostExecMessageInput#get:to
-  local.set $7
+  local.set $16
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $16
   i32.store
-  local.get $7
+  local.get $16
   i32.const 672
-  local.set $7
+  local.set $16
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $16
   i32.store offset=4
-  local.get $7
+  local.get $16
   call $~lib/@artela/aspect-libs/common/helper/convert/uint8ArrayToHex
   local.tee $to
   i32.store offset=28
+  local.get $currentCallMethod
+  local.set $16
   global.get $~lib/memory/__stack_pointer
-  global.get $~lib/@artela/aspect-libs/package/sys.aspect.mutableState
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $16
   i32.store
-  local.get $7
-  i32.const 7072
-  local.set $7
+  local.get $16
+  i32.const 8256
+  local.set $16
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $16
+  i32.store offset=8
+  local.get $16
+  call $~lib/@artela/aspect-libs/common/abi/ethereum/index/ethereum.computeMethodSig
+  local.set $16
+  global.get $~lib/memory/__stack_pointer
+  local.get $16
   i32.store offset=4
-  local.get $7
-  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState#get<~lib/string/String>
-  local.tee $model
-  i32.store offset=32
-  local.get $model
-  local.set $7
+  local.get $16
+  call $~lib/string/String.__eq
+  if
+   i64.const 100
+   local.set $balance
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.readonlyState
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store offset=4
+   local.get $16
+   i32.const 7456
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store offset=8
+   local.get $16
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState#get<u64>
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store
+   local.get $16
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#unwrap
+   local.set $counterValue
+   local.get $counterValue
+   i64.const 0
+   i64.ne
+   i32.eqz
+   if
+    i64.const 0
+    local.set $counterValue
+   end
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.mutableState
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store offset=4
+   local.get $16
+   i32.const 7456
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store offset=8
+   local.get $16
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState#get<u64>
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store
+   local.get $16
+   local.get $counterValue
+   i64.const 1
+   i64.add
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64>#set<u64>
+   global.get $~lib/memory/__stack_pointer
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.transientStorage
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store offset=4
+   local.get $16
+   i32.const 8336
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store offset=8
+   local.get $16
+   local.get $to
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store offset=20
+   local.get $16
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorage#get<~lib/string/String>
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store
+   local.get $16
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-transient-storage/TransientStorageValue<~lib/string/String>#unwrap
+   local.tee $uploadValue
+   i32.store offset=32
+   global.get $~lib/memory/__stack_pointer
+   global.get $~lib/@artela/aspect-libs/package/sys.aspect.mutableState
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store
+   local.get $16
+   i32.const 7072
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store offset=4
+   local.get $16
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState#get<~lib/string/String>
+   local.tee $model
+   i32.store offset=36
+   global.get $~lib/memory/__stack_pointer
+   local.get $model
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store
+   local.get $16
+   call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<~lib/string/String>#unwrap
+   local.tee $modelValue
+   i32.store offset=40
+   local.get $modelValue
+   local.set $16
+   global.get $~lib/memory/__stack_pointer
+   local.get $16
+   i32.store
+   local.get $16
+   call $~lib/string/String.__not
+   if (result i32)
+    i32.const 1
+   else
+    local.get $modelValue
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    i32.const 672
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    call $~lib/string/String.__eq
+   end
+   if
+    local.get $model
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    local.get $uploadValue
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>#set<~lib/string/String>
+    global.get $~lib/@artela/aspect-libs/package/sys.aspect.mutableState
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    i32.const 8368
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=8
+    local.get $16
+    call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState#get<u64>
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    local.get $balance
+    call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64>#set<u64>
+   else
+    global.get $~lib/@artela/aspect-libs/package/sys.aspect.readonlyState
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    i32.const 8368
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=8
+    local.get $16
+    call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableAspectState#get<u64>
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    call $~lib/@artela/aspect-libs/components/aspect/aspect-state/ImmutableStateValue<u64>#unwrap
+    local.set $points
+    local.get $points
+    i64.const 0
+    i64.ne
+    i32.eqz
+    if
+     i64.const 100
+     local.set $points
+    end
+    global.get $~lib/memory/__stack_pointer
+    local.get $this
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    local.get $uploadValue
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    call $aspect/index/StoreAspect#jsonStringToObject
+    local.tee $uploadWeights
+    i32.store offset=44
+    global.get $~lib/memory/__stack_pointer
+    local.get $this
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    local.get $modelValue
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    call $aspect/index/StoreAspect#jsonStringToObject
+    local.tee $modelWeights
+    i32.store offset=48
+    global.get $~lib/memory/__stack_pointer
+    local.get $this
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    local.get $modelWeights
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    local.get $uploadWeights
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=8
+    local.get $16
+    local.get $points
+    f64.convert_i64_u
+    local.get $balance
+    f64.convert_i64_u
+    call $aspect/index/StoreAspect#mergeWeights
+    local.tee $newWeights
+    i32.store offset=52
+    global.get $~lib/memory/__stack_pointer
+    local.get $this
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    local.get $newWeights
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    call $aspect/index/StoreAspect#objectToJsonString
+    local.tee $newWeightsString
+    i32.store offset=56
+    global.get $~lib/@artela/aspect-libs/package/sys.aspect.mutableState
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=8
+    local.get $16
+    i32.const 7072
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=20
+    local.get $16
+    call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState#get<~lib/string/String>
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    local.get $newWeightsString
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>#set<~lib/string/String>
+    global.get $~lib/@artela/aspect-libs/package/sys.aspect.mutableState
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=4
+    local.get $16
+    i32.const 8368
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store offset=8
+    local.get $16
+    call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableAspectState#get<u64>
+    local.set $16
+    global.get $~lib/memory/__stack_pointer
+    local.get $16
+    i32.store
+    local.get $16
+    local.get $points
+    local.get $balance
+    i64.add
+    call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<u64>#set<u64>
+   end
+  end
   global.get $~lib/memory/__stack_pointer
-  local.get $7
-  i32.store
-  local.get $7
-  i32.const 7328
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  local.get $7
-  i32.store offset=4
-  local.get $7
-  call $~lib/@artela/aspect-libs/components/aspect/aspect-state/MutableStateValue<~lib/string/String>#set<~lib/string/String>
-  global.get $~lib/memory/__stack_pointer
-  i32.const 36
+  i32.const 60
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
@@ -19495,6 +31078,172 @@
   i32.store
   local.get $2
   call $~lib/function/Function<%28~lib/as-proto/assembly/Reader/Reader%2Ci32%29=>~lib/@artela/aspect-libs/proto/aspect/v2/operation-input/OperationInput>#get:_env
+  local.get $cookie
+  call $~lib/rt/itcms/__visit
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/array/Array<~lib/typedarray/Float64Array>#__visit (param $this i32) (param $cookie i32)
+  (local $cur i32)
+  (local $end i32)
+  (local $val i32)
+  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  i32.const 1
+  drop
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:dataStart
+  local.set $cur
+  local.get $cur
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:length_
+  i32.const 2
+  i32.shl
+  i32.add
+  local.set $end
+  loop $while-continue|0
+   local.get $cur
+   local.get $end
+   i32.lt_u
+   if
+    local.get $cur
+    i32.load
+    local.set $val
+    local.get $val
+    if
+     local.get $val
+     local.get $cookie
+     call $~lib/rt/itcms/__visit
+    end
+    local.get $cur
+    i32.const 4
+    i32.add
+    local.set $cur
+    br $while-continue|0
+   end
+  end
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<~lib/typedarray/Float64Array>#get:buffer
+  local.get $cookie
+  call $~lib/rt/itcms/__visit
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/array/Array<~lib/string/String>#__visit (param $this i32) (param $cookie i32)
+  (local $cur i32)
+  (local $end i32)
+  (local $val i32)
+  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  i32.const 1
+  drop
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<~lib/string/String>#get:dataStart
+  local.set $cur
+  local.get $cur
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<~lib/string/String>#get:length_
+  i32.const 2
+  i32.shl
+  i32.add
+  local.set $end
+  loop $while-continue|0
+   local.get $cur
+   local.get $end
+   i32.lt_u
+   if
+    local.get $cur
+    i32.load
+    local.set $val
+    local.get $val
+    if
+     local.get $val
+     local.get $cookie
+     call $~lib/rt/itcms/__visit
+    end
+    local.get $cur
+    i32.const 4
+    i32.add
+    local.set $cur
+    br $while-continue|0
+   end
+  end
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<~lib/string/String>#get:buffer
+  local.get $cookie
+  call $~lib/rt/itcms/__visit
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/array/Array<f64>#__visit (param $this i32) (param $cookie i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  i32.const 0
+  drop
+  local.get $this
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/array/Array<f64>#get:buffer
   local.get $cookie
   call $~lib/rt/itcms/__visit
   global.get $~lib/memory/__stack_pointer
@@ -20931,6 +32680,277 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $14
+  return
+ )
+ (func $~lib/util/number/utoa64 (param $value i64) (param $radix i32) (result i32)
+  (local $out i32)
+  (local $val32 i32)
+  (local $decimals i32)
+  (local $buffer i32)
+  (local $num i32)
+  (local $offset i32)
+  (local $decimals|8 i32)
+  (local $buffer|9 i32)
+  (local $num|10 i64)
+  (local $offset|11 i32)
+  (local $decimals|12 i32)
+  (local $buffer|13 i32)
+  (local $num|14 i64)
+  (local $offset|15 i32)
+  (local $decimals|16 i32)
+  (local $17 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $radix
+  i32.const 2
+  i32.lt_s
+  if (result i32)
+   i32.const 1
+  else
+   local.get $radix
+   i32.const 36
+   i32.gt_s
+  end
+  if
+   i32.const 5296
+   i32.const 5424
+   i32.const 401
+   i32.const 5
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $value
+  i64.const 0
+  i64.ne
+  i32.eqz
+  if
+   i32.const 5488
+   local.set $17
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $17
+   return
+  end
+  local.get $radix
+  i32.const 10
+  i32.eq
+  if
+   local.get $value
+   global.get $~lib/builtins/u32.MAX_VALUE
+   i64.extend_i32_u
+   i64.le_u
+   if
+    local.get $value
+    i32.wrap_i64
+    local.set $val32
+    local.get $val32
+    call $~lib/util/number/decimalCount32
+    local.set $decimals
+    global.get $~lib/memory/__stack_pointer
+    local.get $decimals
+    i32.const 1
+    i32.shl
+    i32.const 2
+    call $~lib/rt/itcms/__new
+    local.tee $out
+    i32.store
+    local.get $out
+    local.set $buffer
+    local.get $val32
+    local.set $num
+    local.get $decimals
+    local.set $offset
+    i32.const 0
+    i32.const 1
+    i32.ge_s
+    drop
+    local.get $buffer
+    local.get $num
+    local.get $offset
+    call $~lib/util/number/utoa32_dec_lut
+   else
+    local.get $value
+    call $~lib/util/number/decimalCount64High
+    local.set $decimals|8
+    global.get $~lib/memory/__stack_pointer
+    local.get $decimals|8
+    i32.const 1
+    i32.shl
+    i32.const 2
+    call $~lib/rt/itcms/__new
+    local.tee $out
+    i32.store
+    local.get $out
+    local.set $buffer|9
+    local.get $value
+    local.set $num|10
+    local.get $decimals|8
+    local.set $offset|11
+    i32.const 0
+    i32.const 1
+    i32.ge_s
+    drop
+    local.get $buffer|9
+    local.get $num|10
+    local.get $offset|11
+    call $~lib/util/number/utoa64_dec_lut
+   end
+  else
+   local.get $radix
+   i32.const 16
+   i32.eq
+   if
+    i32.const 63
+    local.get $value
+    i64.clz
+    i32.wrap_i64
+    i32.sub
+    i32.const 2
+    i32.shr_s
+    i32.const 1
+    i32.add
+    local.set $decimals|12
+    global.get $~lib/memory/__stack_pointer
+    local.get $decimals|12
+    i32.const 1
+    i32.shl
+    i32.const 2
+    call $~lib/rt/itcms/__new
+    local.tee $out
+    i32.store
+    local.get $out
+    local.set $buffer|13
+    local.get $value
+    local.set $num|14
+    local.get $decimals|12
+    local.set $offset|15
+    i32.const 0
+    i32.const 1
+    i32.ge_s
+    drop
+    local.get $buffer|13
+    local.get $num|14
+    local.get $offset|15
+    call $~lib/util/number/utoa_hex_lut
+   else
+    local.get $value
+    local.get $radix
+    call $~lib/util/number/ulog_base
+    local.set $decimals|16
+    global.get $~lib/memory/__stack_pointer
+    local.get $decimals|16
+    i32.const 1
+    i32.shl
+    i32.const 2
+    call $~lib/rt/itcms/__new
+    local.tee $out
+    i32.store
+    local.get $out
+    local.get $value
+    local.get $decimals|16
+    local.get $radix
+    call $~lib/util/number/utoa64_any_core
+   end
+  end
+  local.get $out
+  local.set $17
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $17
+  return
+ )
+ (func $~lib/util/number/dtoa (param $value f64) (result i32)
+  (local $size i32)
+  (local $result i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $value
+  f64.const 0
+  f64.eq
+  if
+   i32.const 9024
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $3
+   return
+  end
+  local.get $value
+  local.get $value
+  f64.sub
+  f64.const 0
+  f64.eq
+  i32.eqz
+  if
+   local.get $value
+   local.get $value
+   f64.ne
+   if
+    i32.const 9056
+    local.set $3
+    global.get $~lib/memory/__stack_pointer
+    i32.const 4
+    i32.add
+    global.set $~lib/memory/__stack_pointer
+    local.get $3
+    return
+   end
+   i32.const 9088
+   i32.const 9136
+   local.get $value
+   f64.const 0
+   f64.lt
+   select
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $3
+   return
+  end
+  i32.const 9168
+  local.get $value
+  call $~lib/util/number/dtoa_core
+  i32.const 1
+  i32.shl
+  local.set $size
+  global.get $~lib/memory/__stack_pointer
+  local.get $size
+  i32.const 2
+  call $~lib/rt/itcms/__new
+  local.tee $result
+  i32.store
+  local.get $result
+  i32.const 9168
+  local.get $size
+  memory.copy
+  local.get $result
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
   return
  )
 )
